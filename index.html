@@ -74,13 +74,12 @@
         }
 
         /* ═══════════════════════════════════════════
-           LIGHT THEME — радикальный минимализм
-           Чистый серый + белый + ОДИН акцент (жёлтый)
-           Шрифт: Murs Gothic для заголовков
+           LIGHT THEME — premium, airy, editorial
+           Тонкая типографика + лёгкие серые + жёлтый акцент
            ═══════════════════════════════════════════ */
         [data-theme="light"] {
             --bg-primary: #F5F5F7;
-            --bg-secondary: #EFEFF1;
+            --bg-secondary: #EFEFEF;
             --bg-card: #FFFFFF;
             --bg-elevated: #EAEAEC;
             --bg-hover: #E5E5E7;
@@ -88,18 +87,18 @@
             --glass: #FFFFFF;
             --glass-hover: #FFFFFF;
             --glass-strong: #F5F5F7;
-            --glass-border: rgba(0, 0, 0, 0.04);
-            --glass-border-hover: rgba(0, 0, 0, 0.07);
+            --glass-border: rgba(0, 0, 0, 0.03);
+            --glass-border-hover: rgba(0, 0, 0, 0.05);
 
-            --text-primary: #1B1B1B;
-            --text-secondary: #6B6B73;
-            --text-tertiary: #9A9AA0;
+            --text-primary: #2D2D2D;
+            --text-secondary: #9A9AA2;
+            --text-tertiary: #C0C0C8;
 
-            --border-subtle: rgba(0, 0, 0, 0.05);
-            --border-light: rgba(0, 0, 0, 0.08);
+            --border-subtle: rgba(0, 0, 0, 0.03);
+            --border-light: rgba(0, 0, 0, 0.05);
 
-            /* Единая тень для всех карточек — без цветного glow */
-            --shadow-card: 0 2px 6px rgba(0,0,0,0.03), 0 10px 28px rgba(0,0,0,0.05);
+            /* Едва уловимые тени */
+            --shadow-card: 0 1px 2px rgba(0,0,0,0.015), 0 6px 20px rgba(0,0,0,0.025);
             --shadow-glow-yellow: var(--shadow-card);
             --shadow-glow-green: var(--shadow-card);
             --shadow-glow-blue: var(--shadow-card);
@@ -126,16 +125,18 @@
             -webkit-backdrop-filter: none !important;
         }
 
-        /* ─── Поверхности — солидные, чистые ─── */
+        /* ─── Поверхности — невесомые ─── */
         [data-theme="light"] .header {
-            background: rgba(245, 245, 247, 0.92);
+            background: rgba(245, 245, 247, 0.88);
+            border-bottom-color: rgba(0,0,0,0.03);
         }
         [data-theme="light"] .header.scrolled {
-            background: rgba(245, 245, 247, 0.97);
-            box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+            background: rgba(245, 245, 247, 0.95);
+            box-shadow: 0 1px 0 rgba(0,0,0,0.04);
         }
         [data-theme="light"] .categories-nav {
-            background: rgba(239, 239, 241, 0.95);
+            background: rgba(239, 239, 239, 0.92);
+            border-bottom-color: rgba(0,0,0,0.03);
         }
         [data-theme="light"] .footer {
             background: var(--bg-secondary);
@@ -149,7 +150,8 @@
         }
         [data-theme="light"] .modal-content {
             background: #FFFFFF;
-            box-shadow: 0 24px 80px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+            border-color: rgba(0,0,0,0.03);
         }
         [data-theme="light"] .modal-close {
             background: var(--bg-primary);
@@ -164,22 +166,24 @@
             filter: brightness(0);
         }
 
-        /* ─── Карточки — белые, без цветных эффектов ─── */
+        /* ─── Карточки — невесомые, с воздухом внутри ─── */
         [data-theme="light"] .service-card {
             background: #FFFFFF;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            padding: 28px;
+            border-color: rgba(0,0,0,0.03);
         }
         [data-theme="light"] .service-card:hover {
             background: #FFFFFF;
-            border-color: rgba(0,0,0,0.07);
-            transform: translateY(-2px);
+            border-color: rgba(0,0,0,0.05);
+            transform: translateY(-1px);
         }
         [data-theme="light"] .service-card::before { display: none; }
         [data-theme="light"] .service-card:hover[data-color="yellow"],
         [data-theme="light"] .service-card:hover[data-color="green"],
         [data-theme="light"] .service-card:hover[data-color="blue"],
         [data-theme="light"] .service-card:hover[data-color="pink"] {
-            border-color: rgba(0,0,0,0.07);
+            border-color: rgba(0,0,0,0.05);
         }
 
         /* ─── Нейтрализовать ВСЕ per-category цвета ─── */
@@ -200,19 +204,20 @@
             color: var(--text-secondary) !important;
         }
 
-        /* ─── Cat pills — белые, нейтральные ─── */
+        /* ─── Cat pills — невесомые ─── */
         [data-theme="light"] .cat-pill {
             background: #FFFFFF;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+            border-color: rgba(0,0,0,0.03);
         }
         [data-theme="light"] .cat-pill i {
             color: inherit !important;
         }
         [data-theme="light"] .cat-pill:hover {
             background: #FFFFFF;
-            border-color: rgba(0,0,0,0.1);
+            border-color: rgba(0,0,0,0.06);
             color: var(--text-primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         }
         [data-theme="light"] .cat-pill.active {
             background: #F5DA0F;
@@ -224,61 +229,118 @@
         /* ─── Scrollbar ─── */
         [data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg-secondary); }
 
-        /* ─── Murs Gothic — заголовки ─── */
-        [data-theme="light"] .hero h1,
-        [data-theme="light"] .category-title,
-        [data-theme="light"] .card-name,
-        [data-theme="light"] .modal-name,
-        [data-theme="light"] .modal-section-title,
-        [data-theme="light"] .cta-title,
-        [data-theme="light"] .hero-stat-value {
-            font-family: 'Murs Gothic', 'Nunito', sans-serif;
-        }
-
-        /* ─── Hero ─── */
-        [data-theme="light"] .hero::before { display: none; }
+        /* ─── Типографика — тонкая, лёгкая, премиальная ─── */
         [data-theme="light"] .hero h1,
         [data-theme="light"] .hero h1 .highlight {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 300;
+            letter-spacing: -1.5px;
             background: none;
-            -webkit-text-fill-color: #1B1B1B;
+            -webkit-text-fill-color: var(--text-primary);
             -webkit-background-clip: unset;
             background-clip: unset;
-            color: #1B1B1B;
+            color: var(--text-primary);
         }
-        [data-theme="light"] .hero-stat-value { color: #1B1B1B; }
+        [data-theme="light"] .hero-subtitle {
+            font-weight: 300;
+            color: var(--text-tertiary);
+        }
         [data-theme="light"] .hero-badge {
+            font-weight: 500;
+            letter-spacing: 0.5px;
             background: #FFFFFF;
-            color: #1B1B1B;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            color: var(--text-secondary);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
         [data-theme="light"] .hero-badge i { color: #F5DA0F; }
+        [data-theme="light"] .hero-stat-value {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .hero-stat-label {
+            font-weight: 400;
+            color: var(--text-tertiary);
+        }
+        [data-theme="light"] .hero::before { display: none; }
 
-        /* ─── Текст ─── */
-        [data-theme="light"] .hero-subtitle,
+        [data-theme="light"] .category-title {
+            font-weight: 500;
+            font-size: 20px;
+            letter-spacing: -0.3px;
+        }
+        [data-theme="light"] .category-count {
+            font-weight: 400;
+            color: var(--text-tertiary);
+        }
+        [data-theme="light"] .card-name {
+            font-weight: 600;
+        }
+        [data-theme="light"] .card-description {
+            font-weight: 400;
+            color: var(--text-tertiary);
+        }
+        [data-theme="light"] .card-rating-value {
+            color: var(--text-tertiary);
+        }
+        [data-theme="light"] .card-footer {
+            border-top-color: rgba(0,0,0,0.03);
+        }
+        [data-theme="light"] .modal-name {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+        }
+        [data-theme="light"] .modal-section-title {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+        }
+        [data-theme="light"] .cta-title {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 600;
+        }
+        [data-theme="light"] .cat-pill {
+            font-weight: 500;
+        }
+
+        /* ─── Текст — лёгкий, воздушный ─── */
+        [data-theme="light"] .header-counter {
+            font-weight: 400;
+            color: var(--text-tertiary);
+        }
+        [data-theme="light"] .header-counter strong {
+            font-weight: 700;
+            color: var(--text-primary);
+        }
         [data-theme="light"] .modal-short-desc,
-        [data-theme="light"] .cta-subtitle,
-        [data-theme="light"] .header-counter { color: var(--text-secondary); }
-        [data-theme="light"] .header-counter strong { color: #1B1B1B; }
-
-        [data-theme="light"] .card-description,
-        [data-theme="light"] .modal-description,
+        [data-theme="light"] .cta-subtitle {
+            font-weight: 400;
+            color: var(--text-tertiary);
+        }
+        [data-theme="light"] .modal-description {
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
         [data-theme="light"] .modal-use-cases li,
         [data-theme="light"] .pros-list li,
-        [data-theme="light"] .cons-list li,
+        [data-theme="light"] .cons-list li {
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
         [data-theme="light"] .modal-pricing p,
-        [data-theme="light"] .platform-badge,
-        [data-theme="light"] .card-rating-value { color: var(--text-secondary); }
+        [data-theme="light"] .platform-badge { color: var(--text-secondary); }
 
-        /* Stars — чистый жёлтый, единственный акцент */
+        /* Stars — жёлтый акцент */
         [data-theme="light"] .card-rating i:not(.empty),
         [data-theme="light"] .modal-rating-stars i:not(.empty) { color: #F5DA0F; }
 
-        /* ─── Price tags — нейтральные серые ─── */
+        /* ─── Price tags — невесомые ─── */
         [data-theme="light"] .card-price-tag,
         [data-theme="light"] .card-price-tag.free,
         [data-theme="light"] .card-price-tag.paid {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
+            background: rgba(0,0,0,0.03);
+            color: var(--text-tertiary);
+            font-weight: 600;
         }
 
         /* ─── Модалка внутри — нейтральный фон ─── */
@@ -293,13 +355,13 @@
         [data-theme="light"] .modal-section-title i { color: var(--text-tertiary); }
         [data-theme="light"] .modal-use-cases li i { color: #F5DA0F; }
 
-        /* CTA — чистый фон + жёлтая кнопка */
+        /* CTA */
         [data-theme="light"] .modal-cta {
             background: var(--bg-primary);
-            border-color: rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.03);
         }
-        [data-theme="light"] .reliability-bar { background: rgba(0,0,0,0.04); }
-        [data-theme="light"] .category-header { border-bottom-color: rgba(0,0,0,0.05); }
+        [data-theme="light"] .reliability-bar { background: rgba(0,0,0,0.03); }
+        [data-theme="light"] .category-header { border-bottom-color: rgba(0,0,0,0.03); }
 
         /* ═══════════════════════════════════════════
            THEME TOGGLE
@@ -346,14 +408,14 @@
 
         [data-theme="light"] .theme-toggle {
             background: #FFFFFF;
-            border-color: rgba(0,0,0,0.07);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border-color: rgba(0,0,0,0.04);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
         }
 
         [data-theme="light"] .theme-toggle-knob {
             left: 31px;
             background: #F5DA0F;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .theme-toggle-icons {
