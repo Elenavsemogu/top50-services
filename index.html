@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТОП-50 Сервисов для Арбитража 2025–2026 | Secret Room</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/murs-gothic" rel="stylesheet">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        // Prevent flash of wrong theme
+        (function() {
+            var t = localStorage.getItem('sr-theme');
+            if (t === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        })();
+    </script>
     <style>
         /* ═══════════════════════════════════════════
            CSS RESET & VARIABLES
@@ -63,6 +71,388 @@
             --transition-fast: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ═══════════════════════════════════════════
+           LIGHT THEME — чистый, тёплый, премиум
+           Философия: solid white + warm beige, NO glass
+           Шрифт: Murs Gothic для заголовков
+           ═══════════════════════════════════════════ */
+        [data-theme="light"] {
+            --bg-primary: #FBF2EB;
+            --bg-secondary: #F5EBE2;
+            --bg-card: #FFFFFF;
+            --bg-elevated: #F0E7DF;
+            --bg-hover: #EBE2DA;
+
+            /* Solid — никакого glass на светлой */
+            --glass: #FFFFFF;
+            --glass-hover: #FFFFFF;
+            --glass-strong: #FFFFFF;
+            --glass-border: rgba(27, 27, 27, 0.07);
+            --glass-border-hover: rgba(27, 27, 27, 0.13);
+
+            /* Текст — фирменный чёрный #1B1B1B + тёплые серые */
+            --text-primary: #1B1B1B;
+            --text-secondary: #5A5A64;
+            --text-tertiary: #92929C;
+
+            /* Borders */
+            --border-subtle: rgba(27, 27, 27, 0.06);
+            --border-light: rgba(27, 27, 27, 0.11);
+
+            /* Чистые тени вместо glow */
+            --shadow-card: 0 1px 3px rgba(27,27,27,0.04), 0 8px 24px rgba(27,27,27,0.05);
+            --shadow-glow-yellow: 0 4px 16px rgba(27,27,27,0.06), 0 0 0 1.5px rgba(245,218,15,0.3);
+            --shadow-glow-green: 0 4px 16px rgba(27,27,27,0.06), 0 0 0 1.5px rgba(200,231,18,0.3);
+            --shadow-glow-blue: 0 4px 16px rgba(27,27,27,0.06), 0 0 0 1.5px rgba(46,57,247,0.25);
+            --shadow-glow-pink: 0 4px 16px rgba(27,27,27,0.06), 0 0 0 1.5px rgba(246,173,229,0.3);
+
+            /* Фирменный синий (оригинал из брендбука) */
+            --accent-blue: #2E39F7;
+        }
+
+        /* ─── Убрать стекло, шум, блобы ─── */
+        [data-theme="light"] body::after { display: none; }
+        [data-theme="light"] .ambient { display: none; }
+
+        [data-theme="light"] .service-card,
+        [data-theme="light"] .modal-content,
+        [data-theme="light"] .modal-close,
+        [data-theme="light"] .header,
+        [data-theme="light"] .categories-nav,
+        [data-theme="light"] .footer,
+        [data-theme="light"] .hero-badge,
+        [data-theme="light"] .theme-toggle,
+        [data-theme="light"] .cat-pill,
+        [data-theme="light"] .quick-info-item,
+        [data-theme="light"] .platform-badge,
+        [data-theme="light"] .modal-cta {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        /* ─── Header — чистый, солид ─── */
+        [data-theme="light"] .header {
+            background: rgba(251, 242, 235, 0.97);
+            border-bottom-color: rgba(27,27,27,0.06);
+        }
+        [data-theme="light"] .header.scrolled {
+            background: rgba(251, 242, 235, 0.99);
+            box-shadow: 0 1px 12px rgba(27,27,27,0.05);
+        }
+
+        /* ─── Category nav — солид ─── */
+        [data-theme="light"] .categories-nav {
+            background: rgba(245, 235, 226, 0.97);
+            border-bottom-color: rgba(27,27,27,0.06);
+        }
+
+        /* ─── Footer — солид ─── */
+        [data-theme="light"] .footer {
+            background: var(--bg-secondary);
+            border-top-color: rgba(27,27,27,0.06);
+        }
+
+        /* ─── Modal — чистый белый ─── */
+        [data-theme="light"] .modal-overlay {
+            background: rgba(27,27,27,0.2);
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+        }
+        [data-theme="light"] .modal-content {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.07);
+            box-shadow: 0 24px 80px rgba(27,27,27,0.12);
+        }
+        [data-theme="light"] .modal-close {
+            background: var(--bg-primary);
+            border-color: rgba(27,27,27,0.08);
+        }
+        [data-theme="light"] .modal-close:hover {
+            background: var(--bg-hover);
+        }
+
+        /* ─── Logo — инвертировать в чёрный ─── */
+        [data-theme="light"] .logo-img,
+        [data-theme="light"] .footer-logo img {
+            filter: brightness(0) saturate(100%);
+        }
+
+        /* ─── Карточки — чистый белый + аккуратные тени ─── */
+        [data-theme="light"] .service-card {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.06);
+            box-shadow: 0 1px 2px rgba(27,27,27,0.03);
+        }
+        [data-theme="light"] .service-card:hover {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.09);
+            box-shadow: var(--shadow-card);
+            transform: translateY(-2px);
+        }
+
+        /* Карточка: цветная полоска сверху при hover */
+        [data-theme="light"] .service-card::before {
+            left: 0;
+            right: 0;
+            height: 2.5px;
+            background: none !important;
+            opacity: 0;
+            border-radius: 16px 16px 0 0;
+        }
+        [data-theme="light"] .service-card:hover::before {
+            opacity: 1;
+        }
+        [data-theme="light"] .service-card[data-color="yellow"]::before,
+        [data-theme="light"] .service-card[data-color="yellow"]:hover::before { background: var(--accent-yellow) !important; }
+        [data-theme="light"] .service-card[data-color="green"]::before,
+        [data-theme="light"] .service-card[data-color="green"]:hover::before { background: var(--accent-green) !important; }
+        [data-theme="light"] .service-card[data-color="blue"]::before,
+        [data-theme="light"] .service-card[data-color="blue"]:hover::before { background: var(--accent-blue) !important; }
+        [data-theme="light"] .service-card[data-color="pink"]::before,
+        [data-theme="light"] .service-card[data-color="pink"]:hover::before { background: var(--accent-pink) !important; }
+
+        /* Hover с цветным бордером */
+        [data-theme="light"] .service-card:hover[data-color="yellow"] {
+            border-color: rgba(245, 218, 15, 0.35);
+        }
+        [data-theme="light"] .service-card:hover[data-color="green"] {
+            border-color: rgba(200, 231, 18, 0.35);
+        }
+        [data-theme="light"] .service-card:hover[data-color="blue"] {
+            border-color: rgba(46, 57, 247, 0.2);
+        }
+        [data-theme="light"] .service-card:hover[data-color="pink"] {
+            border-color: rgba(246, 173, 229, 0.35);
+        }
+
+        /* Card logo */
+        [data-theme="light"] .card-logo {
+            background: var(--bg-primary);
+            border-color: rgba(27,27,27,0.06);
+        }
+        [data-theme="light"] .card-logo-fallback { color: var(--text-primary); }
+
+        /* Card footer border */
+        [data-theme="light"] .card-footer {
+            border-top-color: rgba(27,27,27,0.06);
+        }
+
+        /* ─── Cat pills — белые чипсы ─── */
+        [data-theme="light"] .cat-pill {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.08);
+            color: var(--text-secondary);
+            box-shadow: 0 1px 2px rgba(27,27,27,0.03);
+        }
+        [data-theme="light"] .cat-pill:hover {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.14);
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(27,27,27,0.06);
+        }
+        [data-theme="light"] .cat-pill.active {
+            background: var(--accent-yellow);
+            border-color: var(--accent-yellow);
+            color: #1B1B1B;
+            box-shadow: 0 2px 8px rgba(245,218,15,0.3);
+        }
+
+        /* ─── Scrollbar ─── */
+        [data-theme="light"] ::-webkit-scrollbar-track { background: #EDE3DB; }
+
+        /* ─── Типографика — Murs Gothic для заголовков ─── */
+        [data-theme="light"] .hero h1,
+        [data-theme="light"] .category-title,
+        [data-theme="light"] .card-name,
+        [data-theme="light"] .modal-name,
+        [data-theme="light"] .modal-section-title,
+        [data-theme="light"] .cta-title,
+        [data-theme="light"] .hero-stat-value,
+        [data-theme="light"] .hero-badge {
+            font-family: 'Murs Gothic', 'Nunito', sans-serif;
+        }
+
+        /* ─── Hero ─── */
+        [data-theme="light"] .hero::before { display: none; }
+
+        [data-theme="light"] .hero h1,
+        [data-theme="light"] .hero h1 .highlight {
+            background: none;
+            -webkit-text-fill-color: #1B1B1B;
+            -webkit-background-clip: unset;
+            background-clip: unset;
+            color: #1B1B1B;
+        }
+        [data-theme="light"] .hero-stat-value {
+            color: #D4A800;
+        }
+        [data-theme="light"] .hero-badge {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.08);
+            color: #1B1B1B;
+            box-shadow: 0 1px 4px rgba(27,27,27,0.04);
+        }
+        [data-theme="light"] .hero-badge i {
+            color: var(--accent-yellow);
+        }
+
+        /* ─── Текстовые оверрайды (хардкод → theme-aware) ─── */
+        [data-theme="light"] .hero-subtitle,
+        [data-theme="light"] .modal-short-desc,
+        [data-theme="light"] .cta-subtitle,
+        [data-theme="light"] .header-counter { color: var(--text-secondary); }
+        [data-theme="light"] .header-counter strong { color: #D4A800; }
+
+        [data-theme="light"] .card-description,
+        [data-theme="light"] .modal-description,
+        [data-theme="light"] .modal-use-cases li,
+        [data-theme="light"] .pros-list li,
+        [data-theme="light"] .cons-list li,
+        [data-theme="light"] .modal-pricing p,
+        [data-theme="light"] .platform-badge,
+        [data-theme="light"] .card-rating-value { color: var(--text-secondary); }
+
+        /* Stars — тёплый янтарь */
+        [data-theme="light"] .card-rating i:not(.empty),
+        [data-theme="light"] .modal-rating-stars i:not(.empty) { color: #E5B800; }
+
+        /* ─── Price tags — чистые ─── */
+        [data-theme="light"] .card-price-tag {
+            background: #EDF5D4;
+            color: #5A7A00;
+        }
+        [data-theme="light"] .card-price-tag.free {
+            background: #E8F3CC;
+            color: #4A6A00;
+        }
+        [data-theme="light"] .card-price-tag.paid {
+            background: #FFF5D4;
+            color: #9A7A00;
+        }
+
+        /* ─── Quick info, pricing, platforms — тёплый фон ─── */
+        [data-theme="light"] .quick-info-item {
+            background: var(--bg-primary);
+            border-color: rgba(27,27,27,0.06);
+        }
+        [data-theme="light"] .modal-pricing {
+            background: var(--bg-primary);
+            border-color: rgba(27,27,27,0.06);
+        }
+        [data-theme="light"] .modal-screenshot {
+            background: var(--bg-primary);
+            border-color: rgba(27,27,27,0.06);
+        }
+        [data-theme="light"] .platform-badge {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.08);
+        }
+        [data-theme="light"] .modal-logo {
+            background: var(--bg-primary);
+            border: 1px solid rgba(27,27,27,0.06);
+        }
+
+        /* ─── CTA — чистый, с акцентом ─── */
+        [data-theme="light"] .modal-cta {
+            background: #FFFCE8;
+            border-color: rgba(245,218,15,0.3);
+        }
+
+        /* ─── Reliability bar ─── */
+        [data-theme="light"] .reliability-bar {
+            background: rgba(27,27,27,0.06);
+        }
+
+        /* ─── Category header ─── */
+        [data-theme="light"] .category-header {
+            border-bottom-color: rgba(27,27,27,0.06);
+        }
+
+        /* ═══════════════════════════════════════════
+           THEME TOGGLE
+           ═══════════════════════════════════════════ */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .theme-toggle {
+            width: 56px;
+            height: 28px;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-strong);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            cursor: pointer;
+            position: relative;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            transition: all var(--transition-fast);
+            flex-shrink: 0;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--glass-border-hover);
+        }
+
+        .theme-toggle-knob {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent-yellow);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+            z-index: 2;
+        }
+
+        [data-theme="light"] .theme-toggle {
+            background: #FFFFFF;
+            border-color: rgba(27,27,27,0.1);
+            box-shadow: 0 1px 4px rgba(27,27,27,0.06);
+        }
+
+        [data-theme="light"] .theme-toggle-knob {
+            left: 31px;
+            background: #F5A200;
+            box-shadow: 0 2px 6px rgba(245,162,0,0.3);
+        }
+
+        .theme-toggle-icons {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            padding: 0 7px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .theme-toggle-icons i {
+            font-size: 11px;
+            line-height: 28px;
+        }
+
+        .theme-toggle-icons .fa-moon {
+            color: rgba(255,255,255,0.85);
+        }
+
+        .theme-toggle-icons .fa-sun {
+            color: var(--text-tertiary);
+        }
+
+        [data-theme="light"] .theme-toggle-icons .fa-moon {
+            color: var(--text-tertiary);
+        }
+
+        [data-theme="light"] .theme-toggle-icons .fa-sun {
+            color: #F5A200;
         }
 
         *, *::before, *::after {
@@ -1435,8 +1825,17 @@
             <img src="secretroomlogo.svg" alt="Secret Room" class="logo-img">
         </a>
 
-        <div class="header-counter">
-            <strong>50</strong> сервисов
+        <div class="header-actions">
+            <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+                <span class="theme-toggle-knob"></span>
+                <span class="theme-toggle-icons">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </span>
+            </button>
+            <div class="header-counter">
+                <strong>50</strong> сервисов
+            </div>
         </div>
     </header>
 
@@ -1502,6 +1901,21 @@
          JAVASCRIPT
          ═══════════════════════════════════════════ -->
     <script>
+    // ────────────────────────────────
+    // THEME TOGGLE
+    // ────────────────────────────────
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('sr-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('sr-theme', 'light');
+        }
+    });
+
     // ────────────────────────────────
     // CATEGORIES DATA
     // ────────────────────────────────
