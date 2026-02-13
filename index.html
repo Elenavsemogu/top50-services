@@ -1,0 +1,3156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТОП-50 Сервисов для Арбитража 2025–2026 | Secret Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════════
+           CSS RESET & VARIABLES
+           ═══════════════════════════════════════════ */
+        :root {
+            --bg-primary: #131316;
+            --bg-secondary: #161618;
+            --bg-card: #1C1C22;
+            --bg-elevated: #28282E;
+            --bg-hover: #333338;
+            --accent-yellow: #F5DA0F;
+            --accent-green: #C8E712;
+            --accent-blue: #2E39F7;
+            --accent-pink: #F6ADE5;
+            --text-primary: #F0F0F2;
+            --text-secondary: #C0C0CA;
+            --text-tertiary: #909098;
+            --border-subtle: rgba(255,255,255,0.08);
+            --border-light: rgba(255,255,255,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 999px;
+            --shadow-card: 0 8px 32px rgba(0,0,0,0.22);
+            --shadow-glow-yellow: 0 0 30px rgba(245,218,15,0.25);
+            --shadow-glow-green: 0 0 30px rgba(200,231,18,0.25);
+            --shadow-glow-blue: 0 0 30px rgba(46,57,247,0.25);
+            --shadow-glow-pink: 0 0 30px rgba(246,173,229,0.25);
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-yellow) var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-yellow); border-radius: 3px; }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ═══════════════════════════════════════════
+           HEADER
+           ═══════════════════════════════════════════ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(22,22,24,0.97);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition-medium);
+        }
+
+        .header.scrolled {
+            background: rgba(22,22,24,0.99);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .logo-eye {
+            width: 36px;
+            height: 36px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-eye svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .header-search {
+            position: relative;
+            width: 320px;
+        }
+
+        .header-search input {
+            width: 100%;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-full);
+            padding: 8px 16px 8px 40px;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: var(--transition-fast);
+        }
+
+        .header-search input::placeholder {
+            color: var(--text-tertiary);
+        }
+
+        .header-search input:focus {
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 0 3px rgba(245,218,15,0.1);
+        }
+
+        .header-search i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-tertiary);
+            font-size: 14px;
+        }
+
+        .header-counter {
+            font-size: 13px;
+            color: #C8C8D0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-counter strong {
+            color: var(--accent-yellow);
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        /* ═══════════════════════════════════════════
+           HERO SECTION
+           ═══════════════════════════════════════════ */
+        .hero {
+            padding: 120px 24px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(245,218,15,0.08) 0%, rgba(200,231,18,0.04) 30%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(245,218,15,0.1);
+            border: 1px solid rgba(245,218,15,0.2);
+            border-radius: var(--radius-full);
+            padding: 6px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #C8C8D0;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 36px;
+            font-weight: 900;
+            color: var(--accent-yellow);
+            line-height: 1;
+        }
+
+        .hero-stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ═══════════════════════════════════════════
+           CATEGORY NAVIGATION
+           ═══════════════════════════════════════════ */
+        .categories-nav {
+            position: sticky;
+            top: 64px;
+            z-index: 90;
+            background: var(--bg-secondary);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 12px 24px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .categories-nav::-webkit-scrollbar { display: none; }
+
+        /* Desktop: normal row */
+        .cats-desktop {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            min-width: max-content;
+        }
+
+        .cats-mobile {
+            display: none;
+        }
+
+        .cat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            border: 1px solid var(--border-subtle);
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            white-space: nowrap;
+            user-select: none;
+            flex-shrink: 0;
+        }
+
+        .cat-pill:hover {
+            border-color: var(--border-light);
+            color: var(--text-primary);
+            background: var(--bg-elevated);
+        }
+
+        .cat-pill.active {
+            background: var(--accent-yellow);
+            color: #000;
+            border-color: var(--accent-yellow);
+            font-weight: 800;
+        }
+
+        .cat-pill .cat-count {
+            background: rgba(0,0,0,0.15);
+            border-radius: var(--radius-full);
+            padding: 1px 7px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .cat-pill.active .cat-count {
+            background: rgba(0,0,0,0.2);
+        }
+
+        /* Mobile marquee */
+        .marquee-row {
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 8px;
+            width: max-content;
+        }
+
+        .marquee-row-1 .marquee-track {
+            animation: marquee-left 40s linear infinite;
+        }
+
+        .marquee-row-2 .marquee-track {
+            animation: marquee-right 45s linear infinite;
+        }
+
+        .marquee-track:hover,
+        .marquee-track:active {
+            animation-play-state: paused;
+        }
+
+        @keyframes marquee-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        @keyframes marquee-right {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ═══════════════════════════════════════════
+           MAIN CONTENT
+           ═══════════════════════════════════════════ */
+        .main-content {
+            max-width: 1360px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .category-section {
+            margin-bottom: 56px;
+            animation: fadeInUp 0.5s ease-out both;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .category-title {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .category-count {
+            font-size: 13px;
+            color: var(--text-tertiary);
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        /* ═══════════════════════════════════════════
+           SERVICE CARD
+           ═══════════════════════════════════════════ */
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            cursor: pointer;
+            transition: var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            opacity: 0;
+            transition: var(--transition-fast);
+        }
+
+        .service-card:hover {
+            border-color: var(--border-light);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card[data-color="yellow"]::before { background: var(--accent-yellow); }
+        .service-card[data-color="green"]::before { background: var(--accent-green); }
+        .service-card[data-color="blue"]::before { background: var(--accent-blue); }
+        .service-card[data-color="pink"]::before { background: var(--accent-pink); }
+
+        .service-card:hover[data-color="yellow"] { box-shadow: var(--shadow-glow-yellow); }
+        .service-card:hover[data-color="green"] { box-shadow: var(--shadow-glow-green); }
+        .service-card:hover[data-color="blue"] { box-shadow: var(--shadow-glow-blue); }
+        .service-card:hover[data-color="pink"] { box-shadow: var(--shadow-glow-pink); }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .card-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            color: #000;
+            position: relative;
+            background: var(--bg-elevated);
+        }
+
+        .card-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-logo-fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+        }
+
+        .card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-name {
+            font-size: 16px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 2px;
+        }
+
+        .card-category-tag {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .card-description {
+            font-size: 13px;
+            color: #C0C0CA;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .card-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-rating i {
+            font-size: 12px;
+            color: var(--accent-yellow);
+        }
+
+        .card-rating i.empty {
+            color: var(--text-tertiary);
+        }
+
+        .card-rating-value {
+            font-size: 13px;
+            font-weight: 700;
+            margin-left: 4px;
+            color: #D0D0D8;
+        }
+
+        .card-price-tag {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            background: rgba(200,231,18,0.1);
+            color: var(--accent-green);
+            text-transform: uppercase;
+        }
+
+        .card-price-tag.free {
+            background: rgba(200,231,18,0.15);
+            color: var(--accent-green);
+        }
+
+        .card-price-tag.paid {
+            background: rgba(245,218,15,0.1);
+            color: var(--accent-yellow);
+        }
+
+        /* ═══════════════════════════════════════════
+           MODAL
+           ═══════════════════════════════════════════ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 200;
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 80px 24px 40px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.visible {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-overlay.entering {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xl);
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+            overflow: hidden;
+        }
+
+        .modal-overlay.visible .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-size: 18px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition-fast);
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--bg-hover);
+            color: var(--text-primary);
+            border-color: var(--border-light);
+        }
+
+        .modal-hero {
+            padding: 40px 40px 32px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .modal-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: 900;
+            color: #000;
+            background: var(--bg-elevated);
+        }
+
+        .modal-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-hero-info {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .modal-name {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .modal-category {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .modal-short-desc {
+            font-size: 15px;
+            color: #C8C8D0;
+            line-height: 1.6;
+        }
+
+        .modal-meta-row {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding: 0 40px 24px;
+        }
+
+        .modal-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .modal-meta-item i {
+            font-size: 16px;
+            color: var(--accent-yellow);
+        }
+
+        .modal-meta-item .label {
+            color: var(--text-secondary);
+        }
+
+        .modal-meta-item .value {
+            font-weight: 700;
+        }
+
+        .modal-rating-stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .modal-rating-stars i {
+            font-size: 14px;
+            color: var(--accent-yellow);
+        }
+
+        .modal-rating-stars i.empty {
+            color: var(--text-tertiary);
+        }
+
+        .modal-quick-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 0 40px 20px;
+        }
+
+        .quick-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            font-size: 13px;
+        }
+
+        .quick-info-item i {
+            font-size: 14px;
+        }
+
+        .quick-info-item .qi-label {
+            color: var(--text-tertiary);
+            font-weight: 600;
+        }
+
+        .quick-info-item .qi-value {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .modal-body {
+            padding: 0 40px 40px;
+        }
+
+        .modal-screenshot {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 32px;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-screenshot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-screenshot-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-tertiary);
+        }
+
+        .modal-screenshot-placeholder i {
+            font-size: 48px;
+        }
+
+        .modal-screenshot-placeholder span {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .modal-section {
+            margin-bottom: 28px;
+        }
+
+        .modal-section-title {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-section-title i {
+            font-size: 16px;
+        }
+
+        .modal-description {
+            font-size: 15px;
+            color: #D0D0D8;
+            line-height: 1.8;
+        }
+
+        .modal-platforms {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .platform-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            font-size: 13px;
+            font-weight: 600;
+            color: #D0D0D8;
+        }
+
+        .platform-badge i {
+            font-size: 14px;
+            color: var(--accent-green);
+        }
+
+        .modal-use-cases {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .modal-use-cases li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+            color: #D0D0D8;
+            line-height: 1.5;
+        }
+
+        .modal-use-cases li i {
+            color: var(--accent-yellow);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .modal-pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .pros-list, .cons-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pros-list li, .cons-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 14px;
+            color: #D0D0D8;
+            line-height: 1.5;
+        }
+
+        .pros-list li i {
+            color: var(--accent-green);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .cons-list li i {
+            color: #FF6B6B;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .modal-pricing {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .modal-pricing p {
+            font-size: 14px;
+            color: #D0D0D8;
+            line-height: 1.7;
+        }
+
+        .modal-pricing .price-highlight {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .reliability-bar {
+            height: 8px;
+            background: var(--bg-elevated);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-top: 8px;
+        }
+
+        .reliability-fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-cta {
+            margin-top: 0;
+            margin-bottom: 28px;
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(245,218,15,0.08) 0%, rgba(200,231,18,0.05) 100%);
+            border: 1px solid rgba(245,218,15,0.15);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-text {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .cta-promo-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-yellow);
+            color: #000;
+            font-size: 11px;
+            font-weight: 900;
+            padding: 3px 10px;
+            border-radius: var(--radius-full);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .cta-title {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .cta-subtitle {
+            font-size: 13px;
+            color: #C8C8D0;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--accent-yellow);
+            color: #000;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 800;
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background: var(--accent-green);
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(245,218,15,0.3);
+        }
+
+        .cta-button i {
+            font-size: 16px;
+        }
+
+        /* ═══════════════════════════════════════════
+           FOOTER
+           ═══════════════════════════════════════════ */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--border-subtle);
+            background: var(--bg-secondary);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .footer-logo-text {
+            font-weight: 900;
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .footer a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+        }
+
+        /* ═══════════════════════════════════════════
+           NO RESULTS
+           ═══════════════════════════════════════════ */
+        .no-results {
+            text-align: center;
+            padding: 80px 24px;
+        }
+
+        .no-results i {
+            font-size: 48px;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .no-results h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: var(--text-secondary);
+        }
+
+        /* ═══════════════════════════════════════════
+           ANIMATIONS
+           ═══════════════════════════════════════════ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-card {
+            animation: fadeInUp 0.4s ease-out both;
+        }
+
+        /* ═══════════════════════════════════════════
+           RESPONSIVE
+           ═══════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            .header-search {
+                display: none;
+            }
+
+            .header-counter {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 16px 40px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-subtitle {
+                font-size: 15px;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .hero-stat-value {
+                font-size: 28px;
+            }
+
+            .categories-nav {
+                padding: 10px 0;
+                overflow: hidden;
+            }
+
+            .cats-desktop {
+                display: none;
+            }
+
+            .cats-mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .main-content {
+                padding: 24px 16px 60px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-overlay {
+                padding: 64px 12px 24px;
+            }
+
+            .modal-hero {
+                padding: 28px 20px 20px;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .modal-hero-info {
+                padding-right: 0;
+            }
+
+            .modal-body {
+                padding: 0 20px 28px;
+            }
+
+            .modal-meta-row {
+                padding: 0 20px 20px;
+                justify-content: center;
+            }
+
+            .modal-pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-cta {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .modal-quick-info {
+                padding: 0 20px 16px;
+            }
+
+            .quick-info-item {
+                font-size: 12px;
+                padding: 7px 12px;
+            }
+
+            .modal-name {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cat-pill {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            
+            .card-top {
+                gap: 10px;
+            }
+            
+            .card-logo {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+        /* Mobile search */
+        .mobile-search {
+            display: none;
+            padding: 0 16px 16px;
+        }
+
+        .mobile-search input {
+            width: 100%;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.12);
+            border-radius: var(--radius-full);
+            padding: 12px 16px 12px 42px;
+            color: #1B1B1B;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .mobile-search input::placeholder {
+            color: #999;
+        }
+
+        .mobile-search input:focus {
+            border-color: var(--accent-yellow);
+            box-shadow: 0 0 0 3px rgba(245,218,15,0.15);
+        }
+
+        .mobile-search {
+            position: relative;
+        }
+
+        .mobile-search i {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-search {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header class="header" id="header">
+        <a href="#" class="header-logo" onclick="resetFilters(); return false;">
+            <img src="secretroomlogo.svg" alt="Secret Room" class="logo-img">
+        </a>
+
+        <div class="header-counter">
+            <strong>50</strong> сервисов
+        </div>
+    </header>
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero">
+        <div class="hero-badge">
+            <i class="fas fa-fire"></i>
+            Подборка 2025–2026
+        </div>
+        <h1>
+            <span class="highlight">ТОП-50</span> сервисов<br>для арбитража трафика
+        </h1>
+        <p class="hero-subtitle">
+            Проверенные инструменты от практикующих байеров команды Secret Room. 
+            Всё, что нужно для запуска и масштабирования.
+        </p>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value">50</div>
+                <div class="hero-stat-label">Сервисов</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">10</div>
+                <div class="hero-stat-label">Категорий</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">2026</div>
+                <div class="hero-stat-label">Актуально</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ CATEGORIES NAV ═══════════ -->
+    <nav class="categories-nav" id="categoriesNav">
+        <div class="categories-list" id="categoriesList">
+            <!-- Generated by JS -->
+        </div>
+    </nav>
+
+    <!-- ═══════════ MAIN CONTENT ═══════════ -->
+    <main class="main-content" id="mainContent">
+        <!-- Generated by JS -->
+    </main>
+
+    <!-- ═══════════ MODAL ═══════════ -->
+    <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+        <div class="modal-content" id="modalContent">
+            <!-- Generated by JS -->
+        </div>
+    </div>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+        <div class="footer-logo">
+            <img src="secretroomlogo.svg" alt="Secret Room" style="height:32px;width:auto;">
+        </div>
+        <p>Подборка проверенных инструментов от команды <a href="#">Secret Room</a> &copy; 2025–2026</p>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════
+         JAVASCRIPT
+         ═══════════════════════════════════════════ -->
+    <script>
+    // ────────────────────────────────
+    // CATEGORIES DATA
+    // ────────────────────────────────
+    const CATEGORIES = [
+        { id: 'antidetect', name: 'Антидетект-браузеры', icon: 'fas fa-mask', color: 'yellow', colorVar: '#F5DA0F' },
+        { id: 'spy', name: 'Spy-сервисы', icon: 'fas fa-eye', color: 'pink', colorVar: '#F6ADE5' },
+        { id: 'trackers', name: 'Трекеры и клоакинг', icon: 'fas fa-route', color: 'blue', colorVar: '#2E39F7' },
+        { id: 'proxy', name: 'Прокси', icon: 'fas fa-server', color: 'green', colorVar: '#C8E712' },
+        { id: 'finance', name: 'Финансы и платежи', icon: 'fas fa-wallet', color: 'yellow', colorVar: '#F5DA0F' },
+        { id: 'vpn', name: 'VPN-расширения', icon: 'fas fa-shield-halved', color: 'blue', colorVar: '#2E39F7' },
+        { id: 'generators', name: 'Генераторы', icon: 'fas fa-file-lines', color: 'pink', colorVar: '#F6ADE5' },
+        { id: 'accounts', name: 'Аккаунты и магазины', icon: 'fas fa-store', color: 'green', colorVar: '#C8E712' },
+        { id: 'unique', name: 'Уникализация', icon: 'fas fa-wand-magic-sparkles', color: 'yellow', colorVar: '#F5DA0F' },
+        { id: 'pwa', name: 'PWA и пуш-уведомления', icon: 'fas fa-mobile-screen', color: 'pink', colorVar: '#F6ADE5' }
+    ];
+
+    // ────────────────────────────────
+    // SERVICES DATA (50 services)
+    // ────────────────────────────────
+    const SERVICES = [
+        // ═══ АНТИДЕТЕКТ-БРАУЗЕРЫ ═══
+        {
+            id: 1,
+            name: 'AdsPower',
+            category: 'antidetect',
+            domain: 'adspower.net',
+            shortDesc: 'Лучший антидетект-браузер для мультиаккаунтинга. Гибкие настройки фингерпринтов, командная работа, автоматизация.',
+            fullDesc: 'AdsPower — один из самых популярных антидетект-браузеров на рынке, разработанный специально для задач арбитража трафика и мультиаккаунтинга. Позволяет создавать сотни уникальных браузерных профилей с индивидуальными цифровыми отпечатками. Каждый профиль имитирует реальное устройство с уникальным набором параметров: User-Agent, Canvas, WebGL, шрифты, часовой пояс и другие. Имеет встроенную систему командной работы, RPA-автоматизацию без кода, Local API для продвинутых пользователей, а также маркетплейс плагинов. При правильном подходе — лучшее решение для серьёзного арбитража.',
+            platforms: ['Windows', 'macOS'],
+            useCases: [
+                'Управление множеством рекламных аккаунтов Facebook, Google, TikTok',
+                'Мультиаккаунтинг на любых площадках',
+                'Командная работа — передача профилей между байерами',
+                'Автоматизация рутинных действий через RPA',
+                'Фарм аккаунтов с уникальными фингерпринтами'
+            ],
+            pros: [
+                'Бесплатный тариф на 5 профилей',
+                'Отличная маскировка цифрового отпечатка',
+                'RPA-автоматизация без кода',
+                'Local API для интеграций',
+                'Удобное управление командой',
+                'Постоянные обновления и улучшения',
+                'Маркетплейс расширений'
+            ],
+            cons: [
+                'Интерфейс может показаться сложным новичкам',
+                'Платные тарифы от $5.4/мес за 10 профилей',
+                'Ограниченная бесплатная версия',
+                'Требует настройки под конкретные задачи'
+            ],
+            pricing: 'Бесплатно — 5 профилей. Base — от $5.4/мес (10 профилей). Pro — от $30/мес (100 профилей). Custom — индивидуально.',
+            reliability: 9,
+            rating: 4.8,
+            url: 'https://www.adspower.net/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=AdsPower+Interface&font=montserrat'
+        },
+        {
+            id: 2,
+            name: 'Dolphin Anty',
+            category: 'antidetect',
+            domain: 'dolphin-anty.com',
+            shortDesc: 'Антидетект-браузер от арбитражников для арбитражников. Быстрый, удобный, с хорошей маскировкой.',
+            fullDesc: 'Dolphin Anty — антидетект-браузер, созданный командой арбитражников, которые понимают потребности рынка. Браузер обеспечивает качественную подмену цифровых отпечатков и удобный интерфейс для управления множеством профилей. Имеет функции пакетного создания профилей, Cookie-робота для прогрева, интеграцию с Dolphin CRM для командной работы. Поддерживает API-автоматизацию и работу через прокси.',
+            platforms: ['Windows', 'macOS', 'Linux'],
+            useCases: [
+                'Запуск и масштабирование рекламных кампаний',
+                'Массовое создание и управление профилями',
+                'Фарм аккаунтов с Cookie-роботом',
+                'Командная работа через Dolphin CRM',
+                'Автоматизация через API'
+            ],
+            pros: [
+                'Бесплатный тариф на 10 профилей',
+                'Интуитивный интерфейс',
+                'Cookie-робот для прогрева профилей',
+                'Интеграция с собственной CRM',
+                'Хорошая техподдержка',
+                'Быстрый запуск профилей'
+            ],
+            cons: [
+                'Менее обширный маркетплейс плагинов',
+                'Некоторые продвинутые функции только в платных тарифах',
+                'Молодой продукт по сравнению с Multilogin'
+            ],
+            pricing: 'Free — 10 профилей. Team — от $89/мес (100 профилей). Enterprise — от $159/мес (300 профилей).',
+            reliability: 8,
+            rating: 4.5,
+            url: 'https://dolphin-anty.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Dolphin+Anty&font=montserrat'
+        },
+        {
+            id: 3,
+            name: 'Octo Browser',
+            category: 'antidetect',
+            domain: 'octobrowser.net',
+            shortDesc: 'Профессиональный антидетект с реальными фингерпринтами. Быстрый старт и надёжная маскировка.',
+            fullDesc: 'Octo Browser — профессиональный антидетект-браузер, использующий реальные цифровые отпечатки устройств. Это значит, что каждый профиль имитирует реальное устройство, что значительно повышает качество маскировки. Быстрый запуск профилей, удобный менеджмент команды, API для автоматизации. Отлично подходит для работы с Facebook, Google и другими рекламными платформами.',
+            platforms: ['Windows', 'macOS'],
+            useCases: [
+                'Арбитраж с максимальной защитой аккаунтов',
+                'Работа с социальными сетями и рекламными кабинетами',
+                'Профессиональный мультиаккаунтинг',
+                'E-commerce и маркетплейсы'
+            ],
+            pros: [
+                'Реальные фингерпринты устройств',
+                'Быстрый запуск — до 3 секунд',
+                'Удобный командный доступ',
+                'Профили не привязаны к устройству',
+                'Качественная техподдержка 24/7'
+            ],
+            cons: [
+                'Нет бесплатного тарифа (только триал)',
+                'Стоимость выше средней',
+                'Нет мобильной версии'
+            ],
+            pricing: 'Starter — €29/мес (10 профилей). Base — €79/мес (50 профилей). Team — €169/мес (150 профилей). Advanced — €329/мес (500 профилей).',
+            reliability: 9,
+            rating: 4.6,
+            url: 'https://octobrowser.net/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Octo+Browser&font=montserrat'
+        },
+        {
+            id: 4,
+            name: 'GoLogin',
+            category: 'antidetect',
+            domain: 'gologin.com',
+            shortDesc: 'Облачный антидетект — работай из браузера без установки. Есть мобильная версия.',
+            fullDesc: 'GoLogin — антидетект-браузер с уникальной возможностью работы прямо из облака. Не нужно скачивать приложение — запускайте профили прямо в браузере. Есть также десктопное приложение и даже мобильная версия для Android. Отличный выбор для тех, кто работает с разных устройств или хочет максимальной мобильности. Поддерживает все популярные прокси-форматы и имеет хороший бесплатный тариф.',
+            platforms: ['Windows', 'macOS', 'Linux', 'Web', 'Android'],
+            useCases: [
+                'Работа из любой точки мира через облако',
+                'Мультиаккаунтинг на слабых устройствах',
+                'Арбитраж с мобильного устройства',
+                'Быстрый старт без установки софта'
+            ],
+            pros: [
+                'Облачная версия — работа в браузере',
+                'Бесплатный тариф на 3 профиля',
+                'Приложение для Android',
+                'Доступен на Linux',
+                'Низкая стоимость входа'
+            ],
+            cons: [
+                'Облачная версия медленнее десктопной',
+                'Качество фингерпринтов чуть ниже конкурентов',
+                'Ограниченная автоматизация'
+            ],
+            pricing: 'Free — 3 профиля. Professional — от $24/мес (100 профилей). Business — от $49/мес (300 профилей). Enterprise — от $99/мес (1000 профилей).',
+            reliability: 7,
+            rating: 4.2,
+            url: 'https://gologin.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=GoLogin&font=montserrat'
+        },
+        {
+            id: 5,
+            name: 'Multilogin',
+            category: 'antidetect',
+            domain: 'multilogin.com',
+            shortDesc: 'Пионер антидетект-браузеров. Самый опытный игрок на рынке с двумя встроенными движками.',
+            fullDesc: 'Multilogin — первый и самый известный антидетект-браузер на рынке. Имеет два встроенных браузерных движка: Mimic (на базе Chromium) и Stealthfox (на базе Firefox). Это даёт уникальную гибкость при маскировке. Продукт нацелен на профессионалов и корпоративных пользователей. Высокая надёжность и качество подмены отпечатков, но стоимость выше конкурентов.',
+            platforms: ['Windows', 'macOS', 'Linux'],
+            useCases: [
+                'Корпоративный мультиаккаунтинг',
+                'Работа с двумя браузерными движками',
+                'Максимальная защита от детекта',
+                'Крупные агентства и команды'
+            ],
+            pros: [
+                'Два браузерных движка (Chromium + Firefox)',
+                'Максимальная надёжность маскировки',
+                'Самый зрелый продукт на рынке',
+                'Подходит для корпоративного использования',
+                'Отличная документация и API'
+            ],
+            cons: [
+                'Самый дорогой на рынке — от €99/мес',
+                'Нет бесплатного тарифа',
+                'Интерфейс менее современный',
+                'Медленнее конкурентов при запуске профилей'
+            ],
+            pricing: 'Solo — от €99/мес (100 профилей). Team — от €199/мес (300 профилей). Scale — от €399/мес (1000 профилей).',
+            reliability: 9,
+            rating: 4.4,
+            url: 'https://multilogin.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Multilogin&font=montserrat'
+        },
+
+        // ═══ SPY-СЕРВИСЫ ═══
+        {
+            id: 6,
+            name: 'AdSpy',
+            category: 'spy',
+            domain: 'adspy.com',
+            shortDesc: 'Крупнейшая база рекламных объявлений. 150M+ объявлений из Facebook и Instagram.',
+            fullDesc: 'AdSpy — крупнейший в мире инструмент для шпионажа за рекламой в социальных сетях. База данных содержит более 150 миллионов рекламных объявлений из Facebook и Instagram. Мощные фильтры позволяют искать по тексту, ключевым словам, странам, языкам, аффилиатным сетям, типу оффера и многим другим параметрам. Незаменимый инструмент для поиска рабочих связок и анализа конкурентов.',
+            platforms: ['Web'],
+            useCases: [
+                'Поиск рабочих связок и креативов конкурентов',
+                'Анализ трендов в рекламе по гео и нишам',
+                'Исследование рекламных стратегий топ-байеров',
+                'Вдохновение для собственных креативов'
+            ],
+            pros: [
+                'Крупнейшая база — 150M+ объявлений',
+                'Мощные фильтры поиска',
+                'Данные по Facebook и Instagram',
+                'Отслеживание лендингов',
+                'Поиск по аффилиатным сетям'
+            ],
+            cons: [
+                'Высокая стоимость — $149/мес',
+                'Только Facebook/Instagram',
+                'Интерфейс не самый современный',
+                'Нет бесплатного тарифа'
+            ],
+            pricing: '$149/мес. Периодически бывают скидки и промокоды.',
+            reliability: 9,
+            rating: 4.7,
+            url: 'https://adspy.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=AdSpy&font=montserrat'
+        },
+        {
+            id: 7,
+            name: 'SpyHero',
+            category: 'spy',
+            domain: 'spyhero.com',
+            shortDesc: 'Spy-сервис для Facebook, TikTok и нативной рекламы. Доступные цены и растущая база.',
+            fullDesc: 'SpyHero — относительно новый, но быстро растущий spy-сервис для арбитражников. Покрывает Facebook, TikTok и нативную рекламу. Интуитивный интерфейс с удобными фильтрами. Более доступный по цене чем AdSpy, что делает его хорошим выбором для начинающих байеров. База постоянно растёт, добавляются новые источники.',
+            platforms: ['Web'],
+            useCases: [
+                'Мониторинг рекламы в Facebook и TikTok',
+                'Поиск креативов в нативной рекламе',
+                'Анализ конкурентов с ограниченным бюджетом',
+                'Отслеживание трендов в различных гео'
+            ],
+            pros: [
+                'Покрывает Facebook, TikTok и нативку',
+                'Доступная цена',
+                'Современный интерфейс',
+                'Быстро растущая база',
+                'Удобный поиск по лендингам'
+            ],
+            cons: [
+                'Меньшая база чем у AdSpy',
+                'Относительно молодой сервис',
+                'Меньше фильтров для углублённого поиска'
+            ],
+            pricing: 'От $69/мес. Есть пробный период.',
+            reliability: 7,
+            rating: 4.1,
+            url: 'https://spyhero.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=SpyHero&font=montserrat'
+        },
+        {
+            id: 8,
+            name: 'Publer',
+            category: 'spy',
+            domain: 'publer.pro',
+            shortDesc: 'Spy-инструмент с акцентом на русскоязычный рынок. Facebook, Instagram, VK, MyTarget.',
+            fullDesc: 'Publer — spy-сервис, популярный среди русскоязычных арбитражников. Охватывает рекламу в Facebook, Instagram, ВКонтакте, MyTarget (Mail.ru). Удобный для тех, кто работает с русскоязычным трафиком и СНГ-гео. Имеет freemium-модель с ограниченным бесплатным доступом. Позволяет отслеживать креативы, лендинги и рекламодателей.',
+            platforms: ['Web'],
+            useCases: [
+                'Мониторинг рекламы в VK и MyTarget',
+                'Работа с русскоязычным трафиком',
+                'Анализ конкурентов в СНГ-гео',
+                'Отслеживание рекламных кампаний'
+            ],
+            pros: [
+                'Покрывает VK и MyTarget (уникально)',
+                'Freemium-модель — можно начать бесплатно',
+                'Подходит для СНГ-рынка',
+                'Удобный интерфейс на русском языке'
+            ],
+            cons: [
+                'Ограниченная бесплатная версия',
+                'Меньше данных по западным гео',
+                'Обновления реже чем у лидеров'
+            ],
+            pricing: 'Бесплатный доступ с ограничениями. PRO — от $20/мес.',
+            reliability: 7,
+            rating: 3.9,
+            url: 'https://publer.pro/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Publer&font=montserrat'
+        },
+        {
+            id: 9,
+            name: 'Anstrex',
+            category: 'spy',
+            domain: 'anstrex.com',
+            shortDesc: 'Spy-сервис для нативной, пуш и поп рекламы. Глубокая аналитика по креативам.',
+            fullDesc: 'Anstrex — мощный spy-инструмент, специализирующийся на нативной рекламе, пуш-уведомлениях и поп-трафике. Покрывает крупнейшие рекламные сети: Taboola, Outbrain, MGID, PropellerAds и многие другие. Продвинутая аналитика позволяет оценивать эффективность креативов, отслеживать тренды и находить рабочие связки. Можно скачивать лендинги одним кликом.',
+            platforms: ['Web'],
+            useCases: [
+                'Арбитраж на нативных рекламных сетях',
+                'Работа с пуш-трафиком',
+                'Анализ креативов на Taboola и Outbrain',
+                'Скачивание и адаптация лендингов'
+            ],
+            pros: [
+                'Глубокое покрытие нативной рекламы',
+                'Поддержка пуш и поп рекламы',
+                'Скачивание лендингов одним кликом',
+                'Продвинутые фильтры и аналитика',
+                'Данные по множеству сетей'
+            ],
+            cons: [
+                'Не покрывает Facebook/Instagram',
+                'Стоимость $69.99/мес за каждый модуль',
+                'Интерфейс на английском'
+            ],
+            pricing: 'Native — $69.99/мес. Push — $69.99/мес. Pop — $69.99/мес. Можно взять один модуль.',
+            reliability: 8,
+            rating: 4.3,
+            url: 'https://anstrex.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Anstrex&font=montserrat'
+        },
+        {
+            id: 10,
+            name: 'Facebook Ad Library',
+            category: 'spy',
+            domain: 'facebook.com',
+            shortDesc: 'Бесплатная официальная библиотека рекламы Meta. Все активные объявления Facebook и Instagram.',
+            fullDesc: 'Facebook Ad Library (Библиотека рекламы Meta) — бесплатный официальный инструмент от Meta, который показывает все активные рекламные объявления на Facebook и Instagram. Можно искать по рекламодателю, стране и ключевым словам. Ограниченный функционал по сравнению с платными spy-сервисами, но абсолютно бесплатный и официальный. Отличная стартовая точка для анализа конкурентов.',
+            platforms: ['Web'],
+            useCases: [
+                'Быстрый анализ рекламы конкурентов',
+                'Просмотр активных объявлений бренда',
+                'Исследование рекламных стратегий',
+                'Бесплатная альтернатива платным spy-сервисам'
+            ],
+            pros: [
+                'Полностью бесплатный',
+                'Официальный инструмент Meta',
+                'Все активные объявления в реальном времени',
+                'Не требует регистрации'
+            ],
+            cons: [
+                'Ограниченные фильтры поиска',
+                'Нет исторических данных (только активные)',
+                'Нельзя отслеживать лендинги',
+                'Нет аналитики эффективности'
+            ],
+            pricing: 'Полностью бесплатный.',
+            reliability: 10,
+            rating: 3.8,
+            url: 'https://www.facebook.com/ads/library/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=FB+Ad+Library&font=montserrat'
+        },
+
+        // ═══ ТРЕКЕРЫ И КЛОАКИНГ ═══
+        {
+            id: 11,
+            name: 'Keitaro',
+            category: 'trackers',
+            domain: 'keitaro.io',
+            shortDesc: 'Трекер №1 для арбитража. Мощный TDS, A/B-тесты, встроенный клоакинг. Self-hosted.',
+            fullDesc: 'Keitaro — самый популярный трекер в арбитраже трафика. Устанавливается на собственный сервер (self-hosted), что даёт полный контроль над данными. Мощная система распределения трафика (TDS), A/B-тестирование, интеграция с партнёрскими сетями, встроенный клоакинг, множество фильтров (по устройству, ОС, гео, провайдеру и др.). Поддерживает работу с любыми источниками трафика. На PHP, требует VPS для установки.',
+            platforms: ['Web (self-hosted)'],
+            useCases: [
+                'Полное отслеживание рекламных кампаний',
+                'Распределение трафика по офферам и лендингам',
+                'A/B-тестирование лендингов и офферов',
+                'Клоакинг для защиты кампаний',
+                'Мульти-оффер ротация'
+            ],
+            pros: [
+                'Самый функциональный трекер',
+                'Self-hosted — полный контроль данных',
+                'Мощный встроенный клоакинг',
+                'Огромное количество интеграций',
+                'Активное сообщество и документация',
+                'Поддержка мультивалютности'
+            ],
+            cons: [
+                'Требует VPS и технических навыков',
+                'Платная лицензия — от $25/мес',
+                'Кривая обучения для новичков',
+                'Нужно самостоятельно обслуживать сервер'
+            ],
+            pricing: '$25/мес (стандарт). $40/мес (бизнес). $70/мес (enterprise). Есть 14-дневный триал.',
+            reliability: 10,
+            rating: 4.9,
+            url: 'https://keitaro.io/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Keitaro+Tracker&font=montserrat'
+        },
+        {
+            id: 12,
+            name: 'Binom',
+            category: 'trackers',
+            domain: 'binom.org',
+            shortDesc: 'Быстрый self-hosted трекер. Мгновенные редиректы, понятная аналитика, разовая оплата.',
+            fullDesc: 'Binom — self-hosted трекер, известный своей скоростью и производительностью. Обрабатывает миллионы кликов без задержек. Понятный интерфейс с мощной аналитикой, группировка отчётов, мультивалютность, интеграция с крупнейшими CPA-сетями. Отличительная особенность — возможность приобрести вечную лицензию с разовой оплатой.',
+            platforms: ['Web (self-hosted)'],
+            useCases: [
+                'Высокоскоростной трекинг больших объёмов трафика',
+                'Детальная аналитика рекламных кампаний',
+                'Работа с множеством CPA-сетей одновременно',
+                'Оптимизация ROI кампаний'
+            ],
+            pros: [
+                'Сверхбыстрые редиректы',
+                'Можно купить вечную лицензию',
+                'Понятный интерфейс',
+                'Отличная техподдержка',
+                'Лёгкий на ресурсы сервера'
+            ],
+            cons: [
+                'Меньше функций чем у Keitaro',
+                'Нет встроенного клоакинга',
+                'Требует VPS',
+                'Реже обновляется'
+            ],
+            pricing: '$69/мес. Или $499 — бессрочная лицензия (разовая покупка). 14-дневный триал.',
+            reliability: 9,
+            rating: 4.5,
+            url: 'https://binom.org/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Binom&font=montserrat'
+        },
+        {
+            id: 13,
+            name: 'LeadGenerals Anti-Clo',
+            category: 'trackers',
+            domain: 't.me',
+            shortDesc: 'Telegram-бот для проверки клоакинга. Быстро проверит, пробивается ли ваша клоака.',
+            fullDesc: 'LeadGenerals Anti-Clo Bot — удобный Telegram-бот для проверки работоспособности вашего клоакинга. Позволяет быстро проверить, видит ли модерация рекламной сети вашу «белую» страницу или реальный лендинг. Незаменимый инструмент при настройке клоакинга — даёт уверенность, что ваши кампании защищены от бана. Простой в использовании — просто отправьте ссылку в бот.',
+            platforms: ['Telegram'],
+            useCases: [
+                'Проверка настройки клоакинга перед запуском',
+                'Тестирование пробиваемости клоаки',
+                'Контроль безопасности рекламных кампаний',
+                'Быстрая диагностика проблем с клоакингом'
+            ],
+            pros: [
+                'Быстрая проверка за секунды',
+                'Удобный формат — Telegram-бот',
+                'Не требует установки',
+                'Простой интерфейс'
+            ],
+            cons: [
+                'Ограниченный функционал — только проверка',
+                'Зависит от работы Telegram',
+                'Не заменяет полноценный клоакинг-сервис'
+            ],
+            pricing: 'Уточняйте актуальные цены в боте.',
+            reliability: 7,
+            rating: 4.0,
+            url: 'https://t.me/leadgenerals_anticlo_bot',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=AntiClo+Bot&font=montserrat'
+        },
+        {
+            id: 14,
+            name: 'Cloaking House',
+            category: 'trackers',
+            domain: 'cloaking.house',
+            shortDesc: 'Облачный клоакинг-сервис. Простая настройка, множество методов фильтрации трафика.',
+            fullDesc: 'Cloaking House — специализированный облачный сервис клоакинга для арбитражников. Позволяет фильтровать трафик и показывать модераторам рекламных сетей «белую» страницу, а реальным пользователям — рабочий оффер. Несколько методов клоакинга (JavaScript, PHP, redirect), фильтрация по IP, User-Agent, рефереру и другим параметрам. Простая интеграция с любым трекером.',
+            platforms: ['Web'],
+            useCases: [
+                'Защита рекламных кампаний от модерации',
+                'Работа с «серыми» вертикалями',
+                'Фильтрация ботов и нецелевого трафика',
+                'Интеграция с трекерами и TDS'
+            ],
+            pros: [
+                'Облачный — не нужен свой сервер',
+                'Несколько методов клоакинга',
+                'Простая настройка',
+                'Регулярное обновление баз фильтрации',
+                'Поддержка множества рекламных сетей'
+            ],
+            cons: [
+                'Платный сервис без бесплатного тарифа',
+                'Работает только пока активна подписка',
+                'Зависимость от стороннего сервиса'
+            ],
+            pricing: 'От $60/мес. Зависит от объёма трафика.',
+            reliability: 8,
+            rating: 4.2,
+            url: 'https://cloaking.house/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Cloaking+House&font=montserrat'
+        },
+
+        // ═══ ПРОКСИ ═══
+        {
+            id: 15,
+            name: 'ProxyAZ',
+            category: 'proxy',
+            domain: 'proxyaz.com',
+            shortDesc: 'Бюджетные IPv6 прокси с различными гео. Хороший вариант для старта с базовым бюджетом.',
+            fullDesc: 'ProxyAZ — провайдер прокси-серверов с фокусом на IPv6 прокси. Предлагает прокси различных гео по доступным ценам. Подходит для фарма аккаунтов и базовых задач мультиаккаунтинга. Нужно учитывать, что IPv6 прокси иногда могут отваливаться и скорость может падать, но для своей ценовой категории — вполне достойный выбор.',
+            platforms: ['Web'],
+            useCases: [
+                'Фарм аккаунтов на бюджете',
+                'Базовый мультиаккаунтинг',
+                'Работа с различными гео',
+                'Тестирование рекламных кампаний'
+            ],
+            pros: [
+                'Доступные цены',
+                'Различные гео',
+                'IPv6 прокси в наличии',
+                'Быстрая выдача'
+            ],
+            cons: [
+                'IPv6 прокси могут отваливаться',
+                'Скорость иногда падает',
+                'Качество может варьироваться',
+                'Ограниченная поддержка'
+            ],
+            pricing: 'От $0.5 за прокси. Зависит от типа и гео.',
+            reliability: 6,
+            rating: 3.5,
+            url: 'https://proxyaz.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=ProxyAZ&font=montserrat'
+        },
+        {
+            id: 16,
+            name: 'Bright Data',
+            category: 'proxy',
+            domain: 'brightdata.com',
+            shortDesc: 'Крупнейшая прокси-сеть мира. 72M+ IP-адресов. Резидентные, мобильные, датацентр прокси.',
+            fullDesc: 'Bright Data (бывший Luminati) — крупнейший в мире провайдер прокси-серверов с сетью из более чем 72 миллионов IP-адресов. Предлагает все типы прокси: резидентные, мобильные, датацентр, ISP. Отличное качество и стабильность, продвинутый дашборд, API, геотаргетинг до уровня города. Используется крупнейшими компаниями мира. Дорого, но качество оправдывает цену.',
+            platforms: ['Web', 'API'],
+            useCases: [
+                'Арбитраж на максимальном качестве прокси',
+                'Массовый сбор данных (web scraping)',
+                'Работа с любыми гео мира',
+                'Мобильные прокси для Facebook/TikTok'
+            ],
+            pros: [
+                '72M+ IP-адресов — крупнейшая сеть',
+                'Все типы прокси в одном месте',
+                'Геотаргетинг до уровня города',
+                'Высочайшая стабильность',
+                'Профессиональный дашборд и API'
+            ],
+            cons: [
+                'Дорого — от $10/ГБ для резидентных',
+                'Сложная система тарификации',
+                'Порог входа для новичков',
+                'Требует понимания типов прокси'
+            ],
+            pricing: 'Резидентные — от $10.50/ГБ. Датацентр — от $0.06/IP. Мобильные — от $24/ГБ. Есть бесплатный триал.',
+            reliability: 10,
+            rating: 4.7,
+            url: 'https://brightdata.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Bright+Data&font=montserrat'
+        },
+        {
+            id: 17,
+            name: 'Smartproxy',
+            category: 'proxy',
+            domain: 'smartproxy.com',
+            shortDesc: 'Резидентные прокси с хорошим соотношением цена/качество. 40M+ IP, простой интерфейс.',
+            fullDesc: 'Smartproxy — популярный провайдер резидентных прокси с сетью более 40 миллионов IP-адресов. Отличное соотношение цены и качества. Простой и понятный интерфейс, быстрая настройка, хорошая документация. Предлагает резидентные, датацентр и мобильные прокси. Дашборд с аналитикой использования. Хороший выбор для тех, кому нужно качество без переплаты.',
+            platforms: ['Web', 'API', 'Chrome Extension'],
+            useCases: [
+                'Арбитраж с качественными резидентными прокси',
+                'Мультиаккаунтинг',
+                'Парсинг данных',
+                'Тестирование рекламы по гео'
+            ],
+            pros: [
+                'Хорошее соотношение цена/качество',
+                '40M+ IP-адресов',
+                'Простой интерфейс',
+                'Chrome-расширение',
+                'Быстрая настройка',
+                '24/7 поддержка'
+            ],
+            cons: [
+                'Меньше IP чем у Bright Data',
+                'Мобильные прокси дороже',
+                'Не все гео одинаково хорошо покрыты'
+            ],
+            pricing: 'Резидентные — от $8.50/ГБ. Датацентр — от $3.60/мес. Есть 3-дневный возврат.',
+            reliability: 8,
+            rating: 4.4,
+            url: 'https://smartproxy.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Smartproxy&font=montserrat'
+        },
+        {
+            id: 18,
+            name: 'SOAX',
+            category: 'proxy',
+            domain: 'soax.com',
+            shortDesc: 'Премиальные резидентные и мобильные прокси. WiFi и 3G/4G/5G IP из 195+ стран.',
+            fullDesc: 'SOAX — провайдер премиальных прокси-серверов, специализирующийся на резидентных и мобильных IP-адресах. Покрывает 195+ стран. Уникальные мобильные прокси через WiFi и сотовые сети (3G/4G/5G). Высокое качество IP — минимальный процент забаненных. Удобная панель управления с гибкой настройкой ротации. Хороший выбор для работы с социальными сетями.',
+            platforms: ['Web', 'API'],
+            useCases: [
+                'Работа с Facebook и Instagram через мобильные IP',
+                'Арбитраж с премиальными прокси',
+                'Верификация аккаунтов',
+                'Тестирование рекламы в разных гео'
+            ],
+            pros: [
+                '195+ стран покрытия',
+                'Мобильные прокси (WiFi/cellular)',
+                'Высокое качество IP',
+                'Гибкая ротация',
+                'Удобная панель'
+            ],
+            cons: [
+                'Выше среднего по цене',
+                'Меньшая база чем у лидеров',
+                'Не всегда стабильно в пиковые часы'
+            ],
+            pricing: 'Резидентные — от $6.60/ГБ. Мобильные — от $14/ГБ. Минимум от $99/мес.',
+            reliability: 8,
+            rating: 4.2,
+            url: 'https://soax.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=SOAX&font=montserrat'
+        },
+        {
+            id: 19,
+            name: 'Proxy-Seller',
+            category: 'proxy',
+            domain: 'proxy-seller.com',
+            shortDesc: 'Индивидуальные IPv4/IPv6 прокси. Бюджетно, множество гео, быстрая выдача.',
+            fullDesc: 'Proxy-Seller — провайдер индивидуальных (выделенных) прокси-серверов. Предлагает IPv4 и IPv6 прокси различных гео по доступным ценам. Каждый прокси выделяется только одному пользователю, что обеспечивает чистоту IP. Быстрая автоматическая выдача после оплаты. Хороший выбор для фарма аккаунтов и работы с конкретными гео.',
+            platforms: ['Web'],
+            useCases: [
+                'Фарм аккаунтов на чистых IP',
+                'Работа с конкретными гео',
+                'Базовый арбитраж на бюджете',
+                'Мультиаккаунтинг с выделенными IP'
+            ],
+            pros: [
+                'Доступные цены',
+                'Индивидуальные (не shared) прокси',
+                'Множество гео',
+                'Мгновенная выдача',
+                'IPv4 и IPv6'
+            ],
+            cons: [
+                'Нет резидентных прокси',
+                'Качество зависит от подсети',
+                'Базовая панель управления',
+                'Поддержка не всегда быстрая'
+            ],
+            pricing: 'IPv4 — от $1.50/мес за прокси. IPv6 — от $0.15/мес. Скидки при покупке пакетами.',
+            reliability: 7,
+            rating: 3.9,
+            url: 'https://proxy-seller.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Proxy-Seller&font=montserrat'
+        },
+
+        // ═══ ФИНАНСЫ И ПЛАТЕЖИ ═══
+        {
+            id: 20,
+            name: 'Capitalist',
+            category: 'finance',
+            domain: 'capitalist.net',
+            shortDesc: 'Удобный сервис для хранения, оплаты и снятия денег. Популярен среди арбитражников СНГ.',
+            fullDesc: 'Capitalist — электронный кошелёк и платёжная система, популярная среди арбитражников из СНГ. Позволяет хранить средства в разных валютах (USD, EUR, RUB и др.), совершать переводы, оплачивать сервисы и выводить деньги на банковские карты. Удобный интерфейс, быстрые транзакции, поддержка криптовалют. Широко принимается аффилиатными сетями и сервисами для арбитража.',
+            platforms: ['Web', 'Android', 'iOS'],
+            useCases: [
+                'Хранение и управление средствами от арбитража',
+                'Оплата сервисов, прокси, антидетект-браузеров',
+                'Вывод средств из CPA-сетей',
+                'Переводы между коллегами и партнёрами'
+            ],
+            pros: [
+                'Удобный интерфейс',
+                'Поддержка множества валют',
+                'Принимается большинством CPA-сетей',
+                'Мобильные приложения',
+                'Поддержка крипто',
+                'Быстрые транзакции'
+            ],
+            cons: [
+                'Комиссии на вывод',
+                'Верификация может занять время',
+                'Ограничения для некоторых стран',
+                'Лимиты на неверифицированных аккаунтах'
+            ],
+            pricing: 'Регистрация бесплатная. Комиссии: пополнение — 0-3%, вывод — 1-5% в зависимости от метода.',
+            reliability: 8,
+            rating: 4.3,
+            url: 'https://capitalist.net/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Capitalist&font=montserrat'
+        },
+        {
+            id: 21,
+            name: 'PST.NET',
+            category: 'finance',
+            domain: 'pst.net',
+            shortDesc: 'Виртуальные карты для оплаты рекламы. Создавай неограниченно карт для Facebook, Google, TikTok.',
+            fullDesc: 'PST.NET — сервис виртуальных банковских карт, созданный специально для арбитражников и медиабайеров. Позволяет мгновенно выпускать виртуальные карты Visa/Mastercard для оплаты рекламных аккаунтов Facebook, Google, TikTok и других платформ. Каждая карта имеет уникальные реквизиты (BIN), что помогает диверсифицировать платёжные методы и снижать риск бана аккаунтов.',
+            platforms: ['Web'],
+            useCases: [
+                'Оплата рекламных аккаунтов Facebook/Google/TikTok',
+                'Диверсификация платёжных методов',
+                'Разделение бюджетов по кампаниям',
+                'Минимизация рисков блокировки карт'
+            ],
+            pros: [
+                'Мгновенный выпуск карт',
+                'Разные BIN-ы — разные банки-эмитенты',
+                'Создано для арбитражников',
+                'Пополнение криптой',
+                'Удобная панель управления',
+                'Не нужна верификация личности'
+            ],
+            cons: [
+                'Комиссия на выпуск карт',
+                'Минимальная сумма пополнения',
+                'Карты могут отклоняться некоторыми мерчантами',
+                'Только виртуальные карты'
+            ],
+            pricing: 'Комиссия на выпуск — от 2%. Пополнение — от 3%. Минимум $50 на пополнение.',
+            reliability: 8,
+            rating: 4.4,
+            url: 'https://pst.net/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=PST.NET&font=montserrat'
+        },
+        {
+            id: 22,
+            name: 'Paxum',
+            category: 'finance',
+            domain: 'paxum.com',
+            shortDesc: 'Платёжная система для онлайн-бизнеса. Международные переводы, мультивалютные счета.',
+            fullDesc: 'Paxum — международная платёжная система, популярная в сферах iGaming и affiliate marketing. Позволяет хранить средства в множестве валют, совершать международные переводы, получать выплаты от партнёрских программ. Принимается многими CPA-сетями, особенно в вертикалях gambling и dating. Хорошая альтернатива для тех, кому нужна платёжная система с международным охватом.',
+            platforms: ['Web'],
+            useCases: [
+                'Получение выплат от CPA-сетей',
+                'Международные переводы',
+                'Работа с gambling и dating вертикалями',
+                'Хранение средств в разных валютах'
+            ],
+            pros: [
+                'Международный охват',
+                'Принимается многими CPA-сетями',
+                'Мультивалютные счета',
+                'Банковские переводы',
+                'Хорошая репутация'
+            ],
+            cons: [
+                'Строгая верификация',
+                'Комиссии на переводы',
+                'Интерфейс устаревший',
+                'Поддержка работает медленно'
+            ],
+            pricing: 'Регистрация бесплатная. Внутренние переводы — $0.25. Банковский вывод — $5-15.',
+            reliability: 8,
+            rating: 3.9,
+            url: 'https://paxum.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Paxum&font=montserrat'
+        },
+        {
+            id: 23,
+            name: 'Trust Wallet',
+            category: 'finance',
+            domain: 'trustwallet.com',
+            shortDesc: 'Мобильный крипто-кошелёк от Binance. Поддержка множества блокчейнов, DApp-браузер.',
+            fullDesc: 'Trust Wallet — популярный мобильный криптовалютный кошелёк, приобретённый Binance. Поддерживает огромное количество блокчейнов и токенов: Bitcoin, Ethereum, BSC, Polygon и сотни других. Встроенный DApp-браузер для работы с децентрализованными приложениями. Удобный для хранения и обмена криптовалюты, стейкинга, NFT. Полностью бесплатный, приватные ключи хранятся на устройстве пользователя.',
+            platforms: ['Android', 'iOS', 'Chrome Extension'],
+            useCases: [
+                'Хранение криптовалюты для оплаты сервисов',
+                'Обмен между криптовалютами',
+                'Приём оплаты от партнёров',
+                'Работа с DeFi и DApps'
+            ],
+            pros: [
+                'Полностью бесплатный',
+                'Поддержка 70+ блокчейнов',
+                'Встроенный DApp-браузер',
+                'Ключи хранятся локально',
+                'Стейкинг',
+                'Простой интерфейс'
+            ],
+            cons: [
+                'Нет десктопной версии (только расширение)',
+                'Не подходит для крупных сумм (hot wallet)',
+                'Нет продвинутых торговых функций'
+            ],
+            pricing: 'Полностью бесплатный. Комиссии только сетевые (gas fees).',
+            reliability: 9,
+            rating: 4.5,
+            url: 'https://trustwallet.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Trust+Wallet&font=montserrat'
+        },
+        {
+            id: 24,
+            name: 'BestChange',
+            category: 'finance',
+            domain: 'bestchange.ru',
+            shortDesc: 'Агрегатор обменников криптовалют. Найди лучший курс среди сотен обменников.',
+            fullDesc: 'BestChange — крупнейший агрегатор обменников криптовалют и электронных валют в СНГ. Мониторит курсы сотен обменников в реальном времени и позволяет найти лучший курс для обмена. Поддерживает обмен между криптовалютами, электронными кошельками, банковскими картами и наличными. Включает рейтинг и отзывы о каждом обменнике. Незаменим для экономии на обмене.',
+            platforms: ['Web', 'Android', 'iOS'],
+            useCases: [
+                'Обмен криптовалюты по лучшему курсу',
+                'Вывод средств с крипты на карту',
+                'Обмен между электронными кошельками',
+                'Поиск надёжного обменника'
+            ],
+            pros: [
+                'Полностью бесплатный',
+                'Сотни обменников в одном месте',
+                'Рейтинги и отзывы',
+                'Обновление курсов в реальном времени',
+                'Мобильные приложения'
+            ],
+            cons: [
+                'Не сам обменник — только агрегатор',
+                'Качество обменников может варьироваться',
+                'Некоторые обменники могут быть ненадёжными'
+            ],
+            pricing: 'Полностью бесплатный для пользователей.',
+            reliability: 9,
+            rating: 4.6,
+            url: 'https://www.bestchange.ru/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=BestChange&font=montserrat'
+        },
+        {
+            id: 25,
+            name: 'MetaMask',
+            category: 'finance',
+            domain: 'metamask.io',
+            shortDesc: 'Самый популярный Web3-кошелёк. Расширение для браузера + мобильное приложение.',
+            fullDesc: 'MetaMask — самый популярный криптовалютный кошелёк для работы с Ethereum и EVM-совместимыми блокчейнами (BSC, Polygon, Arbitrum, Avalanche и др.). Работает как расширение браузера и мобильное приложение. Позволяет взаимодействовать с децентрализованными приложениями (DApps), обменивать токены, хранить NFT. Стандарт в мире Web3. Используется арбитражниками для хранения и обмена криптовалюты.',
+            platforms: ['Chrome Extension', 'Firefox Extension', 'Android', 'iOS'],
+            useCases: [
+                'Хранение ETH и ERC-20 токенов',
+                'Работа с DeFi протоколами',
+                'Обмен токенов через встроенный свап',
+                'Оплата сервисов криптой'
+            ],
+            pros: [
+                'Бесплатный',
+                'Самый популярный Web3-кошелёк',
+                'Поддержка всех EVM-сетей',
+                'Браузерное расширение + мобильное приложение',
+                'Огромное сообщество',
+                'Интеграция с тысячами DApps'
+            ],
+            cons: [
+                'Только EVM-совместимые сети',
+                'Высокие gas fees в сети Ethereum',
+                'Уязвим к фишингу',
+                'Нет поддержки Bitcoin напрямую'
+            ],
+            pricing: 'Бесплатный. Комиссии — только сетевые gas fees + ~0.875% за встроенный свап.',
+            reliability: 9,
+            rating: 4.5,
+            url: 'https://metamask.io/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=MetaMask&font=montserrat'
+        },
+
+        // ═══ VPN-РАСШИРЕНИЯ ═══
+        {
+            id: 26,
+            name: 'Delta VPN',
+            category: 'vpn',
+            domain: 'deltavpn.com',
+            shortDesc: 'Бесплатное VPN-расширение для Chrome. Быстрое подключение, множество серверов.',
+            fullDesc: 'Delta VPN — бесплатное VPN-расширение для браузера Google Chrome. Позволяет быстро сменить IP-адрес и получить доступ к заблокированным ресурсам. Имеет серверы в нескольких странах, обеспечивает базовое шифрование трафика. Подходит для лёгких задач: проверка отображения рекламы в другом гео, обход простых блокировок. Не рекомендуется для серьёзного арбитража — используйте платные прокси.',
+            platforms: ['Chrome Extension'],
+            useCases: [
+                'Быстрая смена гео для проверки рекламы',
+                'Обход региональных блокировок',
+                'Анонимный просмотр',
+                'Тестирование лендингов в разных гео'
+            ],
+            pros: ['Полностью бесплатный', 'Быстрое подключение', 'Не требует регистрации', 'Простой интерфейс'],
+            cons: ['Ограниченная скорость', 'Мало серверов', 'Не для серьёзного арбитража', 'Возможные утечки DNS'],
+            pricing: 'Бесплатный.',
+            reliability: 5,
+            rating: 3.4,
+            url: 'https://chrome.google.com/webstore/detail/delta-free-vpn/lpejglcfpkpbjhmnnmpmmlpblkcmdgmi',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Delta+VPN&font=montserrat'
+        },
+        {
+            id: 27,
+            name: 'iTop VPN',
+            category: 'vpn',
+            domain: 'itopvpn.com',
+            shortDesc: 'Бесплатный VPN с хорошим набором серверов. Один из лучших бесплатных VPN-расширений.',
+            fullDesc: 'iTop VPN — одно из лучших бесплатных VPN-расширений для Chrome. Предлагает серверы в множестве стран, неплохую скорость и стабильное соединение. Имеет также десктопную версию с расширенным функционалом. Подходит для повседневного использования: обход блокировок, анонимный серфинг, проверка рекламы в разных гео.',
+            platforms: ['Chrome Extension', 'Windows', 'macOS', 'iOS', 'Android'],
+            useCases: [
+                'Обход блокировок в интернете',
+                'Проверка отображения контента в разных странах',
+                'Анонимный серфинг',
+                'Базовая защита в публичных WiFi-сетях'
+            ],
+            pros: ['Бесплатная версия с хорошим функционалом', 'Множество серверов', 'Есть десктопная версия', 'Стабильное соединение'],
+            cons: ['Реклама в бесплатной версии', 'Лимит скорости', 'Логирование данных', 'Полный функционал — платный'],
+            pricing: 'Бесплатный с ограничениями. Premium — от $1.99/мес.',
+            reliability: 6,
+            rating: 3.8,
+            url: 'https://chrome.google.com/webstore/detail/itop-vpn-best-free-vpn-ch/imikkmafgbjjghjeelijedabggogfdgo',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=iTop+VPN&font=montserrat'
+        },
+        {
+            id: 28,
+            name: 'Brisk VPN',
+            category: 'vpn',
+            domain: 'briskvpn.com',
+            shortDesc: 'Лёгкий бесплатный VPN для Chrome. Минимальный интерфейс, быстрое подключение.',
+            fullDesc: 'Brisk VPN — лёгкое и быстрое VPN-расширение для Chrome. Минимальный интерфейс — одна кнопка для подключения. Подходит для базовых задач по смене гео и обходу блокировок. Не перегружен функциями, работает стабильно для своего класса.',
+            platforms: ['Chrome Extension'],
+            useCases: ['Быстрая смена IP', 'Обход базовых блокировок', 'Анонимный просмотр'],
+            pros: ['Бесплатный', 'Минималистичный интерфейс', 'Быстрый старт', 'Не требует настройки'],
+            cons: ['Мало серверов', 'Базовый функционал', 'Нет десктопной версии', 'Непредсказуемая скорость'],
+            pricing: 'Бесплатный.',
+            reliability: 5,
+            rating: 3.3,
+            url: 'https://chrome.google.com/webstore/detail/brisk-vpn/ciifcakemmcbbdpmljdohdmbodagmela',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Brisk+VPN&font=montserrat'
+        },
+        {
+            id: 29,
+            name: 'Hub VPN',
+            category: 'vpn',
+            domain: 'hubvpn.com',
+            shortDesc: 'Бесплатный VPN-прокси для Chrome. Быстрый, безопасный, без регистрации.',
+            fullDesc: 'Hub VPN — бесплатное VPN-расширение для Chrome с фокусом на простоту и скорость. Позволяет подключаться к серверам в нескольких странах без регистрации и ограничений по трафику. Базовое шифрование обеспечивает приватность. Хороший вариант для быстрой проверки гео.',
+            platforms: ['Chrome Extension'],
+            useCases: ['Смена IP-адреса', 'Обход блокировок', 'Проверка контента в разных странах'],
+            pros: ['Бесплатный', 'Без регистрации', 'Безлимитный трафик', 'Простой интерфейс'],
+            cons: ['Ограниченный выбор стран', 'Нестабильная скорость', 'Базовое шифрование', 'Нет мобильной версии'],
+            pricing: 'Бесплатный.',
+            reliability: 5,
+            rating: 3.5,
+            url: 'https://chrome.google.com/webstore/detail/hub-vpn-free-vpn-proxy/lneaocagcijjdpkcabeanfpdbmapcjjg',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Hub+VPN&font=montserrat'
+        },
+        {
+            id: 30,
+            name: 'EasyVPN',
+            category: 'vpn',
+            domain: 'easyvpn.com',
+            shortDesc: 'Безопасное VPN-расширение для Chrome. Защищённое соединение в одно нажатие.',
+            fullDesc: 'EasyVPN — VPN-расширение для Chrome, ориентированное на простоту использования. Одно нажатие — и ваш трафик защищён. Автоматический выбор лучшего сервера. Подходит для тех, кто не хочет разбираться в настройках и просто нуждается в быстрой смене гео.',
+            platforms: ['Chrome Extension'],
+            useCases: ['Быстрая смена гео', 'Защита в публичных сетях', 'Обход блокировок'],
+            pros: ['Бесплатный', 'Максимальная простота', 'Автовыбор сервера', 'Стабильная работа'],
+            cons: ['Мало стран', 'Средняя скорость', 'Нет продвинутых настроек', 'Только Chrome'],
+            pricing: 'Бесплатный.',
+            reliability: 5,
+            rating: 3.4,
+            url: 'https://chrome.google.com/webstore/detail/easyvpn-the-secured-conne/fpaacjbgplkmlcpmdljdohdmbodagmela',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=EasyVPN&font=montserrat'
+        },
+        {
+            id: 31,
+            name: 'Fast VPN',
+            category: 'vpn',
+            domain: 'fastvpn.com',
+            shortDesc: 'Быстрый VPN для Chrome. Акцент на скорости соединения и минимальной задержке.',
+            fullDesc: 'Fast VPN — Chrome-расширение с акцентом на скорость. Оптимизированные серверы обеспечивают минимальную задержку при смене гео. Поддерживает несколько стран. Хороший выбор, когда нужна быстрая проверка контента без существенной потери скорости.',
+            platforms: ['Chrome Extension'],
+            useCases: ['Быстрая смена гео с минимальной задержкой', 'Просмотр видеоконтента из других стран', 'Обход блокировок'],
+            pros: ['Бесплатный', 'Хорошая скорость', 'Оптимизированные серверы', 'Быстрое подключение'],
+            cons: ['Ограниченный выбор стран', 'Только Chrome', 'Могут быть перебои', 'Базовая безопасность'],
+            pricing: 'Бесплатный.',
+            reliability: 5,
+            rating: 3.5,
+            url: 'https://chrome.google.com/webstore/detail/fast-vpn-chrome-extension/nhiphjnpfaoagnfffcihodojonieglkk',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Fast+VPN&font=montserrat'
+        },
+        {
+            id: 32,
+            name: 'UltraSurf',
+            category: 'vpn',
+            domain: 'ultrasurf.us',
+            shortDesc: 'Легендарный VPN для обхода цензуры. Работает с 2002 года, проверен временем.',
+            fullDesc: 'UltraSurf — один из старейших VPN-инструментов, работающий с 2002 года. Изначально создан для обхода интернет-цензуры в Китае. Шифрует трафик и перенаправляет через прокси-серверы. Имеет как Chrome-расширение, так и десктопную версию. Проверен временем и миллионами пользователей. Надёжный вариант для обхода блокировок.',
+            platforms: ['Chrome Extension', 'Windows'],
+            useCases: ['Обход интернет-цензуры', 'Анонимный серфинг', 'Доступ к заблокированным сайтам', 'Базовая защита приватности'],
+            pros: ['Бесплатный', 'Проверен 20+ годами работы', 'Надёжный обход блокировок', 'Десктопная версия', 'Не требует регистрации'],
+            cons: ['Ограниченный выбор серверов', 'Средняя скорость', 'Устаревший интерфейс десктопа', 'Нет мобильной версии'],
+            pricing: 'Полностью бесплатный.',
+            reliability: 7,
+            rating: 3.9,
+            url: 'https://chrome.google.com/webstore/detail/ultrasurf-security-privac/mjnbclmflcpookeapghfhapeffmpodij',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=UltraSurf&font=montserrat'
+        },
+        {
+            id: 33,
+            name: '1ClickVPN',
+            category: 'vpn',
+            domain: '1clickvpn.com',
+            shortDesc: 'VPN в одно нажатие. Минимализм и простота для Chrome.',
+            fullDesc: '1ClickVPN — максимально простое VPN-расширение для Chrome. Как следует из названия — одно нажатие для подключения. Автоматически выбирает лучший доступный сервер. Без настроек, без регистрации, без сложностей. Идеально для быстрых проверок.',
+            platforms: ['Chrome Extension'],
+            useCases: ['Мгновенная смена IP', 'Обход простых блокировок'],
+            pros: ['Бесплатный', 'Одно нажатие — подключение', 'Без регистрации', 'Ультра-простой'],
+            cons: ['Минимальный функционал', 'Мало серверов', 'Нет выбора страны в free', 'Реклама'],
+            pricing: 'Бесплатный с рекламой. Premium — от $2.99/мес.',
+            reliability: 4,
+            rating: 3.2,
+            url: 'https://chrome.google.com/webstore/detail/1clickvpn-free-vpn-for-ch/fcfhplploccackoneaefokcmbjfbkenj',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=1ClickVPN&font=montserrat'
+        },
+        {
+            id: 34,
+            name: 'Just VPN',
+            category: 'vpn',
+            domain: 'justvpn.com',
+            shortDesc: 'Простой бесплатный VPN-прокси. Без лимитов по трафику.',
+            fullDesc: 'Just VPN — бесплатное VPN-расширение для Chrome без ограничений по объёму трафика. Стабильное соединение, несколько серверных локаций. Подходит для ежедневного использования при обходе блокировок и базовой смене гео.',
+            platforms: ['Chrome Extension'],
+            useCases: ['Безлимитный VPN для Chrome', 'Обход блокировок', 'Смена гео'],
+            pros: ['Бесплатный', 'Без лимитов трафика', 'Стабильное соединение', 'Несколько стран'],
+            cons: ['Реклама', 'Средняя скорость', 'Только Chrome', 'Нет продвинутых функций'],
+            pricing: 'Бесплатный.',
+            reliability: 5,
+            rating: 3.3,
+            url: 'https://chrome.google.com/webstore/detail/just-vpn/apmomfapnjopaiiidbockbmbkklcfgni',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Just+VPN&font=montserrat'
+        },
+        {
+            id: 35,
+            name: 'Infinity VPN',
+            category: 'vpn',
+            domain: 'infinityvpn.com',
+            shortDesc: 'Бесплатный VPN с серверами во множестве стран. Хороший выбор серверов.',
+            fullDesc: 'Infinity VPN — бесплатное Chrome-расширение с хорошим покрытием стран. Предлагает серверы в популярных локациях: США, Великобритания, Германия, Нидерланды и др. Простой интерфейс, быстрое переключение между серверами. Подходит для тестирования рекламы в разных гео.',
+            platforms: ['Chrome Extension'],
+            useCases: ['Тестирование контента в разных странах', 'Обход блокировок', 'Смена IP'],
+            pros: ['Бесплатный', 'Много стран', 'Быстрое переключение', 'Простой интерфейс'],
+            cons: ['Нестабильная скорость', 'Реклама', 'Возможны отключения', 'Базовая безопасность'],
+            pricing: 'Бесплатный.',
+            reliability: 5,
+            rating: 3.4,
+            url: 'https://chrome.google.com/webstore/detail/infinity-vpn-free-vpn-for/ookhpbbhfhhcfaodkkogagogakcfkfie',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Infinity+VPN&font=montserrat'
+        },
+
+        // ═══ ГЕНЕРАТОРЫ ═══
+        {
+            id: 36,
+            name: 'Diasp.pro DocGen',
+            category: 'generators',
+            domain: 'diasp.pro',
+            shortDesc: 'Генератор документов для ЗРД. Создавайте документы для верификации рекламных аккаунтов.',
+            fullDesc: 'Diasp.pro DocGen — специализированный генератор документов для прохождения ЗРД (запроса рекламных документов) в Facebook и других рекламных платформах. Генерирует реалистичные документы различных типов для верификации аккаунтов. Поддерживает различные форматы и шаблоны. Важный инструмент для масштабирования арбитражных операций.',
+            platforms: ['Web'],
+            useCases: [
+                'Прохождение ЗРД в Facebook',
+                'Верификация рекламных аккаунтов',
+                'Создание документов для различных гео',
+                'Масштабирование работы с аккаунтами'
+            ],
+            pros: ['Специализирован под ЗРД', 'Различные типы документов', 'Поддержка разных гео', 'Быстрая генерация'],
+            cons: ['Платный сервис', 'Качество зависит от шаблона', 'Не все документы проходят проверку', 'Требует осторожности'],
+            pricing: 'Зависит от типа документа. Уточняйте на сайте.',
+            reliability: 7,
+            rating: 3.8,
+            url: 'https://diasp.pro/docgen',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Diasp+DocGen&font=montserrat'
+        },
+        {
+            id: 37,
+            name: 'ZorbasMedia DocGen',
+            category: 'generators',
+            domain: 'docgen.zorbasmedia.ru',
+            shortDesc: 'Генератор документов от ZorbasMedia. Надёжные шаблоны для верификации аккаунтов.',
+            fullDesc: 'ZorbasMedia DocGen — генератор документов от известного в арбитражном сообществе медиа ZorbasMedia. Предлагает проверенные шаблоны документов для прохождения верификации на рекламных платформах. Регулярно обновляемые шаблоны, хорошая репутация в сообществе. Один из самых надёжных генераторов в своей нише.',
+            platforms: ['Web'],
+            useCases: [
+                'Верификация рекламных аккаунтов',
+                'Прохождение ЗРД',
+                'Создание документов по шаблонам',
+                'Работа с различными гео и типами документов'
+            ],
+            pros: ['Проверенные шаблоны', 'От известного медиа', 'Регулярные обновления', 'Хорошая репутация'],
+            cons: ['Платный', 'Ограниченный набор шаблонов', 'Не гарантирует прохождение 100%'],
+            pricing: 'Зависит от типа документа. Уточняйте на сайте.',
+            reliability: 8,
+            rating: 4.0,
+            url: 'https://docgen.zorbasmedia.ru/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=ZorbasMedia+DocGen&font=montserrat'
+        },
+        {
+            id: 38,
+            name: 'NPPR DocGen',
+            category: 'generators',
+            domain: 'docgen.nppr.team',
+            shortDesc: 'Генератор документов от команды NPPR. Качественные шаблоны для ЗРД.',
+            fullDesc: 'NPPR DocGen — генератор документов от команды NPPR, специализирующейся на инструментах для арбитражников. Создаёт документы для верификации аккаунтов на рекламных платформах. Поддерживает различные типы документов и гео. Удобный интерфейс, быстрая генерация.',
+            platforms: ['Web'],
+            useCases: ['Прохождение ЗРД', 'Верификация аккаунтов', 'Генерация документов для разных гео'],
+            pros: ['Удобный интерфейс', 'Быстрая генерация', 'Различные типы документов', 'Активная поддержка'],
+            cons: ['Платный', 'Не все документы универсальны', 'Новый сервис — меньше отзывов'],
+            pricing: 'Зависит от типа документа.',
+            reliability: 7,
+            rating: 3.8,
+            url: 'https://docgen.nppr.team/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=NPPR+DocGen&font=montserrat'
+        },
+        {
+            id: 39,
+            name: 'IDCards.pw',
+            category: 'generators',
+            domain: 'idcards.pw',
+            shortDesc: 'Генератор ID-карт и документов. Широкий выбор шаблонов из разных стран.',
+            fullDesc: 'IDCards.pw — сервис для генерации ID-карт и документов различных стран мира. Предлагает широкий выбор шаблонов: паспорта, ID-карты, водительские удостоверения. Используется арбитражниками для верификации аккаунтов. Удобный онлайн-редактор, быстрая генерация результата.',
+            platforms: ['Web'],
+            useCases: ['Генерация ID-документов', 'Верификация аккаунтов', 'Создание документов различных стран'],
+            pros: ['Широкий выбор стран и документов', 'Онлайн-редактор', 'Быстрая генерация', 'Детальные шаблоны'],
+            cons: ['Платный', 'Качество зависит от шаблона', 'Нужны навыки редактирования', 'Не все проходят проверку'],
+            pricing: 'Зависит от шаблона. От $5 за документ.',
+            reliability: 6,
+            rating: 3.5,
+            url: 'https://idcards.pw/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=IDCards&font=montserrat'
+        },
+        {
+            id: 40,
+            name: 'BestRandoms',
+            category: 'generators',
+            domain: 'bestrandoms.com',
+            shortDesc: 'Генератор случайных адресов. Реальные адреса из разных стран для регистраций.',
+            fullDesc: 'BestRandoms — бесплатный онлайн-генератор случайных данных, включая реальные адреса из разных стран. Генерирует полные адреса (улица, город, штат/область, индекс, страна) для использования при регистрации аккаунтов. Также генерирует случайные имена, номера телефонов и другие данные. Незаменим при массовой регистрации аккаунтов.',
+            platforms: ['Web'],
+            useCases: [
+                'Генерация адресов для регистрации аккаунтов',
+                'Создание случайных персональных данных',
+                'Заполнение форм при фарме',
+                'Массовая регистрация'
+            ],
+            pros: ['Полностью бесплатный', 'Реальные адреса из разных стран', 'Множество типов данных', 'Без регистрации'],
+            cons: ['Рекламные баннеры', 'Не все адреса точны', 'Простой интерфейс', 'Только английский язык'],
+            pricing: 'Полностью бесплатный.',
+            reliability: 7,
+            rating: 3.8,
+            url: 'https://www.bestrandoms.com/random-address',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=BestRandoms&font=montserrat'
+        },
+        {
+            id: 41,
+            name: 'Fake-it.ws',
+            category: 'generators',
+            domain: 'fake-it.ws',
+            shortDesc: 'Генератор фейковых данных. Имена, адреса, карты, IBAN — всё для регистрации аккаунтов.',
+            fullDesc: 'Fake-it.ws — комплексный генератор фейковых данных для тестирования и регистрации. Генерирует полные профили: имена, адреса, номера карт (невалидные, для тестов), IBAN, телефоны, email, SSN и другие данные. Поддерживает генерацию для различных стран. Удобный интерфейс — все данные на одной странице. Популярный инструмент среди арбитражников для массовой работы.',
+            platforms: ['Web'],
+            useCases: [
+                'Генерация полных профилей для регистрации',
+                'Тестирование форм и систем',
+                'Создание данных для различных гео',
+                'Фарм аккаунтов'
+            ],
+            pros: ['Бесплатный', 'Полные профили данных', 'Множество стран', 'Данные на одной странице', 'Без регистрации'],
+            cons: ['Рекламные баннеры', 'Данные не всегда актуальны', 'Некоторые данные нереалистичны', 'Только веб-версия'],
+            pricing: 'Полностью бесплатный.',
+            reliability: 7,
+            rating: 4.0,
+            url: 'https://fake-it.ws/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Fake-it.ws&font=montserrat'
+        },
+
+        // ═══ АККАУНТЫ И МАГАЗИНЫ ═══
+        {
+            id: 42,
+            name: 'Royal-Accs',
+            category: 'accounts',
+            domain: 'royal-accs.store',
+            shortDesc: 'Магазин аккаунтов для арбитража. Facebook, Google, TikTok и другие платформы.',
+            fullDesc: 'Royal-Accs — крупный магазин аккаунтов социальных сетей и рекламных платформ. Предлагает аккаунты Facebook, Google, TikTok, Instagram и других платформ различного качества и возраста. Автоматическая выдача после оплаты, различные типы аккаунтов (новые, прогретые, с BM, с тратами). Также предоставляет полезные бесплатные инструменты: чекер аккаунтов и обработчик строк.',
+            platforms: ['Web'],
+            useCases: [
+                'Покупка аккаунтов для запуска рекламы',
+                'Масштабирование рекламных операций',
+                'Замена забаненных аккаунтов',
+                'Покупка прогретых аккаунтов'
+            ],
+            pros: [
+                'Большой ассортимент аккаунтов',
+                'Автоматическая выдача',
+                'Различные типы и качество',
+                'Бесплатные инструменты на сайте',
+                'Поддержка 24/7'
+            ],
+            cons: [
+                'Качество может варьироваться',
+                'Не все аккаунты живут долго',
+                'Цены зависят от спроса',
+                'Нет гарантии на все типы'
+            ],
+            pricing: 'От $1 за базовые аккаунты. Прогретые и с BM — от $5-50. Зависит от типа и платформы.',
+            reliability: 7,
+            rating: 4.1,
+            url: 'https://royal-accs.store/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Royal-Accs&font=montserrat'
+        },
+        {
+            id: 43,
+            name: 'AccsMarket',
+            category: 'accounts',
+            domain: 'accsmarket.com',
+            shortDesc: 'Маркетплейс аккаунтов. Широкий выбор платформ, проверка качества, автовыдача.',
+            fullDesc: 'AccsMarket — один из крупнейших маркетплейсов аккаунтов для арбитража трафика. Предлагает аккаунты десятков платформ: Facebook, Google, Twitter, Reddit, Discord и многих других. Система проверки качества, рейтинг продавцов, автоматическая выдача. Удобный фильтр по типу аккаунта, гео, возрасту и другим параметрам.',
+            platforms: ['Web'],
+            useCases: [
+                'Покупка аккаунтов для рекламы',
+                'Мультиаккаунтинг на различных платформах',
+                'Покупка аккаунтов для SMM',
+                'Масштабирование операций'
+            ],
+            pros: [
+                'Огромный выбор платформ',
+                'Рейтинг продавцов',
+                'Фильтры поиска',
+                'Автоматическая выдача',
+                'Гарантия на часть аккаунтов'
+            ],
+            cons: [
+                'Качество зависит от продавца',
+                'Высокая конкуренция — быстро раскупают',
+                'Не все аккаунты проверены'
+            ],
+            pricing: 'Зависит от платформы и типа аккаунта. Facebook — от $1-3. Прогретые — от $10-30.',
+            reliability: 7,
+            rating: 4.0,
+            url: 'https://accsmarket.com/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=AccsMarket&font=montserrat'
+        },
+        {
+            id: 44,
+            name: 'FB-Killa',
+            category: 'accounts',
+            domain: 'fb-killa.pro',
+            shortDesc: 'Специализированный магазин Facebook-аккаунтов. Фарм, BM, King, Agency аккаунты.',
+            fullDesc: 'FB-Killa — магазин, специализирующийся исключительно на Facebook-аккаунтах для арбитражников. Предлагает различные типы аккаунтов: фармленные, с Business Manager, King-аккаунты, Agency. Фокус на качестве — все аккаунты проходят проверку перед продажей. Оперативная техподдержка, замена невалидных аккаунтов.',
+            platforms: ['Web'],
+            useCases: [
+                'Покупка качественных Facebook-аккаунтов',
+                'Масштабирование Facebook-рекламы',
+                'Покупка BM и Agency аккаунтов',
+                'Быстрая замена забаненных аккаунтов'
+            ],
+            pros: [
+                'Специализация на Facebook',
+                'Проверка качества аккаунтов',
+                'Разные типы: фарм, BM, King, Agency',
+                'Быстрая замена невалида',
+                'Оперативная поддержка'
+            ],
+            cons: [
+                'Только Facebook-аккаунты',
+                'Цены выше средних',
+                'Не всегда есть нужный тип в наличии'
+            ],
+            pricing: 'Фарм — от $3-5. BM — от $10-15. King — от $20-50. Agency — от $50-100+.',
+            reliability: 8,
+            rating: 4.2,
+            url: 'https://fb-killa.pro/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=FB-Killa&font=montserrat'
+        },
+        {
+            id: 45,
+            name: 'Royal-Accs Checker',
+            category: 'accounts',
+            domain: 'royal-accs.store',
+            shortDesc: 'Бесплатный чекер аккаунтов. Массовая проверка валидности и состояния аккаунтов.',
+            fullDesc: 'Royal-Accs Checker — бесплатный онлайн-инструмент для массовой проверки аккаунтов. Позволяет быстро проверить валидность, состояние и параметры купленных или своих аккаунтов. Поддерживает загрузку списков аккаунтов для пакетной проверки. Экономит время при работе с большим количеством аккаунтов.',
+            platforms: ['Web'],
+            useCases: [
+                'Проверка купленных аккаунтов',
+                'Массовая валидация перед запуском',
+                'Фильтрация живых аккаунтов от мёртвых',
+                'Контроль качества при покупке'
+            ],
+            pros: ['Бесплатный', 'Массовая проверка', 'Быстрый результат', 'Не требует установки'],
+            cons: ['Ограниченный функционал', 'Не все платформы поддерживаются', 'Зависит от API-лимитов'],
+            pricing: 'Бесплатный.',
+            reliability: 7,
+            rating: 3.9,
+            url: 'https://royal-accs.store/page/cheker-akkauntov',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Accs+Checker&font=montserrat'
+        },
+        {
+            id: 46,
+            name: 'Royal-Accs String Tools',
+            category: 'accounts',
+            domain: 'royal-accs.store',
+            shortDesc: 'Инструменты для массовой работы со строками. Парсинг, фильтрация, форматирование.',
+            fullDesc: 'Royal-Accs String Tools — набор бесплатных онлайн-инструментов для массовой обработки строк. Незаменимы при работе с большими списками аккаунтов, прокси, данных. Позволяют парсить, фильтровать, сортировать, удалять дубликаты, менять разделители и форматировать данные. Экономят часы ручной работы.',
+            platforms: ['Web'],
+            useCases: [
+                'Обработка списков аккаунтов',
+                'Форматирование данных для импорта',
+                'Удаление дубликатов',
+                'Парсинг и фильтрация строк'
+            ],
+            pros: ['Бесплатный', 'Множество инструментов', 'Работа с большими объёмами', 'Не требует установки'],
+            cons: ['Только веб-версия', 'Базовый интерфейс', 'Ограничения на объём данных в браузере'],
+            pricing: 'Бесплатный.',
+            reliability: 7,
+            rating: 3.8,
+            url: 'https://royal-accs.store/page/instrumenty-dlya-obrabotki-strok',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=String+Tools&font=montserrat'
+        },
+
+        // ═══ УНИКАЛИЗАЦИЯ ═══
+        {
+            id: 47,
+            name: 'Clicklead Media Bot',
+            category: 'unique',
+            domain: 't.me',
+            shortDesc: 'Telegram-бот для уникализации креативов. Уникализируй фото и видео прямо в Telegram.',
+            fullDesc: 'Clicklead Media Bot — Telegram-бот для быстрой уникализации медиа-контента. Позволяет уникализировать фотографии и видео прямо в мессенджере без установки дополнительного софта. Изменяет метаданные, вносит невидимые изменения в файл, чтобы рекламные платформы воспринимали креатив как уникальный. Полезен при масштабировании рекламных кампаний с одними и теми же креативами.',
+            platforms: ['Telegram'],
+            useCases: [
+                'Уникализация креативов для Facebook/Google/TikTok',
+                'Обход проверки на дубликаты',
+                'Массовая уникализация медиа',
+                'Быстрая обработка без установки софта'
+            ],
+            pros: ['Удобный формат — Telegram-бот', 'Быстрая обработка', 'Не требует установки', 'Фото и видео'],
+            cons: ['Зависит от Telegram', 'Ограниченные настройки', 'Не все алгоритмы уникализации', 'Лимиты на размер файлов'],
+            pricing: 'Уточняйте в боте. Есть бесплатные и платные функции.',
+            reliability: 7,
+            rating: 3.9,
+            url: 'https://t.me/clicklead_media_bot',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Clicklead+Bot&font=montserrat'
+        },
+        {
+            id: 48,
+            name: 'LeadGenerals Bot',
+            category: 'unique',
+            domain: 't.me',
+            shortDesc: 'Бот для уникализации от LeadGenerals. Уникализация медиа-контента в Telegram.',
+            fullDesc: 'LeadGenerals Bot — ещё один Telegram-бот для уникализации медиа-контента от команды LeadGenerals. Предлагает уникализацию фотографий и видеоматериалов с различными алгоритмами обработки. Используется арбитражниками для подготовки креативов к загрузке в рекламные кабинеты. Быстрая обработка, удобный формат использования.',
+            platforms: ['Telegram'],
+            useCases: [
+                'Уникализация креативов',
+                'Подготовка медиа для рекламных кабинетов',
+                'Обход проверки на дубликаты',
+                'Работа с фото и видео'
+            ],
+            pros: ['Telegram-бот — удобно', 'Различные алгоритмы', 'Быстрая обработка', 'От известной команды'],
+            cons: ['Зависит от Telegram', 'Лимиты на файлы', 'Не всегда проходит проверку', 'Платные функции'],
+            pricing: 'Уточняйте в боте.',
+            reliability: 7,
+            rating: 3.8,
+            url: 'https://t.me/leadgenerals_bot',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=LeadGenerals+Bot&font=montserrat'
+        },
+
+        // ═══ PWA И ПУШ-УВЕДОМЛЕНИЯ ═══
+        {
+            id: 49,
+            name: 'PWA.Market',
+            category: 'pwa',
+            domain: 'pwa.market',
+            shortDesc: 'Конструктор PWA-приложений для арбитража. Создавай мобильные приложения без разработки.',
+            fullDesc: 'PWA.Market — конструктор Progressive Web App (PWA) для арбитражников. Позволяет быстро создавать мобильные приложения без навыков разработки. PWA выглядят и работают как нативные приложения, но не требуют публикации в App Store/Google Play. Идеально для iGaming, betting и других вертикалей, где нативные приложения блокируются сторами. Удобный конструктор, шаблоны, аналитика.',
+            platforms: ['Web'],
+            useCases: [
+                'Создание PWA для iGaming и betting',
+                'Замена нативных приложений',
+                'Работа без публикации в сторах',
+                'Быстрый запуск мобильных предложений'
+            ],
+            pros: [
+                'Не нужны навыки разработки',
+                'Быстрое создание — от 15 минут',
+                'Не зависит от App Store/Google Play',
+                'Шаблоны и конструктор',
+                'Встроенная аналитика',
+                'Push-уведомления'
+            ],
+            cons: [
+                'Платный сервис',
+                'PWA менее функциональны чем нативные приложения',
+                'Не все пользователи знают как устанавливать PWA',
+                'Зависит от поддержки браузером'
+            ],
+            pricing: 'От $99/мес. Есть различные тарифы с разным функционалом.',
+            reliability: 8,
+            rating: 4.3,
+            url: 'https://pwa.market/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=PWA.Market&font=montserrat'
+        },
+        {
+            id: 50,
+            name: 'Push.House',
+            category: 'pwa',
+            domain: 'push.house',
+            shortDesc: 'Рекламная сеть пуш-уведомлений. Высококачественный пуш-трафик из 180+ стран.',
+            fullDesc: 'Push.House — крупная рекламная сеть, специализирующаяся на пуш-уведомлениях. Предоставляет высококачественный трафик из более чем 180 стран. Ежедневно обрабатывает миллиарды показов. Подходит для работы с множеством вертикалей: gambling, nutra, finance, dating и другими. Удобный интерфейс, детальный таргетинг, автоматические правила оптимизации. Также предлагает собственную систему сбора push-подписчиков.',
+            platforms: ['Web'],
+            useCases: [
+                'Покупка пуш-трафика для арбитража',
+                'Работа с gambling, nutra, finance вертикалями',
+                'Сбор собственной базы push-подписчиков',
+                'Масштабирование рекламных кампаний'
+            ],
+            pros: [
+                '180+ стран покрытия',
+                'Миллиарды показов ежедневно',
+                'Детальный таргетинг',
+                'Автоматическая оптимизация',
+                'Собственная система сбора подписчиков',
+                'Низкий порог входа — от $50'
+            ],
+            cons: [
+                'Пуш-трафик теряет эффективность',
+                'Много ботов в некоторых гео',
+                'Нужна постоянная оптимизация',
+                'Не все офферы подходят для пушей'
+            ],
+            pricing: 'Минимальный депозит — $50. CPC — от $0.001. Зависит от гео и формата.',
+            reliability: 8,
+            rating: 4.2,
+            url: 'https://push.house/',
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Push.House&font=montserrat'
+        }
+    ];
+
+    // ────────────────────────────────
+    // STATE
+    // ────────────────────────────────
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    // ────────────────────────────────
+    // RENDER FUNCTIONS
+    // ────────────────────────────────
+
+    function getCategoryColor(catId) {
+        const cat = CATEGORIES.find(c => c.id === catId);
+        return cat ? cat.color : 'yellow';
+    }
+
+    function getCategoryName(catId) {
+        const cat = CATEGORIES.find(c => c.id === catId);
+        return cat ? cat.name : catId;
+    }
+
+    function getCategoryColorVar(catId) {
+        const cat = CATEGORIES.find(c => c.id === catId);
+        return cat ? cat.colorVar : '#F5DA0F';
+    }
+
+    function renderStars(rating, size = 12) {
+        let html = '';
+        const full = Math.floor(rating);
+        const half = rating % 1 >= 0.5 ? 1 : 0;
+        const empty = 5 - full - half;
+        for (let i = 0; i < full; i++) html += `<i class="fas fa-star" style="font-size:${size}px"></i>`;
+        if (half) html += `<i class="fas fa-star-half-stroke" style="font-size:${size}px"></i>`;
+        for (let i = 0; i < empty; i++) html += `<i class="fas fa-star empty" style="font-size:${size}px"></i>`;
+        return html;
+    }
+
+    function makePill(catId, icon, name, count) {
+        const isActive = activeCategory === catId;
+        return `<button class="cat-pill ${isActive ? 'active' : ''}" onclick="filterCategory('${catId}')">
+            <i class="${icon}"></i> ${name} <span class="cat-count">${count}</span>
+        </button>`;
+    }
+
+    function renderCategoryNav() {
+        const list = document.getElementById('categoriesList');
+        const counts = {};
+        SERVICES.forEach(s => { counts[s.category] = (counts[s.category] || 0) + 1; });
+
+        // Generate all pills
+        let pills = [];
+        pills.push(makePill('all', 'fas fa-layer-group', 'Все', 50));
+        CATEGORIES.forEach(cat => {
+            pills.push(makePill(cat.id, cat.icon, cat.name, counts[cat.id] || 0));
+        });
+
+        // Desktop: single centered row
+        const desktopHtml = `<div class="cats-desktop">${pills.join('')}</div>`;
+
+        // Mobile: two-row marquee
+        const mid = Math.ceil(pills.length / 2); // 6 and 5
+        const row1 = pills.slice(0, mid).join('');
+        const row2 = pills.slice(mid).join('');
+
+        const mobileHtml = `
+            <div class="cats-mobile">
+                <div class="marquee-row marquee-row-1">
+                    <div class="marquee-track">${row1}${row1}</div>
+                </div>
+                <div class="marquee-row marquee-row-2">
+                    <div class="marquee-track">${row2}${row2}</div>
+                </div>
+            </div>
+        `;
+
+        list.innerHTML = desktopHtml + mobileHtml;
+    }
+
+    function renderServices() {
+        const container = document.getElementById('mainContent');
+        let filteredServices = SERVICES;
+
+        if (searchQuery) {
+            const q = searchQuery.toLowerCase();
+            filteredServices = SERVICES.filter(s =>
+                s.name.toLowerCase().includes(q) ||
+                s.shortDesc.toLowerCase().includes(q) ||
+                getCategoryName(s.category).toLowerCase().includes(q)
+            );
+        }
+
+        if (activeCategory !== 'all') {
+            filteredServices = filteredServices.filter(s => s.category === activeCategory);
+        }
+
+        if (filteredServices.length === 0) {
+            container.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3>Ничего не найдено</h3>
+                    <p>Попробуйте изменить запрос или выбрать другую категорию</p>
+                </div>
+            `;
+            return;
+        }
+
+        // Group by category
+        const grouped = {};
+        filteredServices.forEach(s => {
+            if (!grouped[s.category]) grouped[s.category] = [];
+            grouped[s.category].push(s);
+        });
+
+        let html = '';
+        const catOrder = CATEGORIES.map(c => c.id);
+
+        catOrder.forEach(catId => {
+            if (!grouped[catId]) return;
+            const cat = CATEGORIES.find(c => c.id === catId);
+            const services = grouped[catId];
+
+            html += `
+                <section class="category-section" id="cat-${catId}">
+                    <div class="category-header">
+                        <div class="category-icon" style="background: ${cat.colorVar}">
+                            <i class="${cat.icon}" style="color: #000"></i>
+                        </div>
+                        <h2 class="category-title">${cat.name}</h2>
+                        <span class="category-count">${services.length} ${services.length === 1 ? 'сервис' : services.length < 5 ? 'сервиса' : 'сервисов'}</span>
+                    </div>
+                    <div class="services-grid">
+            `;
+
+            services.forEach((s, idx) => {
+                const color = getCategoryColor(s.category);
+                const isFree = s.pricing.toLowerCase().includes('бесплатн') || s.pricing.toLowerCase().includes('free');
+                html += `
+                    <div class="service-card animate-card" data-color="${color}" 
+                         onclick="openModal(${s.id})" style="animation-delay: ${idx * 0.05}s">
+                        <div class="card-top">
+                            <div class="card-logo" style="background: ${getCategoryColorVar(s.category)}">
+                                <img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" 
+                                     alt="${s.name}" 
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                                <div class="card-logo-fallback" style="display:none">${s.name.substring(0, 2).toUpperCase()}</div>
+                            </div>
+                            <div class="card-info">
+                                <div class="card-name">${s.name}</div>
+                                <div class="card-category-tag" style="color: ${getCategoryColorVar(s.category)}">${getCategoryName(s.category)}</div>
+                            </div>
+                        </div>
+                        <div class="card-description">${s.shortDesc}</div>
+                        <div class="card-footer">
+                            <div class="card-rating">
+                                ${renderStars(s.rating)}
+                                <span class="card-rating-value">${s.rating}</span>
+                            </div>
+                            <span class="card-price-tag ${isFree ? 'free' : 'paid'}">${isFree ? 'Free' : 'Платный'}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `</div></section>`;
+        });
+
+        container.innerHTML = html;
+    }
+
+    function openModal(serviceId) {
+        const s = SERVICES.find(sv => sv.id === serviceId);
+        if (!s) return;
+
+        const cat = CATEGORIES.find(c => c.id === s.category);
+        const colorVar = cat ? cat.colorVar : '#F5DA0F';
+
+        const reliabilityColor = s.reliability >= 8 ? '#C8E712' : s.reliability >= 6 ? '#F5DA0F' : '#FF6B6B';
+
+        let platformIcons = {
+            'Windows': 'fab fa-windows',
+            'macOS': 'fab fa-apple',
+            'Linux': 'fab fa-linux',
+            'Android': 'fab fa-android',
+            'iOS': 'fab fa-apple',
+            'Web': 'fas fa-globe',
+            'Web (self-hosted)': 'fas fa-server',
+            'Chrome Extension': 'fab fa-chrome',
+            'Firefox Extension': 'fab fa-firefox-browser',
+            'Telegram': 'fab fa-telegram',
+            'API': 'fas fa-code'
+        };
+
+        const isFree = s.pricing.toLowerCase().includes('бесплатн') || s.pricing.toLowerCase().includes('free');
+        const pricingShort = isFree ? 'Есть бесплатный план' : s.pricing.split('.')[0];
+
+        let html = `
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-xmark"></i></button>
+            
+            <div class="modal-hero">
+                <div class="modal-logo" style="background: ${colorVar}">
+                    <img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" 
+                         alt="${s.name}" 
+                         onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\\'color:#000;font-size:32px;font-weight:900\\'>${s.name.substring(0, 2).toUpperCase()}</span>'">
+                </div>
+                <div class="modal-hero-info">
+                    <div class="modal-name">${s.name}</div>
+                    <div class="modal-category" style="color: ${colorVar}">${getCategoryName(s.category)}</div>
+                    <div class="modal-short-desc">${s.shortDesc}</div>
+                </div>
+            </div>
+
+            <div class="modal-quick-info">
+                <div class="quick-info-item">
+                    <i class="fas fa-star" style="color:${colorVar}"></i>
+                    <span class="qi-label">Рейтинг</span>
+                    <span class="qi-value">${s.rating}/5</span>
+                </div>
+                <div class="quick-info-item">
+                    <i class="fas fa-shield-halved" style="color:${reliabilityColor}"></i>
+                    <span class="qi-label">Надёжность</span>
+                    <span class="qi-value">${s.reliability}/10</span>
+                </div>
+                <div class="quick-info-item">
+                    <i class="fas fa-tag" style="color:${colorVar}"></i>
+                    <span class="qi-label">Стоимость</span>
+                    <span class="qi-value">${pricingShort}</span>
+                </div>
+                <div class="quick-info-item">
+                    <i class="fas fa-laptop" style="color:${colorVar}"></i>
+                    <span class="qi-label">Платформы</span>
+                    <span class="qi-value">${s.platforms.join(', ')}</span>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-cta">
+                    <div class="cta-text">
+                        <div class="cta-promo-badge"><i class="fas fa-fire"></i> ПРОМО</div>
+                        <div class="cta-title">Попробуй ${s.name} прямо сейчас</div>
+                        <div class="cta-subtitle">Специальное предложение от команды Secret Room</div>
+                    </div>
+                    <a href="${s.url}" target="_blank" class="cta-button">
+                        Попробовать бесплатно <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="modal-screenshot">
+                    <img src="${s.screenshot}" alt="Интерфейс ${s.name}" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="modal-screenshot-placeholder" style="display:none">
+                        <i class="fas fa-image"></i>
+                        <span>Интерфейс ${s.name}</span>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title"><i class="fas fa-info-circle" style="color:${colorVar}"></i> О сервисе</h3>
+                    <p class="modal-description">${s.fullDesc}</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title"><i class="fas fa-lightbulb" style="color:${colorVar}"></i> Когда пригодится</h3>
+                    <ul class="modal-use-cases">
+                        ${s.useCases.map(u => `<li><i class="fas fa-bolt"></i> ${u}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title"><i class="fas fa-scale-balanced" style="color:${colorVar}"></i> Плюсы и минусы</h3>
+                    <div class="modal-pros-cons">
+                        <div>
+                            <ul class="pros-list">
+                                ${s.pros.map(p => `<li><i class="fas fa-check-circle"></i> ${p}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <ul class="cons-list">
+                                ${s.cons.map(c => `<li><i class="fas fa-times-circle"></i> ${c}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3 class="modal-section-title"><i class="fas fa-tag" style="color:${colorVar}"></i> Полная информация о стоимости</h3>
+                    <div class="modal-pricing">
+                        <p>${s.pricing}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        const modal = document.getElementById('modalOverlay');
+        const content = document.getElementById('modalContent');
+        content.innerHTML = html;
+
+        modal.classList.add('entering');
+        requestAnimationFrame(() => {
+            modal.classList.add('visible');
+        });
+
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('modalOverlay');
+        modal.classList.remove('visible');
+        setTimeout(() => {
+            modal.classList.remove('entering');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
+    function filterCategory(catId) {
+        activeCategory = catId;
+        renderCategoryNav();
+        renderServices();
+
+        if (catId !== 'all') {
+            const el = document.getElementById(`cat-${catId}`);
+            if (el) {
+                const offset = 140;
+                const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    function handleSearch(value) {
+        searchQuery = value;
+        renderServices();
+    }
+
+    function resetFilters() {
+        activeCategory = 'all';
+        searchQuery = '';
+        renderCategoryNav();
+        renderServices();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ────────────────────────────────
+    // EVENT LISTENERS
+    // ────────────────────────────────
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    window.addEventListener('scroll', () => {
+        const header = document.getElementById('header');
+        header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ────────────────────────────────
+    // INIT
+    // ────────────────────────────────
+    renderCategoryNav();
+    renderServices();
+    </script>
+</body>
+</html>
