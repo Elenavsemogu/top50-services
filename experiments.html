@@ -315,10 +315,6 @@
             font-weight: 700;
         }
         .nc-trial i { font-size: 10px; }
-        .nc-who {
-            font-size: 11px;
-            color: var(--text-3);
-        }
 
         /* ═══════════════════════════════════════
            EXPERIMENT 2: PAIN NAVIGATION
@@ -360,11 +356,6 @@
             background: var(--surface-3);
             border-color: rgba(255,255,255,0.1);
         }
-        .pain-pill.hot {
-            border-color: rgba(255,107,107,0.3);
-            background: rgba(255,107,107,0.06);
-        }
-        .pain-pill.hot .pp-icon { color: var(--red); }
         .pain-pill .pp-icon {
             font-size: 16px;
             color: var(--text-3);
@@ -376,10 +367,6 @@
             background: rgba(255,255,255,0.06);
             color: var(--text-3);
             font-weight: 700;
-        }
-        .pain-pill.hot .pp-count {
-            background: rgba(255,107,107,0.12);
-            color: var(--red);
         }
 
         .current-cats-demo {
@@ -446,29 +433,6 @@
             color: var(--text-2);
         }
 
-        .md-pain-block {
-            margin: 0 36px 24px;
-            padding: 20px;
-            background: rgba(245,218,15,0.04);
-            border: 1px solid rgba(245,218,15,0.1);
-            border-radius: 12px;
-        }
-        .md-pain-title {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--yellow);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .md-pain-text {
-            font-size: 14px;
-            color: var(--text);
-            line-height: 1.6;
-        }
 
         .md-metrics-grid {
             display: grid;
@@ -534,58 +498,261 @@
             white-space: nowrap;
         }
 
-        .md-alts {
+        /* ═══════════════════════════════════════
+           ADVANTAGE BLOCK (replaces pain block)
+           ═══════════════════════════════════════ */
+        .md-advantage-block {
+            margin: 0 36px 24px;
+            padding: 18px 20px;
+            background: rgba(245,218,15,0.04);
+            border: 1px solid rgba(245,218,15,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .md-advantage-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: rgba(245,218,15,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--yellow);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .md-advantage-text {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 2px;
+        }
+
+        /* ═══════════════════════════════════════
+           COMPARISON TABLE
+           ═══════════════════════════════════════ */
+        .md-compare {
             margin: 0 36px 36px;
         }
-        .md-alts-title {
+        .md-compare-title {
             font-size: 13px;
             font-weight: 700;
             color: var(--text-3);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
-        .md-alts-grid {
-            display: flex;
-            gap: 12px;
-        }
-        .md-alt-card {
-            flex: 1;
-            padding: 14px;
-            background: var(--surface-2);
-            border: 1px solid var(--border);
+        .md-compare-table-wrap {
+            overflow-x: auto;
             border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .md-compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .md-compare-table thead {
+            background: var(--surface-2);
+        }
+        .md-compare-table th {
+            padding: 14px 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--text-2);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .md-compare-table th img {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-right: 6px;
+        }
+        .md-compare-table th.param-col {
+            text-align: left;
+            color: var(--text-3);
+            font-weight: 600;
+        }
+        .md-compare-table th.current-service {
+            color: var(--yellow);
+            position: relative;
+        }
+        .md-compare-table th.current-service::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--yellow);
+            border-radius: 2px;
+        }
+        .md-compare-table td {
+            padding: 12px 16px;
+            text-align: center;
+            color: var(--text-2);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-weight: 600;
+        }
+        .md-compare-table tr:last-child td {
+            border-bottom: none;
+        }
+        .md-compare-table td.param-name {
+            text-align: left;
+            color: var(--text-3);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .md-compare-table td.best-value {
+            color: var(--green);
+            font-weight: 800;
+        }
+        .md-compare-table td.has-feature {
+            color: var(--green);
+        }
+        .md-compare-table td.no-feature {
+            color: var(--text-3);
+            opacity: 0.5;
+        }
+        .md-compare-table tbody tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* ═══════════════════════════════════════
+           CHAIN / WORKFLOW
+           ═══════════════════════════════════════ */
+        .chain-demo {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .chain-header {
+            padding: 24px 28px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .chain-title {
+            font-size: 16px;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            gap: 8px;
+            margin-bottom: 4px;
         }
-        .md-alt-card:hover {
-            background: var(--surface-3);
-            border-color: rgba(255,255,255,0.1);
+        .chain-title i { color: var(--yellow); }
+        .chain-subtitle {
+            font-size: 13px;
+            color: var(--text-3);
         }
-        .md-alt-logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+        .chain-steps {
+            padding: 24px 28px;
+        }
+        .chain-step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .chain-step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
             background: var(--surface-3);
+            border: 1px solid var(--border);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--yellow);
             flex-shrink: 0;
         }
-        .md-alt-logo img {
-            width: 100%; height: 100%; object-fit: cover;
+        .chain-step-body {
+            flex: 1;
+            padding-bottom: 4px;
         }
-        .md-alt-name {
+        .chain-step-action {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .chain-step-service {
             font-size: 13px;
+            color: var(--text-2);
+            margin-bottom: 8px;
+        }
+        .chain-step-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .chain-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-size: 11px;
             font-weight: 700;
         }
-        .md-alt-diff {
-            font-size: 11px;
+        .chain-tag i { font-size: 9px; }
+        .chain-tag.time {
+            background: rgba(255,255,255,0.04);
+            color: var(--text-2);
+        }
+        .chain-tag.easy {
+            background: rgba(200,231,18,0.08);
+            color: var(--green);
+        }
+        .chain-tag.medium {
+            background: rgba(245,218,15,0.08);
+            color: var(--yellow);
+        }
+        .chain-tag.free {
+            background: rgba(200,231,18,0.08);
+            color: var(--green);
+        }
+        .chain-tag.paid {
+            background: rgba(255,255,255,0.04);
+            color: var(--text-2);
+        }
+        .chain-connector {
+            width: 2px;
+            height: 20px;
+            background: var(--border);
+            margin-left: 15px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            border-radius: 999px;
+        }
+        .chain-total {
+            display: flex;
+            gap: 24px;
+            padding: 16px 28px;
+            background: var(--surface-2);
+            border-top: 1px solid var(--border);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-2);
+            flex-wrap: wrap;
+        }
+        .chain-total i {
             color: var(--text-3);
+            margin-right: 4px;
+        }
+
+        .pain-pill.active-pill {
+            border-color: rgba(245,218,15,0.3);
+            background: rgba(245,218,15,0.06);
+        }
+        .pain-pill.active-pill .pp-icon { color: var(--yellow); }
+        .pain-pill.active-pill .pp-count {
+            background: rgba(245,218,15,0.12);
+            color: var(--yellow);
         }
 
         .divider {
@@ -708,7 +875,7 @@
     <h2 class="exp-title">Карточка сервиса на главной</h2>
     <p class="exp-insight">
         <strong>Проблема:</strong> текущая карточка показывает звёздочки (которым не верят), generic-описание и тег «Free/Paid». Нет ответа на вопрос «какую мою проблему это решает?»<br>
-        <strong>Решение:</strong> заменить звёзды на конкретные метрики, добавить «какую боль решает», вывести триал, показать целевую аудиторию.
+        <strong>Решение:</strong> заменить звёзды на конкретные метрики, добавить главное преимущество сервиса, вывести триал.
     </p>
 
     <div class="exp-compare">
@@ -751,7 +918,7 @@
                         <div class="nc-cat">Трекер</div>
                     </div>
                 </div>
-                <div class="nc-pain">Решает проблему расхождения статистики FB и реальных конверсий — видишь точные данные по каждому клику</div>
+                <div class="nc-pain">Точная статистика по каждому клику — без расхождений между данными FB и реальными конверсиями</div>
                 <div class="nc-metrics">
                     <span class="nc-metric"><i class="fas fa-server"></i> Self-hosted</span>
                     <span class="nc-metric"><i class="fas fa-code"></i> API</span>
@@ -759,7 +926,6 @@
                 </div>
                 <div class="nc-footer">
                     <span class="nc-trial"><i class="fas fa-check-circle"></i> Триал 7 дней</span>
-                    <span class="nc-who">Используют 80% команд</span>
                 </div>
             </div>
         </div>
@@ -768,13 +934,13 @@
 
 <div class="divider"><hr></div>
 
-<!-- ═══════════ EXPERIMENT 2: PAIN NAV ═══════════ -->
+<!-- ═══════════ EXPERIMENT 2: SOLUTION NAV + CHAIN ═══════════ -->
 <section class="experiment">
     <div class="exp-label"><i class="fas fa-flask"></i> Эксперимент B</div>
-    <h2 class="exp-title">Навигация по болям вместо категорий</h2>
+    <h2 class="exp-title">Подборки по задачам вместо категорий</h2>
     <p class="exp-insight">
-        <strong>Проблема:</strong> текущие категории («Антидетект-браузеры», «Прокси») — это язык продуктов, а не язык проблем пользователя. Байер думает «у меня банятся креативы», а не «мне нужен антидетект».<br>
-        <strong>Решение:</strong> добавить параллельную навигацию — по болям. Не заменяет категории, а дополняет.
+        <strong>Проблема:</strong> текущие категории («Антидетект-браузеры», «Прокси») — это язык продуктов, а не язык задач. Байер думает «мне нужно быстро сделать креатив», а не «мне нужен генератор изображений».<br>
+        <strong>Решение:</strong> добавить навигацию по задачам. Внутри каждой — цепочка действий с конкретными сервисами, временем и стоимостью.
     </p>
 
     <div class="exp-compare">
@@ -791,36 +957,109 @@
         </div>
 
         <div class="exp-variant">
-            <div class="exp-variant-label after">Предложение — боли</div>
+            <div class="exp-variant-label after">Предложение — подборки по задачам</div>
             <div class="pain-nav-demo">
-                <div class="pain-nav-label">Какую проблему решаем?</div>
+                <div class="pain-nav-label">Подборки</div>
                 <div class="pain-pills">
-                    <div class="pain-pill hot">
-                        <i class="fas fa-fire pp-icon"></i>
-                        Андромеда банит креативы
-                        <span class="pp-count">12 сервисов</span>
+                    <div class="pain-pill active-pill">
+                        <i class="fas fa-wand-magic-sparkles pp-icon"></i>
+                        Для создания креативов
+                        <span class="pp-count">9 сервисов</span>
                     </div>
                     <div class="pain-pill">
                         <i class="fas fa-chart-line pp-icon"></i>
-                        Нет нормальной аналитики
+                        Продвинутая аналитика
                         <span class="pp-count">8 сервисов</span>
                     </div>
                     <div class="pain-pill">
                         <i class="fas fa-credit-card pp-icon"></i>
-                        BIN-ы перестали проходить
+                        Стабильные платёжки
                         <span class="pp-count">5 сервисов</span>
                     </div>
                     <div class="pain-pill">
-                        <i class="fas fa-clock pp-icon"></i>
-                        Креативы долго делать
-                        <span class="pp-count">9 сервисов</span>
-                    </div>
-                    <div class="pain-pill">
-                        <i class="fas fa-snail pp-icon"></i>
-                        Антик тормозит
+                        <i class="fas fa-bolt pp-icon"></i>
+                        Быстрые антики
                         <span class="pp-count">4 сервиса</span>
                     </div>
+                    <div class="pain-pill">
+                        <i class="fas fa-shield-halved pp-icon"></i>
+                        Надёжные прокси
+                        <span class="pp-count">6 сервисов</span>
+                    </div>
+                    <div class="pain-pill">
+                        <i class="fas fa-user-plus pp-icon"></i>
+                        Фарм и аккаунты
+                        <span class="pp-count">5 сервисов</span>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top:32px;">
+        <div class="exp-variant-label after">Пример раскрытой подборки «Для создания креативов»</div>
+        <div class="chain-demo">
+            <div class="chain-header">
+                <div class="chain-title"><i class="fas fa-wand-magic-sparkles"></i> Для создания креативов</div>
+                <div class="chain-subtitle">Полная цепочка: от идеи до готового уникального видеокреатива</div>
+            </div>
+            <div class="chain-steps">
+                <div class="chain-step">
+                    <div class="chain-step-num">1</div>
+                    <div class="chain-step-body">
+                        <div class="chain-step-action">Сгенерировать изображение</div>
+                        <div class="chain-step-service">ChatGPT / Midjourney</div>
+                        <div class="chain-step-tags">
+                            <span class="chain-tag time"><i class="fas fa-clock"></i> ~2 мин</span>
+                            <span class="chain-tag easy"><i class="fas fa-circle-check"></i> Просто</span>
+                            <span class="chain-tag free"><i class="fas fa-gift"></i> Бесплатно</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chain-connector"></div>
+                <div class="chain-step">
+                    <div class="chain-step-num">2</div>
+                    <div class="chain-step-body">
+                        <div class="chain-step-action">Сделать видео из картинки</div>
+                        <div class="chain-step-service">VEO3 / Sora / Runway</div>
+                        <div class="chain-step-tags">
+                            <span class="chain-tag time"><i class="fas fa-clock"></i> ~5 мин</span>
+                            <span class="chain-tag easy"><i class="fas fa-circle-check"></i> Просто</span>
+                            <span class="chain-tag paid"><i class="fas fa-dollar-sign"></i> от $12/мес</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chain-connector"></div>
+                <div class="chain-step">
+                    <div class="chain-step-num">3</div>
+                    <div class="chain-step-body">
+                        <div class="chain-step-action">Смонтировать и добавить озвучку</div>
+                        <div class="chain-step-service">CapCut</div>
+                        <div class="chain-step-tags">
+                            <span class="chain-tag time"><i class="fas fa-clock"></i> ~10 мин</span>
+                            <span class="chain-tag medium"><i class="fas fa-circle-half-stroke"></i> Средне</span>
+                            <span class="chain-tag free"><i class="fas fa-gift"></i> Бесплатно</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chain-connector"></div>
+                <div class="chain-step">
+                    <div class="chain-step-num">4</div>
+                    <div class="chain-step-body">
+                        <div class="chain-step-action">Уникализировать для FB</div>
+                        <div class="chain-step-service">ClickLead Uniqualizer</div>
+                        <div class="chain-step-tags">
+                            <span class="chain-tag time"><i class="fas fa-clock"></i> ~1 мин</span>
+                            <span class="chain-tag easy"><i class="fas fa-circle-check"></i> Просто</span>
+                            <span class="chain-tag free"><i class="fas fa-gift"></i> Бесплатно</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chain-total">
+                <span><i class="fas fa-clock"></i> Итого ~18 минут</span>
+                <span><i class="fas fa-dollar-sign"></i> от $0 до $12/мес</span>
+                <span><i class="fas fa-layer-group"></i> 4 сервиса в цепочке</span>
             </div>
         </div>
     </div>
@@ -833,8 +1072,8 @@
     <div class="exp-label"><i class="fas fa-flask"></i> Эксперимент C</div>
     <h2 class="exp-title">Модальная карточка сервиса</h2>
     <p class="exp-insight">
-        <strong>Проблема:</strong> текущая модалка начинается с рейтинга и надёжности (абстрактные цифры), затем скриншот, затем длинное описание. Нет ответа на «зачем мне это?» и «чем лучше того, что я уже использую?»<br>
-        <strong>Решение:</strong> первый экран — «Какую проблему решает» + конкретные метрики + триал-баннер + альтернативы в категории.
+        <strong>Проблема:</strong> текущая модалка начинается с абстрактных рейтингов, скриншота и длинного описания. Нет сравнения с аналогами и нет чёткого ответа «чем этот сервис хорош».<br>
+        <strong>Решение:</strong> первый экран — главное преимущество + конкретные метрики + триал-баннер + таблица сравнения с аналогами (лучшие параметры выделены).
     </p>
 
     <div class="modal-demo">
@@ -849,9 +1088,9 @@
             </div>
         </div>
 
-        <div class="md-pain-block">
-            <div class="md-pain-title"><i class="fas fa-bullseye"></i> Какую проблему решает</div>
-            <div class="md-pain-text">Facebook банит BIN-ы популярных платёжных сервисов — аккаунты летят в Risk Payment. Brocard постоянно обновляет пул BIN-ов, поэтому вероятность бана по платёжке значительно ниже. Команды переходят сюда после «смерти» BIN-ов Kapitalist.</div>
+        <div class="md-advantage-block">
+            <div class="md-advantage-icon"><i class="fas fa-heart"></i></div>
+            <div class="md-advantage-text">Постоянно обновляемый пул BIN-ов — баны по платёжке практически исключены, не нужно экстренно искать замену</div>
         </div>
 
         <div class="md-metrics-grid">
@@ -877,27 +1116,72 @@
             <button class="md-trial-btn">Попробовать <i class="fas fa-arrow-right"></i></button>
         </div>
 
-        <div class="md-alts">
-            <div class="md-alts-title">Альтернативы в категории</div>
-            <div class="md-alts-grid">
-                <div class="md-alt-card">
-                    <div class="md-alt-logo">
-                        <img src="https://www.google.com/s2/favicons?domain=capitalist.net&sz=128" alt="Capitalist">
-                    </div>
-                    <div>
-                        <div class="md-alt-name">Capitalist</div>
-                        <div class="md-alt-diff">BIN-ы реже обновляются</div>
-                    </div>
-                </div>
-                <div class="md-alt-card">
-                    <div class="md-alt-logo">
-                        <img src="https://www.google.com/s2/favicons?domain=pstnet.io&sz=128" alt="PST.NET">
-                    </div>
-                    <div>
-                        <div class="md-alt-name">PST.NET</div>
-                        <div class="md-alt-diff">Дороже, но больше гео</div>
-                    </div>
-                </div>
+        <div class="md-compare">
+            <div class="md-compare-title">Сравнение в категории</div>
+            <div class="md-compare-table-wrap">
+                <table class="md-compare-table">
+                    <thead>
+                        <tr>
+                            <th class="param-col">Параметр</th>
+                            <th class="service-col current-service">
+                                <img src="https://www.google.com/s2/favicons?domain=brocard.com&sz=64" alt="">
+                                Brocard
+                            </th>
+                            <th class="service-col">
+                                <img src="https://www.google.com/s2/favicons?domain=capitalist.net&sz=64" alt="">
+                                Capitalist
+                            </th>
+                            <th class="service-col">
+                                <img src="https://www.google.com/s2/favicons?domain=pstnet.io&sz=64" alt="">
+                                PST.NET
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="param-name">Активных BIN-ов</td>
+                            <td>50+</td>
+                            <td>20+</td>
+                            <td class="best-value">60+</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Комиссия пополнения</td>
+                            <td class="best-value">2.5%</td>
+                            <td>3.5%</td>
+                            <td>3%</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Комиссия за оплату</td>
+                            <td class="best-value">3%</td>
+                            <td>3.5%</td>
+                            <td>3.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Мин. пополнение</td>
+                            <td class="best-value">$50</td>
+                            <td>$100</td>
+                            <td class="best-value">$50</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Обновление BIN-ов</td>
+                            <td class="best-value">Постоянно</td>
+                            <td>Редко</td>
+                            <td>Регулярно</td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Крипто-пополнение</td>
+                            <td class="has-feature"><i class="fas fa-check"></i></td>
+                            <td class="has-feature"><i class="fas fa-check"></i></td>
+                            <td class="has-feature"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="param-name">Триал / бесплатно</td>
+                            <td class="has-feature"><i class="fas fa-check"></i></td>
+                            <td class="has-feature"><i class="fas fa-check"></i></td>
+                            <td class="no-feature"><i class="fas fa-minus"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
