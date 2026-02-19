@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эксперименты UI/UX | На основе CustDev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0F0F12;
+            --surface: #18181D;
+            --surface-2: #1E1E24;
+            --surface-3: #26262D;
+            --border: rgba(255,255,255,0.06);
+            --text: #F0F0F2;
+            --text-2: #A0A0AA;
+            --text-3: #6A6A74;
+            --yellow: #F5DA0F;
+            --green: #C8E712;
+            --blue: #5B5FF6;
+            --pink: #F6ADE5;
+            --red: #FF6B6B;
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page-header {
+            padding: 80px 32px 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .page-header a {
+            color: var(--text-2);
+            text-decoration: none;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 32px;
+        }
+        .page-header a:hover { color: var(--yellow); }
+        .page-header h1 {
+            font-size: 40px;
+            font-weight: 300;
+            letter-spacing: -1.5px;
+            margin-bottom: 12px;
+        }
+        .page-header h1 em {
+            font-style: normal;
+            color: var(--yellow);
+        }
+        .page-header p {
+            font-size: 16px;
+            color: var(--text-2);
+            max-width: 700px;
+            font-weight: 400;
+        }
+
+        .experiment {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 32px;
+        }
+
+        .exp-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--yellow);
+            margin-bottom: 12px;
+            padding: 5px 14px;
+            background: rgba(245,218,15,0.08);
+            border-radius: 999px;
+        }
+
+        .exp-title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .exp-insight {
+            font-size: 14px;
+            color: var(--text-2);
+            margin-bottom: 32px;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+        .exp-insight strong {
+            color: var(--text);
+        }
+
+        .exp-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .exp-compare { grid-template-columns: 1fr; }
+        }
+
+        .exp-variant {
+            position: relative;
+        }
+        .exp-variant-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .exp-variant-label.before { color: var(--red); }
+        .exp-variant-label.before::before {
+            content: '';
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--red);
+        }
+        .exp-variant-label.after { color: var(--green); }
+        .exp-variant-label.after::before {
+            content: '';
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        /* ═══════════════════════════════════════
+           CURRENT CARD (as-is)
+           ═══════════════════════════════════════ */
+        .current-card {
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            opacity: 0.6;
+        }
+        .current-card .cc-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .current-card .cc-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 900;
+            color: #000;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .current-card .cc-logo img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .current-card .cc-name {
+            font-size: 16px;
+            font-weight: 800;
+        }
+        .current-card .cc-cat {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--yellow);
+        }
+        .current-card .cc-desc {
+            font-size: 13px;
+            color: var(--text-2);
+            line-height: 1.5;
+        }
+        .current-card .cc-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+        }
+        .current-card .cc-stars { color: var(--yellow); font-size: 12px; }
+        .current-card .cc-stars .empty { color: var(--text-3); }
+        .current-card .cc-price {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(200,231,18,0.12);
+            color: var(--green);
+            text-transform: uppercase;
+        }
+
+        /* ═══════════════════════════════════════
+           NEW CARD — pain-first, metrics, no stars
+           ═══════════════════════════════════════ */
+        .new-card {
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+        .new-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .nc-top {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .nc-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .nc-logo img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .nc-info { flex: 1; }
+        .nc-name {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .nc-cat {
+            font-size: 11px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nc-pain {
+            font-size: 13px;
+            color: var(--text-2);
+            line-height: 1.6;
+            padding: 10px 14px;
+            background: rgba(245,218,15,0.04);
+            border-left: 2px solid var(--yellow);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .nc-metrics {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .nc-metric {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-2);
+        }
+        .nc-metric i {
+            font-size: 10px;
+            color: var(--text-3);
+        }
+
+        .nc-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .nc-trial {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: rgba(200,231,18,0.1);
+            color: var(--green);
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .nc-trial i { font-size: 10px; }
+        .nc-who {
+            font-size: 11px;
+            color: var(--text-3);
+        }
+
+        /* ═══════════════════════════════════════
+           EXPERIMENT 2: PAIN NAVIGATION
+           ═══════════════════════════════════════ */
+        .pain-nav-demo {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+        }
+        .pain-nav-label {
+            font-size: 12px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .pain-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .pain-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            border-radius: var(--radius);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .pain-pill:hover {
+            background: var(--surface-3);
+            border-color: rgba(255,255,255,0.1);
+        }
+        .pain-pill.hot {
+            border-color: rgba(255,107,107,0.3);
+            background: rgba(255,107,107,0.06);
+        }
+        .pain-pill.hot .pp-icon { color: var(--red); }
+        .pain-pill .pp-icon {
+            font-size: 16px;
+            color: var(--text-3);
+        }
+        .pain-pill .pp-count {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
+            color: var(--text-3);
+            font-weight: 700;
+        }
+        .pain-pill.hot .pp-count {
+            background: rgba(255,107,107,0.12);
+            color: var(--red);
+        }
+
+        .current-cats-demo {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+        .current-cat-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-2);
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════
+           EXPERIMENT 3: MODAL CARD
+           ═══════════════════════════════════════ */
+        .modal-demo {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            max-width: 100%;
+        }
+        .md-hero {
+            padding: 36px 36px 24px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .md-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: var(--yellow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .md-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .md-info { flex: 1; }
+        .md-name {
+            font-size: 24px;
+            font-weight: 800;
+        }
+        .md-cat {
+            font-size: 12px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .md-short {
+            font-size: 14px;
+            color: var(--text-2);
+        }
+
+        .md-pain-block {
+            margin: 0 36px 24px;
+            padding: 20px;
+            background: rgba(245,218,15,0.04);
+            border: 1px solid rgba(245,218,15,0.1);
+            border-radius: 12px;
+        }
+        .md-pain-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--yellow);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .md-pain-text {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .md-metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 0 36px 24px;
+        }
+        @media (max-width: 600px) {
+            .md-metrics-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .md-metric-card {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+        .md-metric-value {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        .md-metric-label {
+            font-size: 11px;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .md-trial-banner {
+            margin: 0 36px 24px;
+            padding: 20px 24px;
+            background: rgba(200,231,18,0.06);
+            border: 1px solid rgba(200,231,18,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .md-trial-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--green);
+        }
+        .md-trial-text i {
+            font-size: 18px;
+        }
+        .md-trial-btn {
+            padding: 10px 24px;
+            background: var(--yellow);
+            color: #000;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 800;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .md-alts {
+            margin: 0 36px 36px;
+        }
+        .md-alts-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .md-alts-grid {
+            display: flex;
+            gap: 12px;
+        }
+        .md-alt-card {
+            flex: 1;
+            padding: 14px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .md-alt-card:hover {
+            background: var(--surface-3);
+            border-color: rgba(255,255,255,0.1);
+        }
+        .md-alt-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--surface-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .md-alt-logo img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .md-alt-name {
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .md-alt-diff {
+            font-size: 11px;
+            color: var(--text-3);
+        }
+
+        .divider {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 32px;
+        }
+        .divider hr {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        .findings {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 32px;
+        }
+        .findings h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .finding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+        .finding-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+        }
+        .finding-num {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .finding-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .finding-text {
+            font-size: 13px;
+            color: var(--text-2);
+            line-height: 1.6;
+        }
+        .finding-quote {
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.03);
+            border-left: 2px solid var(--text-3);
+            border-radius: 0 6px 6px 0;
+            font-size: 12px;
+            color: var(--text-3);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<header class="page-header">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Назад к каталогу</a>
+    <h1>Эксперименты <em>UI/UX</em></h1>
+    <p>Визуальные предложения по улучшению сайта на основе 4 глубинных интервью с медиабайерами. Каждый эксперимент — отдельный элемент, готовый к обсуждению.</p>
+</header>
+
+<!-- ═══════════ FINDINGS ═══════════ -->
+<section class="findings">
+    <h2>Ключевые находки из CustDev</h2>
+    <div class="finding-grid">
+        <div class="finding-card">
+            <div class="finding-num">Паттерн 1</div>
+            <div class="finding-title">Звёзды = недоверие</div>
+            <div class="finding-text">Абстрактный рейтинг (4/5) не имеет ценности. Байеры знают, что рейтинги накручиваются. Им нужны конкретные метрики и параметры.</div>
+            <div class="finding-quote">«Зная маркетинг, какой рейтинг можно накрутить» — Александр, интервью 4</div>
+        </div>
+        <div class="finding-card">
+            <div class="finding-num">Паттерн 2</div>
+            <div class="finding-title">Навигация по болям > по категориям</div>
+            <div class="finding-text">Байеры ищут не «антидетект-браузер», а решение конкретной проблемы — банов, модерации, скорости. Структура должна отталкиваться от боли.</div>
+            <div class="finding-quote">«Должно быть описание боли, которую закрывает сервис» — Михаил, тимлид</div>
+        </div>
+        <div class="finding-card">
+            <div class="finding-num">Паттерн 3</div>
+            <div class="finding-title">Сравнение, а не описание</div>
+            <div class="finding-text">Карточка должна давать возможность сравнить сервис с тем, что байер уже знает. Конкретные цифры: комиссия, гео, скорость.</div>
+            <div class="finding-quote">«Мне нужно не прочитать о сервисе, а сравнить» — Александр</div>
+        </div>
+        <div class="finding-card">
+            <div class="finding-num">Паттерн 4</div>
+            <div class="finding-title">Триал — решающий фактор</div>
+            <div class="finding-text">Бесплатный пробный период — один из главных триггеров к действию. Сейчас он спрятан в тексте, должен быть на виду.</div>
+            <div class="finding-quote">«Чтобы потестить, нужен триал» — Александр</div>
+        </div>
+        <div class="finding-card">
+            <div class="finding-num">Паттерн 5</div>
+            <div class="finding-title">«Андромеда» — общая боль рынка</div>
+            <div class="finding-text">3 из 4 респондентов назвали обновление FB главной проблемой. Сервисы, помогающие с ней, — главный магнит.</div>
+            <div class="finding-quote">«Меня уже тошнит от этого Фейсбука» — респондент 2</div>
+        </div>
+        <div class="finding-card">
+            <div class="finding-num">Паттерн 6</div>
+            <div class="finding-title">Альтернативы внутри категории</div>
+            <div class="finding-text">Байеры активно сравнивают инструменты внутри категорий. Показать «альтернативы» в карточке — ценно и повышает глубину просмотра.</div>
+            <div class="finding-quote">«Scac vs ZM Apps — выбирали по результатам» — респондент 2</div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ═══════════ EXPERIMENT 1: CARD ═══════════ -->
+<section class="experiment">
+    <div class="exp-label"><i class="fas fa-flask"></i> Эксперимент A</div>
+    <h2 class="exp-title">Карточка сервиса на главной</h2>
+    <p class="exp-insight">
+        <strong>Проблема:</strong> текущая карточка показывает звёздочки (которым не верят), generic-описание и тег «Free/Paid». Нет ответа на вопрос «какую мою проблему это решает?»<br>
+        <strong>Решение:</strong> заменить звёзды на конкретные метрики, добавить «какую боль решает», вывести триал, показать целевую аудиторию.
+    </p>
+
+    <div class="exp-compare">
+        <div class="exp-variant">
+            <div class="exp-variant-label before">Сейчас</div>
+            <div class="current-card">
+                <div class="cc-top">
+                    <div class="cc-logo" style="background:var(--yellow)">
+                        <img src="https://www.google.com/s2/favicons?domain=keitaro.io&sz=128" alt="Keitaro">
+                    </div>
+                    <div>
+                        <div class="cc-name">Keitaro</div>
+                        <div class="cc-cat">Трекеры и клоакинг</div>
+                    </div>
+                </div>
+                <div class="cc-desc">Мощный self-hosted трекер для управления рекламными кампаниями и аналитики трафика</div>
+                <div class="cc-footer">
+                    <div class="cc-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span style="color:var(--text-2);margin-left:4px;font-weight:700;font-size:13px">4.7</span>
+                    </div>
+                    <span class="cc-price">ПЛАТНЫЙ</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="exp-variant">
+            <div class="exp-variant-label after">Предложение</div>
+            <div class="new-card">
+                <div class="nc-top">
+                    <div class="nc-logo">
+                        <img src="https://www.google.com/s2/favicons?domain=keitaro.io&sz=128" alt="Keitaro">
+                    </div>
+                    <div class="nc-info">
+                        <div class="nc-name">Keitaro</div>
+                        <div class="nc-cat">Трекер</div>
+                    </div>
+                </div>
+                <div class="nc-pain">Решает проблему расхождения статистики FB и реальных конверсий — видишь точные данные по каждому клику</div>
+                <div class="nc-metrics">
+                    <span class="nc-metric"><i class="fas fa-server"></i> Self-hosted</span>
+                    <span class="nc-metric"><i class="fas fa-code"></i> API</span>
+                    <span class="nc-metric"><i class="fas fa-dollar-sign"></i> от $25/мес</span>
+                </div>
+                <div class="nc-footer">
+                    <span class="nc-trial"><i class="fas fa-check-circle"></i> Триал 7 дней</span>
+                    <span class="nc-who">Используют 80% команд</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ═══════════ EXPERIMENT 2: PAIN NAV ═══════════ -->
+<section class="experiment">
+    <div class="exp-label"><i class="fas fa-flask"></i> Эксперимент B</div>
+    <h2 class="exp-title">Навигация по болям вместо категорий</h2>
+    <p class="exp-insight">
+        <strong>Проблема:</strong> текущие категории («Антидетект-браузеры», «Прокси») — это язык продуктов, а не язык проблем пользователя. Байер думает «у меня банятся креативы», а не «мне нужен антидетект».<br>
+        <strong>Решение:</strong> добавить параллельную навигацию — по болям. Не заменяет категории, а дополняет.
+    </p>
+
+    <div class="exp-compare">
+        <div class="exp-variant">
+            <div class="exp-variant-label before">Сейчас — категории</div>
+            <div class="current-cats-demo">
+                <span class="current-cat-pill"><i class="fas fa-mask"></i> Антидетект-браузеры</span>
+                <span class="current-cat-pill"><i class="fas fa-eye"></i> Spy-сервисы</span>
+                <span class="current-cat-pill"><i class="fas fa-route"></i> Трекеры</span>
+                <span class="current-cat-pill"><i class="fas fa-server"></i> Прокси</span>
+                <span class="current-cat-pill"><i class="fas fa-credit-card"></i> Платёжные</span>
+                <span class="current-cat-pill"><i class="fas fa-wand-magic-sparkles"></i> Креативы</span>
+            </div>
+        </div>
+
+        <div class="exp-variant">
+            <div class="exp-variant-label after">Предложение — боли</div>
+            <div class="pain-nav-demo">
+                <div class="pain-nav-label">Какую проблему решаем?</div>
+                <div class="pain-pills">
+                    <div class="pain-pill hot">
+                        <i class="fas fa-fire pp-icon"></i>
+                        Андромеда банит креативы
+                        <span class="pp-count">12 сервисов</span>
+                    </div>
+                    <div class="pain-pill">
+                        <i class="fas fa-chart-line pp-icon"></i>
+                        Нет нормальной аналитики
+                        <span class="pp-count">8 сервисов</span>
+                    </div>
+                    <div class="pain-pill">
+                        <i class="fas fa-credit-card pp-icon"></i>
+                        BIN-ы перестали проходить
+                        <span class="pp-count">5 сервисов</span>
+                    </div>
+                    <div class="pain-pill">
+                        <i class="fas fa-clock pp-icon"></i>
+                        Креативы долго делать
+                        <span class="pp-count">9 сервисов</span>
+                    </div>
+                    <div class="pain-pill">
+                        <i class="fas fa-snail pp-icon"></i>
+                        Антик тормозит
+                        <span class="pp-count">4 сервиса</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- ═══════════ EXPERIMENT 3: MODAL ═══════════ -->
+<section class="experiment">
+    <div class="exp-label"><i class="fas fa-flask"></i> Эксперимент C</div>
+    <h2 class="exp-title">Модальная карточка сервиса</h2>
+    <p class="exp-insight">
+        <strong>Проблема:</strong> текущая модалка начинается с рейтинга и надёжности (абстрактные цифры), затем скриншот, затем длинное описание. Нет ответа на «зачем мне это?» и «чем лучше того, что я уже использую?»<br>
+        <strong>Решение:</strong> первый экран — «Какую проблему решает» + конкретные метрики + триал-баннер + альтернативы в категории.
+    </p>
+
+    <div class="modal-demo">
+        <div class="md-hero">
+            <div class="md-logo">
+                <img src="https://www.google.com/s2/favicons?domain=brocard.com&sz=128" alt="Brocard">
+            </div>
+            <div class="md-info">
+                <div class="md-cat">Платёжные системы</div>
+                <div class="md-name">Brocard</div>
+                <div class="md-short">Виртуальные карты для оплаты рекламных кабинетов с широким набором BIN-ов</div>
+            </div>
+        </div>
+
+        <div class="md-pain-block">
+            <div class="md-pain-title"><i class="fas fa-bullseye"></i> Какую проблему решает</div>
+            <div class="md-pain-text">Facebook банит BIN-ы популярных платёжных сервисов — аккаунты летят в Risk Payment. Brocard постоянно обновляет пул BIN-ов, поэтому вероятность бана по платёжке значительно ниже. Команды переходят сюда после «смерти» BIN-ов Kapitalist.</div>
+        </div>
+
+        <div class="md-metrics-grid">
+            <div class="md-metric-card">
+                <div class="md-metric-value">50+</div>
+                <div class="md-metric-label">активных BIN-ов</div>
+            </div>
+            <div class="md-metric-card">
+                <div class="md-metric-value">2.5%</div>
+                <div class="md-metric-label">комиссия пополнения</div>
+            </div>
+            <div class="md-metric-card">
+                <div class="md-metric-value">3%</div>
+                <div class="md-metric-label">комиссия за оплату</div>
+            </div>
+        </div>
+
+        <div class="md-trial-banner">
+            <div class="md-trial-text">
+                <i class="fas fa-gift"></i>
+                Бесплатная регистрация + первая карта без комиссии
+            </div>
+            <button class="md-trial-btn">Попробовать <i class="fas fa-arrow-right"></i></button>
+        </div>
+
+        <div class="md-alts">
+            <div class="md-alts-title">Альтернативы в категории</div>
+            <div class="md-alts-grid">
+                <div class="md-alt-card">
+                    <div class="md-alt-logo">
+                        <img src="https://www.google.com/s2/favicons?domain=capitalist.net&sz=128" alt="Capitalist">
+                    </div>
+                    <div>
+                        <div class="md-alt-name">Capitalist</div>
+                        <div class="md-alt-diff">BIN-ы реже обновляются</div>
+                    </div>
+                </div>
+                <div class="md-alt-card">
+                    <div class="md-alt-logo">
+                        <img src="https://www.google.com/s2/favicons?domain=pstnet.io&sz=128" alt="PST.NET">
+                    </div>
+                    <div>
+                        <div class="md-alt-name">PST.NET</div>
+                        <div class="md-alt-diff">Дороже, но больше гео</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="max-width:1100px;margin:0 auto;padding:0 32px 80px;">
+    <p style="font-size:13px;color:var(--text-3);text-align:center;">Secret Room · Эксперименты UI/UX · На основе CustDev февраль 2026</p>
+</div>
+
+</body>
+</html>
