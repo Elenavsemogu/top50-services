@@ -286,6 +286,28 @@
         [data-theme="light"] .card-footer {
             border-top-color: rgba(0,0,0,0.03);
         }
+        [data-theme="light"] .card-advantage {
+            background: rgba(0,0,0,0.02);
+            border-left-color: var(--text-tertiary);
+        }
+        [data-theme="light"] .card-metric {
+            background: rgba(0,0,0,0.03);
+            border-color: rgba(0,0,0,0.04);
+            color: var(--text-secondary);
+        }
+        [data-theme="light"] .card-trial {
+            background: rgba(200,231,18,0.08);
+        }
+        [data-theme="light"] .modal-advantage {
+            background: rgba(0,0,0,0.02);
+            border-color: rgba(0,0,0,0.05);
+        }
+        [data-theme="light"] .compare-table thead { background: rgba(0,0,0,0.02); }
+        [data-theme="light"] .compare-table-wrap { border-color: rgba(0,0,0,0.06); }
+        [data-theme="light"] .compare-table th { color: var(--text-secondary); border-bottom-color: rgba(0,0,0,0.05); }
+        [data-theme="light"] .compare-table td { border-bottom-color: rgba(0,0,0,0.03); }
+        [data-theme="light"] .compare-current-cell { color: var(--text-primary) !important; }
+        [data-theme="light"] .compare-table tbody tr:hover { background: rgba(0,0,0,0.01); }
         [data-theme="light"] .modal-name {
             font-family: 'Nunito', sans-serif;
             font-weight: 600;
@@ -750,6 +772,71 @@
         /* ═══════════════════════════════════════════
            CATEGORY NAVIGATION
            ═══════════════════════════════════════════ */
+        .tasks-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 24px 0;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .tasks-label {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-tertiary);
+            flex-shrink: 0;
+        }
+        .tasks-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .task-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: var(--radius-lg);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .task-pill:hover {
+            background: var(--glass-hover);
+            border-color: var(--glass-border-hover);
+            color: var(--text-primary);
+        }
+        .task-pill.active {
+            background: rgba(245,218,15,0.1);
+            border-color: rgba(245,218,15,0.25);
+            color: var(--accent-yellow);
+        }
+        .task-pill i { font-size: 12px; }
+
+        [data-theme="light"] .tasks-nav { }
+        [data-theme="light"] .task-pill {
+            background: rgba(0,0,0,0.03);
+            border-color: rgba(0,0,0,0.04);
+            color: var(--text-secondary);
+        }
+        [data-theme="light"] .task-pill:hover {
+            background: rgba(0,0,0,0.05);
+            color: var(--text-primary);
+        }
+        [data-theme="light"] .task-pill.active {
+            background: rgba(245,218,15,0.1);
+            border-color: rgba(245,218,15,0.2);
+            color: #B5A200;
+        }
+
         .categories-nav {
             position: sticky;
             top: 64px;
@@ -1050,47 +1137,47 @@
             border-top: 1px solid var(--border-subtle);
         }
 
-        .card-rating {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .card-rating i {
-            font-size: 12px;
-            color: var(--accent-yellow);
-        }
-
-        .card-rating i.empty {
-            color: var(--text-tertiary);
-        }
-
-        .card-rating-value {
+        .card-advantage {
             font-size: 13px;
-            font-weight: 700;
-            margin-left: 4px;
-            color: #D0D0D8;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            padding: 8px 12px;
+            background: rgba(245,218,15,0.03);
+            border-left: 2px solid var(--accent-yellow);
+            border-radius: 0 8px 8px 0;
         }
 
-        .card-price-tag {
-            font-size: 11px;
-            font-weight: 700;
+        .card-metrics {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .card-metric {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
             padding: 3px 10px;
+            border-radius: var(--radius-full);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-subtle);
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .card-trial {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 12px;
             border-radius: var(--radius-full);
             background: rgba(200,231,18,0.1);
             color: var(--accent-green);
-            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
         }
-
-        .card-price-tag.free {
-            background: rgba(200,231,18,0.15);
-            color: var(--accent-green);
-        }
-
-        .card-price-tag.paid {
-            background: rgba(245,218,15,0.1);
-            color: var(--accent-yellow);
-        }
+        .card-trial i { font-size: 10px; }
 
         /* ═══════════════════════════════════════════
            MODAL
@@ -1354,6 +1441,90 @@
         .modal-section-title i {
             font-size: 16px;
         }
+
+        .modal-advantage {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin: 0 32px 20px;
+            padding: 16px 18px;
+            background: rgba(245,218,15,0.04);
+            border: 1px solid rgba(245,218,15,0.1);
+            border-radius: 12px;
+        }
+        .modal-advantage-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .modal-advantage-text {
+            font-size: 14px;
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 2px;
+        }
+
+        .compare-table-wrap {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-subtle);
+        }
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .compare-table thead { background: rgba(255,255,255,0.03); }
+        .compare-table th {
+            padding: 12px 14px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-subtle);
+            white-space: nowrap;
+        }
+        .compare-table th img { vertical-align: middle; margin-right: 5px; }
+        .compare-param-head { text-align: left !important; }
+        .compare-current {
+            color: var(--accent-yellow) !important;
+            position: relative;
+        }
+        .compare-current::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--accent-yellow);
+            border-radius: 2px;
+        }
+        .compare-table td {
+            padding: 10px 14px;
+            text-align: center;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            font-weight: 600;
+        }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-param {
+            text-align: left !important;
+            color: var(--text-tertiary) !important;
+            font-weight: 500 !important;
+            white-space: nowrap;
+        }
+        .compare-current-cell {
+            color: var(--text-primary) !important;
+            font-weight: 700 !important;
+        }
+        .compare-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+        .modal-compare-section { margin-bottom: 24px; }
 
         .modal-description {
             font-size: 15px;
@@ -1861,6 +2032,19 @@
         </div>
     </section>
 
+    <!-- ═══════════ TASK NAV (подборки по задачам) ═══════════ -->
+    <nav class="tasks-nav">
+        <div class="tasks-label">Подборки</div>
+        <div class="tasks-list">
+            <button class="task-pill" onclick="filterByTask('creatives')"><i class="fas fa-wand-magic-sparkles"></i> Для создания креативов</button>
+            <button class="task-pill" onclick="filterByTask('analytics')"><i class="fas fa-chart-line"></i> Продвинутая аналитика</button>
+            <button class="task-pill" onclick="filterByTask('payments')"><i class="fas fa-credit-card"></i> Стабильные платёжки</button>
+            <button class="task-pill" onclick="filterByTask('fast-anti')"><i class="fas fa-bolt"></i> Быстрые антики</button>
+            <button class="task-pill" onclick="filterByTask('reliable-proxy')"><i class="fas fa-shield-halved"></i> Надёжные прокси</button>
+            <button class="task-pill" onclick="filterByTask('farm')"><i class="fas fa-user-plus"></i> Фарм и аккаунты</button>
+        </div>
+    </nav>
+
     <!-- ═══════════ CATEGORIES NAV ═══════════ -->
     <nav class="categories-nav" id="categoriesNav">
         <div class="categories-list" id="categoriesList">
@@ -1964,7 +2148,11 @@
             reliability: 9,
             rating: 4.8,
             url: 'https://www.adspower.net/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=AdsPower+Interface&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=AdsPower+Interface&font=montserrat',
+            advantage: 'Встроенная RPA-автоматизация без кода и маркетплейс плагинов позволяют собрать идеальную рабочую среду без сторонних инструментов.',
+            keyMetrics: [{label: 'Профилей', value: '∞'}, {label: 'RPA-сценариев', value: '50+'}, {label: 'От', value: '$5.4/мес'}],
+            trial: 'Free 5 профилей',
+            competitors: [2, 3]
         },
         {
             id: 2,
@@ -1998,7 +2186,11 @@
             reliability: 8,
             rating: 4.5,
             url: 'https://dolphin-anty.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Dolphin+Anty&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Dolphin+Anty&font=montserrat',
+            advantage: 'Встроенный Cookie-робот для прогрева профилей и интеграция с собственной CRM делают командную работу максимально эффективной.',
+            keyMetrics: [{label: 'Профилей', value: '∞'}, {label: 'Cookie-робот', value: 'Встроен'}, {label: 'От', value: '$89/мес'}],
+            trial: 'Free 10 профилей',
+            competitors: [1, 3]
         },
         {
             id: 3,
@@ -2030,7 +2222,11 @@
             reliability: 9,
             rating: 4.6,
             url: 'https://octobrowser.net/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Octo+Browser&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Octo+Browser&font=montserrat',
+            advantage: 'Реальные фингерпринты устройств обеспечивают максимальную неотличимость профилей от настоящих пользователей.',
+            keyMetrics: [{label: 'Старт профиля', value: '~3 сек'}, {label: 'Фингерпринты', value: 'Реальные'}, {label: 'От', value: '€29/мес'}],
+            trial: 'Триал по запросу',
+            competitors: [1, 2]
         },
         {
             id: 4,
@@ -2062,7 +2258,11 @@
             reliability: 7,
             rating: 4.2,
             url: 'https://gologin.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=GoLogin&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=GoLogin&font=montserrat',
+            advantage: 'Облачная версия позволяет запускать профили прямо из браузера — без установки софта и с любого устройства, включая Android.',
+            keyMetrics: [{label: 'Профилей', value: '∞'}, {label: 'Платформ', value: '5'}, {label: 'От', value: '$24/мес'}],
+            trial: 'Free 3 профиля',
+            competitors: [1, 5]
         },
         {
             id: 5,
@@ -2095,7 +2295,11 @@
             reliability: 9,
             rating: 4.4,
             url: 'https://multilogin.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Multilogin&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Multilogin&font=montserrat',
+            advantage: 'Два встроенных браузерных движка (Chromium и Firefox) дают уникальную гибкость при маскировке и максимальную надёжность среди антидетектов.',
+            keyMetrics: [{label: 'Движков', value: '2'}, {label: 'На рынке', value: 'с 2015'}, {label: 'От', value: '€99/мес'}],
+            trial: '',
+            competitors: [1, 3]
         },
 
         // ═══ SPY-СЕРВИСЫ ═══
@@ -2130,7 +2334,11 @@
             reliability: 9,
             rating: 4.7,
             url: 'https://adspy.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=AdSpy&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=AdSpy&font=montserrat',
+            advantage: 'Крупнейшая в мире база из 150M+ рекламных объявлений даёт полный охват рекламного пространства Facebook и Instagram.',
+            keyMetrics: [{label: 'Объявлений', value: '150M+'}, {label: 'Источники', value: 'FB + IG'}, {label: 'Цена', value: '$149/мес'}],
+            trial: '',
+            competitors: [7, 9]
         },
         {
             id: 7,
@@ -2162,7 +2370,11 @@
             reliability: 7,
             rating: 4.1,
             url: 'https://spyhero.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=SpyHero&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=SpyHero&font=montserrat',
+            advantage: 'Покрытие сразу трёх каналов — Facebook, TikTok и нативная реклама — по доступной цене с пробным периодом.',
+            keyMetrics: [{label: 'Каналов', value: '3'}, {label: 'От', value: '$69/мес'}, {label: 'Триал', value: 'Да'}],
+            trial: 'Есть пробный период',
+            competitors: [6, 8]
         },
         {
             id: 8,
@@ -2193,7 +2405,11 @@
             reliability: 7,
             rating: 3.9,
             url: 'https://publer.pro/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Publer&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Publer&font=montserrat',
+            advantage: 'Единственный spy-сервис с полноценным покрытием VK и MyTarget — незаменим для арбитража в СНГ-регионе.',
+            keyMetrics: [{label: 'Источники', value: 'FB+VK+MT'}, {label: 'Язык', value: 'Русский'}, {label: 'От', value: '$20/мес'}],
+            trial: 'Бесплатный план',
+            competitors: [6, 7]
         },
         {
             id: 9,
@@ -2225,7 +2441,11 @@
             reliability: 8,
             rating: 4.3,
             url: 'https://anstrex.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Anstrex&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Anstrex&font=montserrat',
+            advantage: 'Глубокое покрытие нативных сетей (Taboola, Outbrain, MGID) и возможность скачивания лендингов в один клик.',
+            keyMetrics: [{label: 'Рекл. сетей', value: '30+'}, {label: 'Модулей', value: '3'}, {label: 'От', value: '$69.99/мес'}],
+            trial: '',
+            competitors: [6, 7]
         },
         {
             id: 10,
@@ -2257,7 +2477,11 @@
             reliability: 10,
             rating: 3.8,
             url: 'https://www.facebook.com/ads/library/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=FB+Ad+Library&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=FB+Ad+Library&font=montserrat',
+            advantage: 'Официальный и полностью бесплатный инструмент от Meta с доступом ко всем активным объявлениям в реальном времени.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Источник', value: 'Meta'}, {label: 'Данные', value: 'Реальное время'}],
+            trial: 'Бесплатно',
+            competitors: [6, 8]
         },
 
         // ═══ ТРЕКЕРЫ И КЛОАКИНГ ═══
@@ -2294,7 +2518,11 @@
             reliability: 10,
             rating: 4.9,
             url: 'https://keitaro.io/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Keitaro+Tracker&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Keitaro+Tracker&font=montserrat',
+            advantage: 'Self-hosted архитектура обеспечивает полный контроль над данными, а встроенный клоакинг и мощный TDS закрывают все потребности арбитража.',
+            keyMetrics: [{label: 'Фильтров', value: '30+'}, {label: 'Тип', value: 'Self-hosted'}, {label: 'От', value: '$25/мес'}],
+            trial: 'Триал 14 дней',
+            competitors: [12, 14]
         },
         {
             id: 12,
@@ -2327,7 +2555,11 @@
             reliability: 9,
             rating: 4.5,
             url: 'https://binom.org/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Binom&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Binom&font=montserrat',
+            advantage: 'Сверхбыстрые редиректы менее 5 мс и возможность приобрести бессрочную лицензию за разовый платёж — экономия на долгой дистанции.',
+            keyMetrics: [{label: 'Редирект', value: '<5 мс'}, {label: 'Лицензия навсегда', value: '$499'}, {label: 'Подписка от', value: '$69/мес'}],
+            trial: 'Триал 14 дней',
+            competitors: [11, 14]
         },
         {
             id: 13,
@@ -2358,7 +2590,11 @@
             reliability: 7,
             rating: 4.0,
             url: 'https://t.me/leadgenerals_anticlo_bot',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=AntiClo+Bot&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=AntiClo+Bot&font=montserrat',
+            advantage: 'Мгновенная проверка работоспособности клоакинга прямо из Telegram — достаточно просто отправить ссылку в бот.',
+            keyMetrics: [{label: 'Формат', value: 'Telegram-бот'}, {label: 'Скорость', value: '~10 сек'}, {label: 'Установка', value: 'Не нужна'}],
+            trial: '',
+            competitors: [11, 14]
         },
         {
             id: 14,
@@ -2390,7 +2626,11 @@
             reliability: 8,
             rating: 4.2,
             url: 'https://cloaking.house/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Cloaking+House&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Cloaking+House&font=montserrat',
+            advantage: 'Облачный клоакинг с несколькими методами фильтрации (JS, PHP, redirect) и регулярно обновляемыми базами — не нужен свой сервер.',
+            keyMetrics: [{label: 'Методов', value: '3+'}, {label: 'Тип', value: 'Облачный'}, {label: 'От', value: '$60/мес'}],
+            trial: '',
+            competitors: [11, 13]
         },
 
         // ═══ ПРОКСИ ═══
@@ -2424,7 +2664,11 @@
             reliability: 6,
             rating: 3.5,
             url: 'https://proxyaz.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=ProxyAZ&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=ProxyAZ&font=montserrat',
+            advantage: 'Бюджетные IPv6 прокси с различными гео и мгновенной автоматической выдачей — доступная стартовая точка для фарма.',
+            keyMetrics: [{label: 'Гео', value: '15+'}, {label: 'Тип', value: 'IPv6'}, {label: 'От', value: '$0.5'}],
+            trial: '',
+            competitors: [16, 19]
         },
         {
             id: 16,
@@ -2457,7 +2701,11 @@
             reliability: 10,
             rating: 4.7,
             url: 'https://brightdata.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Bright+Data&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Bright+Data&font=montserrat',
+            advantage: 'Крупнейшая в мире прокси-сеть из 72M+ IP-адресов с геотаргетингом до уровня города и всеми типами прокси в одном месте.',
+            keyMetrics: [{label: 'IP-адресов', value: '72M+'}, {label: 'Типов прокси', value: '4'}, {label: 'Стран', value: '195+'}],
+            trial: 'Бесплатный триал',
+            competitors: [17, 18]
         },
         {
             id: 17,
@@ -2490,7 +2738,11 @@
             reliability: 8,
             rating: 4.4,
             url: 'https://smartproxy.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Smartproxy&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Smartproxy&font=montserrat',
+            advantage: 'Оптимальное соотношение цены и качества среди резидентных прокси — 40M+ IP с удобным Chrome-расширением для быстрого старта.',
+            keyMetrics: [{label: 'IP-адресов', value: '40M+'}, {label: 'Резидент от', value: '$8.50/ГБ'}, {label: 'Возврат', value: '3 дня'}],
+            trial: '',
+            competitors: [16, 18]
         },
         {
             id: 18,
@@ -2522,7 +2774,11 @@
             reliability: 8,
             rating: 4.2,
             url: 'https://soax.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=SOAX&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=SOAX&font=montserrat',
+            advantage: 'Премиальные мобильные прокси через WiFi и сотовые сети (3G/4G/5G) из 195+ стран обеспечивают максимальное доверие со стороны платформ.',
+            keyMetrics: [{label: 'Стран', value: '195+'}, {label: 'Тип', value: 'Резидент+Мобайл'}, {label: 'От', value: '$99/мес'}],
+            trial: '',
+            competitors: [16, 17]
         },
         {
             id: 19,
@@ -2555,7 +2811,11 @@
             reliability: 7,
             rating: 3.9,
             url: 'https://proxy-seller.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Proxy-Seller&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Proxy-Seller&font=montserrat',
+            advantage: 'Выделенные (не shared) IPv4/IPv6 прокси с чистыми IP-адресами и мгновенной автоматической выдачей после оплаты.',
+            keyMetrics: [{label: 'Тип', value: 'Индивидуальные'}, {label: 'IPv4 от', value: '$1.50/мес'}, {label: 'IPv6 от', value: '$0.15/мес'}],
+            trial: '',
+            competitors: [15, 17]
         },
 
         // ═══ ФИНАНСЫ И ПЛАТЕЖИ ═══
@@ -2591,7 +2851,11 @@
             reliability: 8,
             rating: 4.3,
             url: 'https://capitalist.net/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Capitalist&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Capitalist&font=montserrat',
+            advantage: 'Мультивалютный электронный кошелёк с поддержкой крипто, который принимается большинством CPA-сетей и сервисов для арбитража.',
+            keyMetrics: [{label: 'Валют', value: '10+'}, {label: 'Пополнение', value: '0-3%'}, {label: 'Вывод', value: '1-5%'}],
+            trial: 'Бесплатно',
+            competitors: [22, 25]
         },
         {
             id: 21,
@@ -2625,7 +2889,11 @@
             reliability: 8,
             rating: 4.4,
             url: 'https://pst.net/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=PST.NET&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=PST.NET&font=montserrat',
+            advantage: 'Постоянно обновляемый пул BIN-ов и мгновенный выпуск виртуальных карт для оплаты рекламы — без верификации личности.',
+            keyMetrics: [{label: 'BIN-ов', value: '50+'}, {label: 'Комиссия', value: 'от 2%'}, {label: 'Мин. депозит', value: '$50'}],
+            trial: '',
+            competitors: [20, 22]
         },
         {
             id: 22,
@@ -2658,7 +2926,11 @@
             reliability: 8,
             rating: 3.9,
             url: 'https://paxum.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Paxum&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Paxum&font=montserrat',
+            advantage: 'Международная платёжная система с мультивалютными счетами и банковскими переводами, популярная в вертикалях gambling и dating.',
+            keyMetrics: [{label: 'Перевод', value: '$0.25'}, {label: 'Банк. вывод', value: '$5-15'}, {label: 'Валют', value: '10+'}],
+            trial: 'Бесплатно',
+            competitors: [20, 21]
         },
         {
             id: 23,
@@ -2691,7 +2963,11 @@
             reliability: 9,
             rating: 4.5,
             url: 'https://trustwallet.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Trust+Wallet&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Trust+Wallet&font=montserrat',
+            advantage: 'Поддержка 70+ блокчейнов с встроенным DApp-браузером и полным контролем — приватные ключи хранятся только на устройстве.',
+            keyMetrics: [{label: 'Блокчейнов', value: '70+'}, {label: 'Цена', value: 'Бесплатно'}, {label: 'DApp-браузер', value: 'Да'}],
+            trial: 'Бесплатно',
+            competitors: [24, 25]
         },
         {
             id: 24,
@@ -2723,7 +2999,11 @@
             reliability: 9,
             rating: 4.6,
             url: 'https://www.bestchange.ru/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=BestChange&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=BestChange&font=montserrat',
+            advantage: 'Агрегатор сотен обменников с рейтингами и отзывами — лучший курс обмена всегда под рукой в реальном времени.',
+            keyMetrics: [{label: 'Обменников', value: '400+'}, {label: 'Направлений', value: '1000+'}, {label: 'Цена', value: 'Бесплатно'}],
+            trial: 'Бесплатно',
+            competitors: [23, 25]
         },
         {
             id: 25,
@@ -2757,7 +3037,11 @@
             reliability: 9,
             rating: 4.5,
             url: 'https://metamask.io/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=MetaMask&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=MetaMask&font=montserrat',
+            advantage: 'Стандарт Web3-мира с поддержкой всех EVM-совместимых сетей и интеграцией с тысячами децентрализованных приложений.',
+            keyMetrics: [{label: 'EVM-сетей', value: 'Все'}, {label: 'DApps', value: '1000+'}, {label: 'Цена', value: 'Бесплатно'}],
+            trial: 'Бесплатно',
+            competitors: [23, 24]
         },
 
         // ═══ VPN-РАСШИРЕНИЯ ═══
@@ -2781,7 +3065,11 @@
             reliability: 5,
             rating: 3.4,
             url: 'https://chrome.google.com/webstore/detail/delta-free-vpn/lpejglcfpkpbjhmnnmpmmlpblkcmdgmi',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Delta+VPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Delta+VPN&font=montserrat',
+            advantage: 'Полностью бесплатное VPN-расширение без регистрации — быстрое подключение к серверам в одно нажатие.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Серверов', value: '50+'}, {label: 'Установка', value: '1 клик'}],
+            trial: 'Бесплатно',
+            competitors: [27, 31]
         },
         {
             id: 27,
@@ -2803,7 +3091,11 @@
             reliability: 6,
             rating: 3.8,
             url: 'https://chrome.google.com/webstore/detail/itop-vpn-best-free-vpn-ch/imikkmafgbjjghjeelijedabggogfdgo',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=iTop+VPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=iTop+VPN&font=montserrat',
+            advantage: 'Один из лучших бесплатных VPN — десктопная версия в комплекте и широкий набор серверов для стабильного соединения.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Серверов', value: '100+'}, {label: 'Платформ', value: '5'}],
+            trial: 'Бесплатная версия',
+            competitors: [26, 32]
         },
         {
             id: 28,
@@ -2820,7 +3112,11 @@
             reliability: 5,
             rating: 3.3,
             url: 'https://chrome.google.com/webstore/detail/brisk-vpn/ciifcakemmcbbdpmljdohdmbodagmela',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Brisk+VPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Brisk+VPN&font=montserrat',
+            advantage: 'Минималистичный VPN с одной кнопкой подключения — ничего лишнего, максимальная простота использования.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Интерфейс', value: '1 кнопка'}, {label: 'Установка', value: '1 клик'}],
+            trial: 'Бесплатно',
+            competitors: [26, 29]
         },
         {
             id: 29,
@@ -2837,7 +3133,11 @@
             reliability: 5,
             rating: 3.5,
             url: 'https://chrome.google.com/webstore/detail/hub-vpn-free-vpn-proxy/lneaocagcijjdpkcabeanfpdbmapcjjg',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Hub+VPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Hub+VPN&font=montserrat',
+            advantage: 'Безлимитный VPN-трафик без регистрации и подписок — установка и мгновенное использование без ограничений.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Трафик', value: 'Безлимит'}, {label: 'Регистрация', value: 'Нет'}],
+            trial: 'Бесплатно',
+            competitors: [28, 30]
         },
         {
             id: 30,
@@ -2854,7 +3154,11 @@
             reliability: 5,
             rating: 3.4,
             url: 'https://chrome.google.com/webstore/detail/easyvpn-the-secured-conne/fpaacjbgplkmlcpmdljdohdmbodagmela',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=EasyVPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=EasyVPN&font=montserrat',
+            advantage: 'Автоматический выбор оптимального сервера — максимальная простота без необходимости разбираться в настройках.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Авто-сервер', value: 'Да'}, {label: 'Установка', value: '1 клик'}],
+            trial: 'Бесплатно',
+            competitors: [29, 31]
         },
         {
             id: 31,
@@ -2871,7 +3175,11 @@
             reliability: 5,
             rating: 3.5,
             url: 'https://chrome.google.com/webstore/detail/fast-vpn-chrome-extension/nhiphjnpfaoagnfffcihodojonieglkk',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Fast+VPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Fast+VPN&font=montserrat',
+            advantage: 'Оптимизированные серверы с минимальной задержкой — акцент на скорости соединения при смене гео.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Задержка', value: 'Минимальная'}, {label: 'Установка', value: '1 клик'}],
+            trial: 'Бесплатно',
+            competitors: [26, 30]
         },
         {
             id: 32,
@@ -2888,7 +3196,11 @@
             reliability: 7,
             rating: 3.9,
             url: 'https://chrome.google.com/webstore/detail/ultrasurf-security-privac/mjnbclmflcpookeapghfhapeffmpodij',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=UltraSurf&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=UltraSurf&font=montserrat',
+            advantage: 'Один из старейших VPN-инструментов (с 2002 года) — проверен временем и миллионами пользователей по всему миру.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'На рынке', value: 'с 2002'}, {label: 'Платформ', value: '2'}],
+            trial: 'Бесплатно',
+            competitors: [26, 27]
         },
         {
             id: 33,
@@ -2905,7 +3217,11 @@
             reliability: 4,
             rating: 3.2,
             url: 'https://chrome.google.com/webstore/detail/1clickvpn-free-vpn-for-ch/fcfhplploccackoneaefokcmbjfbkenj',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=1ClickVPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=1ClickVPN&font=montserrat',
+            advantage: 'Ультра-простое подключение в одно нажатие с автоматическим выбором сервера — без регистрации и настроек.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Подключение', value: '1 клик'}, {label: 'Регистрация', value: 'Нет'}],
+            trial: 'Бесплатно',
+            competitors: [28, 34]
         },
         {
             id: 34,
@@ -2922,7 +3238,11 @@
             reliability: 5,
             rating: 3.3,
             url: 'https://chrome.google.com/webstore/detail/just-vpn/apmomfapnjopaiiidbockbmbkklcfgni',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Just+VPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Just+VPN&font=montserrat',
+            advantage: 'Безлимитный трафик и стабильное соединение без ограничений — надёжный бесплатный VPN для повседневного использования.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Трафик', value: 'Безлимит'}, {label: 'Стран', value: '10+'}],
+            trial: 'Бесплатно',
+            competitors: [29, 35]
         },
         {
             id: 35,
@@ -2939,7 +3259,11 @@
             reliability: 5,
             rating: 3.4,
             url: 'https://chrome.google.com/webstore/detail/infinity-vpn-free-vpn-for/ookhpbbhfhhcfaodkkogagogakcfkfie',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Infinity+VPN&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/2E39F7?text=Infinity+VPN&font=montserrat',
+            advantage: 'Широкий выбор серверов в популярных локациях (США, Великобритания, Германия) — удобно для тестирования рекламы в разных гео.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Стран', value: '15+'}, {label: 'Установка', value: '1 клик'}],
+            trial: 'Бесплатно',
+            competitors: [26, 34]
         },
 
         // ═══ ГЕНЕРАТОРЫ ═══
@@ -2963,7 +3287,11 @@
             reliability: 7,
             rating: 3.8,
             url: 'https://diasp.pro/docgen',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Diasp+DocGen&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Diasp+DocGen&font=montserrat',
+            advantage: 'Специализация именно на ЗРД (запрос рекламных документов) для Facebook — шаблоны заточены под прохождение модерации.',
+            keyMetrics: [{label: 'Типов документов', value: '10+'}, {label: 'Гео', value: '20+'}, {label: 'Генерация', value: '~1 мин'}],
+            trial: '',
+            competitors: [37, 38]
         },
         {
             id: 37,
@@ -2985,7 +3313,11 @@
             reliability: 8,
             rating: 4.0,
             url: 'https://docgen.zorbasmedia.ru/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=ZorbasMedia+DocGen&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=ZorbasMedia+DocGen&font=montserrat',
+            advantage: 'Проверенные шаблоны от крупнейшего арбитражного медиа ZorbasMedia с регулярными обновлениями под актуальные требования.',
+            keyMetrics: [{label: 'Шаблонов', value: '15+'}, {label: 'Обновления', value: 'Регулярные'}, {label: 'Репутация', value: 'Высокая'}],
+            trial: '',
+            competitors: [36, 38]
         },
         {
             id: 38,
@@ -3002,7 +3334,11 @@
             reliability: 7,
             rating: 3.8,
             url: 'https://docgen.nppr.team/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=NPPR+DocGen&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=NPPR+DocGen&font=montserrat',
+            advantage: 'Удобный интерфейс и быстрая генерация документов различных типов от специализированной команды NPPR.',
+            keyMetrics: [{label: 'Типов', value: '10+'}, {label: 'Гео', value: '15+'}, {label: 'Скорость', value: '~1 мин'}],
+            trial: '',
+            competitors: [36, 37]
         },
         {
             id: 39,
@@ -3019,7 +3355,11 @@
             reliability: 6,
             rating: 3.5,
             url: 'https://idcards.pw/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=IDCards&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=IDCards&font=montserrat',
+            advantage: 'Широчайший выбор шаблонов ID-карт и документов из десятков стран мира с удобным онлайн-редактором.',
+            keyMetrics: [{label: 'Стран', value: '50+'}, {label: 'Типов ID', value: '20+'}, {label: 'От', value: '$5'}],
+            trial: '',
+            competitors: [40, 41]
         },
         {
             id: 40,
@@ -3041,7 +3381,11 @@
             reliability: 7,
             rating: 3.8,
             url: 'https://www.bestrandoms.com/random-address',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=BestRandoms&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=BestRandoms&font=montserrat',
+            advantage: 'Полностью бесплатный генератор реальных адресов из десятков стран мира — без регистрации и ограничений.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Стран', value: '30+'}, {label: 'Типов данных', value: '10+'}],
+            trial: 'Бесплатно',
+            competitors: [39, 41]
         },
         {
             id: 41,
@@ -3063,7 +3407,11 @@
             reliability: 7,
             rating: 4.0,
             url: 'https://fake-it.ws/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Fake-it.ws&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Fake-it.ws&font=montserrat',
+            advantage: 'Комплексная генерация полных профилей (имена, адреса, карты, IBAN) на одной странице — удобно для любого гео.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Стран', value: '40+'}, {label: 'Полей в профиле', value: '15+'}],
+            trial: 'Бесплатно',
+            competitors: [39, 40]
         },
 
         // ═══ АККАУНТЫ И МАГАЗИНЫ ═══
@@ -3098,7 +3446,11 @@
             reliability: 7,
             rating: 4.1,
             url: 'https://royal-accs.store/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Royal-Accs&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Royal-Accs&font=montserrat',
+            advantage: 'Большой ассортимент аккаунтов с автоматической выдачей и бесплатные инструменты (чекер, обработчик строк) прямо на сайте.',
+            keyMetrics: [{label: 'Платформ', value: '10+'}, {label: 'Типов аккаунтов', value: '20+'}, {label: 'Выдача', value: 'Авто'}],
+            trial: '',
+            competitors: [43, 44]
         },
         {
             id: 43,
@@ -3130,7 +3482,11 @@
             reliability: 7,
             rating: 4.0,
             url: 'https://accsmarket.com/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=AccsMarket&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=AccsMarket&font=montserrat',
+            advantage: 'Крупнейший маркетплейс аккаунтов с рейтингом продавцов и системой гарантий — десятки платформ в одном месте.',
+            keyMetrics: [{label: 'Платформ', value: '30+'}, {label: 'Продавцов', value: '100+'}, {label: 'Гарантия', value: 'Да'}],
+            trial: '',
+            competitors: [42, 44]
         },
         {
             id: 44,
@@ -3162,7 +3518,11 @@
             reliability: 8,
             rating: 4.2,
             url: 'https://fb-killa.pro/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=FB-Killa&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=FB-Killa&font=montserrat',
+            advantage: 'Узкая специализация на Facebook-аккаунтах (фарм, BM, King, Agency) с ручной проверкой качества перед продажей.',
+            keyMetrics: [{label: 'Типов FB-акков', value: '5+'}, {label: 'Проверка', value: 'Ручная'}, {label: 'Замена', value: 'Да'}],
+            trial: '',
+            competitors: [42, 43]
         },
         {
             id: 45,
@@ -3184,7 +3544,11 @@
             reliability: 7,
             rating: 3.9,
             url: 'https://royal-accs.store/page/cheker-akkauntov',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Accs+Checker&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=Accs+Checker&font=montserrat',
+            advantage: 'Бесплатная массовая проверка валидности аккаунтов — загрузка списком и мгновенный результат.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Проверка', value: 'Пакетная'}, {label: 'Скорость', value: '~5 сек'}],
+            trial: 'Бесплатно',
+            competitors: [42, 46]
         },
         {
             id: 46,
@@ -3206,7 +3570,11 @@
             reliability: 7,
             rating: 3.8,
             url: 'https://royal-accs.store/page/instrumenty-dlya-obrabotki-strok',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=String+Tools&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/C8E712?text=String+Tools&font=montserrat',
+            advantage: 'Полный набор бесплатных инструментов для массовой обработки строк — парсинг, фильтрация, удаление дубликатов.',
+            keyMetrics: [{label: 'Цена', value: 'Бесплатно'}, {label: 'Инструментов', value: '10+'}, {label: 'Установка', value: 'Не нужна'}],
+            trial: 'Бесплатно',
+            competitors: [42, 45]
         },
 
         // ═══ УНИКАЛИЗАЦИЯ ═══
@@ -3230,7 +3598,11 @@
             reliability: 7,
             rating: 3.9,
             url: 'https://t.me/clicklead_media_bot',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Clicklead+Bot&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=Clicklead+Bot&font=montserrat',
+            advantage: 'Уникализация фото и видео прямо в Telegram — без установки дополнительного софта и сложных настроек.',
+            keyMetrics: [{label: 'Формат', value: 'Telegram-бот'}, {label: 'Медиа', value: 'Фото + Видео'}, {label: 'Скорость', value: '~30 сек'}],
+            trial: '',
+            competitors: [48]
         },
         {
             id: 48,
@@ -3252,7 +3624,11 @@
             reliability: 7,
             rating: 3.8,
             url: 'https://t.me/leadgenerals_bot',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=LeadGenerals+Bot&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F5DA0F?text=LeadGenerals+Bot&font=montserrat',
+            advantage: 'Различные алгоритмы уникализации медиа-контента от известной команды LeadGenerals — быстро и удобно через Telegram.',
+            keyMetrics: [{label: 'Формат', value: 'Telegram-бот'}, {label: 'Алгоритмов', value: '5+'}, {label: 'Медиа', value: 'Фото + Видео'}],
+            trial: '',
+            competitors: [47]
         },
 
         // ═══ PWA И ПУШ-УВЕДОМЛЕНИЯ ═══
@@ -3288,7 +3664,11 @@
             reliability: 8,
             rating: 4.3,
             url: 'https://pwa.market/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=PWA.Market&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=PWA.Market&font=montserrat',
+            advantage: 'Создание полноценного PWA-приложения за 15 минут без навыков разработки — с push-уведомлениями и встроенной аналитикой.',
+            keyMetrics: [{label: 'Создание', value: '~15 мин'}, {label: 'Push', value: 'Да'}, {label: 'От', value: '$99/мес'}],
+            trial: '',
+            competitors: [50]
         },
         {
             id: 50,
@@ -3322,7 +3702,11 @@
             reliability: 8,
             rating: 4.2,
             url: 'https://push.house/',
-            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Push.House&font=montserrat'
+            screenshot: 'https://placehold.co/800x450/1B1B1B/F6ADE5?text=Push.House&font=montserrat',
+            advantage: 'Рекламная сеть с миллиардами показов ежедневно из 180+ стран и собственной системой сбора push-подписчиков.',
+            keyMetrics: [{label: 'Стран', value: '180+'}, {label: 'Мин. депозит', value: '$50'}, {label: 'CPC от', value: '$0.001'}],
+            trial: '',
+            competitors: [49]
         }
     ];
 
@@ -3460,7 +3844,10 @@
 
             services.forEach((s, idx) => {
                 const color = getCategoryColor(s.category);
-                const isFree = s.pricing.toLowerCase().includes('бесплатн') || s.pricing.toLowerCase().includes('free');
+                const metricsHtml = (s.keyMetrics || []).map(m =>
+                    `<span class="card-metric"><i class="fas fa-circle" style="font-size:4px;opacity:0.3"></i> ${m.value} ${m.label.toLowerCase()}</span>`
+                ).join('');
+                const trialHtml = s.trial ? `<span class="card-trial"><i class="fas fa-check-circle"></i> ${s.trial}</span>` : '';
                 html += `
                     <div class="service-card animate-card" data-color="${color}" 
                          onclick="openModal(${s.id})" style="animation-delay: ${idx * 0.05}s">
@@ -3476,13 +3863,10 @@
                                 <div class="card-category-tag" style="color: ${getCategoryColorVar(s.category)}">${getCategoryName(s.category)}</div>
                             </div>
                         </div>
-                        <div class="card-description">${s.shortDesc}</div>
+                        <div class="card-advantage">${s.advantage || s.shortDesc}</div>
+                        <div class="card-metrics">${metricsHtml}</div>
                         <div class="card-footer">
-                            <div class="card-rating">
-                                ${renderStars(s.rating)}
-                                <span class="card-rating-value">${s.rating}</span>
-                            </div>
-                            <span class="card-price-tag ${isFree ? 'free' : 'paid'}">${isFree ? 'Free' : 'Платный'}</span>
+                            ${trialHtml}
                         </div>
                     </div>
                 `;
@@ -3492,6 +3876,49 @@
         });
 
         container.innerHTML = html;
+    }
+
+    function buildComparisonTable(service) {
+        if (!service.competitors || service.competitors.length === 0) return '';
+        const rivals = service.competitors.map(id => SERVICES.find(sv => sv.id === id)).filter(Boolean);
+        if (rivals.length === 0) return '';
+        const all = [service, ...rivals];
+        const metrics = (service.keyMetrics || []).map(m => m.label);
+        if (metrics.length === 0) return '';
+
+        const headerCells = all.map((sv, i) => {
+            const cls = i === 0 ? ' class="compare-current"' : '';
+            return `<th${cls}><img src="https://www.google.com/s2/favicons?domain=${sv.domain}&sz=64" alt="" style="width:18px;height:18px;border-radius:4px;vertical-align:middle;margin-right:5px">${sv.name}</th>`;
+        }).join('');
+
+        let rows = '';
+        metrics.forEach(metric => {
+            const cells = all.map((sv, i) => {
+                const m = (sv.keyMetrics || []).find(km => km.label === metric);
+                const val = m ? m.value : '—';
+                const cls = i === 0 ? ' class="compare-current-cell"' : '';
+                return `<td${cls}>${val}</td>`;
+            }).join('');
+            rows += `<tr><td class="compare-param">${metric}</td>${cells}</tr>`;
+        });
+
+        const trialRow = all.map((sv, i) => {
+            const cls = i === 0 ? ' class="compare-current-cell"' : '';
+            const val = sv.trial || '—';
+            return `<td${cls}>${val}</td>`;
+        }).join('');
+        rows += `<tr><td class="compare-param">Триал</td>${trialRow}</tr>`;
+
+        return `
+            <div class="modal-section modal-compare-section">
+                <h3 class="modal-section-title"><i class="fas fa-scale-balanced" style="color:${getCategoryColorVar(service.category)}"></i> Сравнение в категории</h3>
+                <div class="compare-table-wrap">
+                    <table class="compare-table">
+                        <thead><tr><th class="compare-param-head"></th>${headerCells}</tr></thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+            </div>`;
     }
 
     function openModal(serviceId) {
@@ -3536,26 +3963,21 @@
                 </div>
             </div>
 
+            ${s.advantage ? `
+            <div class="modal-advantage">
+                <div class="modal-advantage-icon" style="background:${colorVar}20"><i class="fas fa-heart" style="color:${colorVar}"></i></div>
+                <div class="modal-advantage-text">${s.advantage}</div>
+            </div>` : ''}
+
             <div class="modal-quick-info">
+                ${(s.keyMetrics || []).map(m => `
                 <div class="quick-info-item">
-                    <i class="fas fa-star" style="color:${colorVar}"></i>
-                    <span class="qi-label">Рейтинг</span>
-                    <span class="qi-value">${s.rating}/5</span>
-                </div>
+                    <span class="qi-value">${m.value}</span>
+                    <span class="qi-label">${m.label}</span>
+                </div>`).join('')}
                 <div class="quick-info-item">
-                    <i class="fas fa-shield-halved" style="color:${reliabilityColor}"></i>
-                    <span class="qi-label">Надёжность</span>
-                    <span class="qi-value">${s.reliability}/10</span>
-                </div>
-                <div class="quick-info-item">
-                    <i class="fas fa-tag" style="color:${colorVar}"></i>
-                    <span class="qi-label">Стоимость</span>
-                    <span class="qi-value">${pricingShort}</span>
-                </div>
-                <div class="quick-info-item">
-                    <i class="fas fa-laptop" style="color:${colorVar}"></i>
-                    <span class="qi-label">Платформы</span>
-                    <span class="qi-value">${s.platforms.join(', ')}</span>
+                    <span class="qi-value">${s.platforms.length}</span>
+                    <span class="qi-label">Платформ</span>
                 </div>
             </div>
 
@@ -3570,6 +3992,8 @@
                         Попробовать бесплатно <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
+
+                ${buildComparisonTable(s)}
 
                 <div class="modal-screenshot">
                     <img src="${s.screenshot}" alt="Интерфейс ${s.name}" 
@@ -3640,6 +4064,7 @@
 
     function filterCategory(catId) {
         activeCategory = catId;
+        document.querySelectorAll('.task-pill').forEach(p => p.classList.remove('active'));
         renderCategoryNav();
         renderServices();
 
@@ -3679,6 +4104,47 @@
         const header = document.getElementById('header');
         header.classList.toggle('scrolled', window.scrollY > 20);
     });
+
+    // ────────────────────────────────
+    // TASK FILTER (подборки)
+    // ────────────────────────────────
+    const TASK_CATEGORIES = {
+        'creatives': ['unique', 'spy'],
+        'analytics': ['trackers'],
+        'payments': ['finance'],
+        'fast-anti': ['antidetect'],
+        'reliable-proxy': ['proxy'],
+        'farm': ['accounts', 'generators']
+    };
+
+    function filterByTask(taskId) {
+        const cats = TASK_CATEGORIES[taskId];
+        if (!cats) return;
+        document.querySelectorAll('.task-pill').forEach(p => p.classList.remove('active'));
+        document.querySelector(`.task-pill[onclick*="${taskId}"]`).classList.add('active');
+        activeCategory = 'all';
+        renderCategoryNav();
+        const container = document.getElementById('mainContent');
+        const filtered = SERVICES.filter(s => cats.includes(s.category));
+        let html = '';
+        cats.forEach(catId => {
+            const cat = CATEGORIES.find(c => c.id === catId);
+            const services = filtered.filter(s => s.category === catId);
+            if (!services.length || !cat) return;
+            html += `<section class="category-section" id="cat-${catId}"><div class="category-header"><div class="category-icon" style="background: ${cat.colorVar}"><i class="${cat.icon}" style="color: #000"></i></div><h2 class="category-title">${cat.name}</h2><span class="category-count">${services.length} ${services.length === 1 ? 'сервис' : services.length < 5 ? 'сервиса' : 'сервисов'}</span></div><div class="services-grid">`;
+            services.forEach((s, idx) => {
+                const color = getCategoryColor(s.category);
+                const metricsHtml = (s.keyMetrics || []).map(m =>
+                    `<span class="card-metric"><i class="fas fa-circle" style="font-size:4px;opacity:0.3"></i> ${m.value} ${m.label.toLowerCase()}</span>`
+                ).join('');
+                const trialHtml = s.trial ? `<span class="card-trial"><i class="fas fa-check-circle"></i> ${s.trial}</span>` : '';
+                html += `<div class="service-card animate-card" data-color="${color}" onclick="openModal(${s.id})" style="animation-delay: ${idx * 0.05}s"><div class="card-top"><div class="card-logo" style="background: ${getCategoryColorVar(s.category)}"><img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" alt="${s.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="card-logo-fallback" style="display:none">${s.name.substring(0, 2).toUpperCase()}</div></div><div class="card-info"><div class="card-name">${s.name}</div><div class="card-category-tag" style="color: ${getCategoryColorVar(s.category)}">${getCategoryName(s.category)}</div></div></div><div class="card-advantage">${s.advantage || s.shortDesc}</div><div class="card-metrics">${metricsHtml}</div><div class="card-footer">${trialHtml}</div></div>`;
+            });
+            html += `</div></section>`;
+        });
+        container.innerHTML = html;
+        window.scrollTo({ top: document.querySelector('.tasks-nav').getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+    }
 
     // ────────────────────────────────
     // INIT
