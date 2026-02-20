@@ -141,9 +141,13 @@
             margin-bottom: 6px;
         }
         .section-desc {
-            font-size: 13px;
-            color: var(--text-3);
+            font-size: 14px;
+            color: var(--text-2);
             margin-bottom: 24px;
+        }
+        .section-desc strong {
+            color: var(--yellow);
+            font-weight: 700;
         }
 
         /* ═══ RANK LIST ═══ */
@@ -211,12 +215,44 @@
             font-size: 14px;
         }
         .rank-hint {
-            font-size: 11px;
-            color: var(--text-3);
-            display: flex;
+            font-size: 13px;
+            color: var(--yellow);
+            display: inline-flex;
             align-items: center;
-            gap: 4px;
-            margin-bottom: 12px;
+            gap: 6px;
+            margin-bottom: 14px;
+            padding: 6px 14px;
+            background: rgba(245,218,15,0.08);
+            border: 1px solid rgba(245,218,15,0.15);
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        .rank-hint i {
+            animation: bounceUpDown 1.5s ease-in-out infinite;
+        }
+        @keyframes bounceUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        /* onboarding animation for the first rank list */
+        @keyframes nudgeItem {
+            0% { transform: translateX(0); }
+            20% { transform: translateX(8px); }
+            40% { transform: translateX(-4px); }
+            60% { transform: translateX(4px); }
+            80% { transform: translateX(-2px); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes swapHighlight {
+            0%, 100% { background: var(--surface-2); border-color: rgba(255,255,255,0.06); }
+            50% { background: rgba(245,218,15,0.06); border-color: rgba(245,218,15,0.2); }
+        }
+        .rank-list.demo-animate .rank-item:nth-child(3) {
+            animation: nudgeItem 0.6s ease 0.8s, swapHighlight 1.2s ease 0.5s;
+        }
+        .rank-list.demo-animate .rank-item:nth-child(1) {
+            animation: swapHighlight 1.2s ease 0.5s;
         }
 
         /* ═══ INPUT FIELDS ═══ */
@@ -404,8 +440,8 @@
 <div class="container">
     <header class="survey-header">
         <img src="secretroomlogo.svg" alt="Secret Room" class="survey-logo">
-        <h1>Что <em>важно</em> при выборе сервисов?</h1>
-        <p>Помогите нам сделать рейтинг ТОП-50 максимально полезным. Расставьте критерии по важности — от самого важного к менее важному.</p>
+        <h1>Привет! Помоги нам сделать <em>крутой сервис</em></h1>
+        <p>Отдел маркетинга разрабатывает инструмент, который реально пригодится в работе. Расставь критерии по важности — это поможет нам сделать всё правильно.</p>
         <div class="survey-time"><i class="fas fa-clock"></i> ~5 минут</div>
     </header>
 </div>
@@ -413,7 +449,7 @@
 <div class="progress-wrap">
     <div class="container">
         <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        <div class="progress-text" id="progressText">0 из 12 заполнено</div>
+        <div class="progress-text" id="progressText">0 из 10 заполнено</div>
     </div>
 </div>
 
@@ -436,15 +472,6 @@
         </div>
 
         <div class="field-group">
-            <div class="field-label">Формат работы</div>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="format" value="Соло"><span class="radio-dot"></span><span class="radio-label">Соло (сам на себя)</span></label>
-                <label class="radio-option"><input type="radio" name="format" value="Команда (байер)"><span class="radio-dot"></span><span class="radio-label">В команде как байер</span></label>
-                <label class="radio-option"><input type="radio" name="format" value="Тимлид / хед"><span class="radio-dot"></span><span class="radio-label">Тимлид / хед баинга</span></label>
-            </div>
-        </div>
-
-        <div class="field-group">
             <div class="field-label">Основные источники трафика</div>
             <div class="checkbox-group">
                 <label class="checkbox-option"><input type="checkbox" name="sources" value="Facebook"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Facebook / Meta</span></label>
@@ -460,9 +487,9 @@
     <div class="survey-section" data-section="antidetect">
         <div class="section-num"><i class="fas fa-mask"></i> Категория 1 из 8</div>
         <div class="section-title">Антидетект-браузеры</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх, менее важный вниз</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
-        <ul class="rank-list" data-category="antidetect">
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх, менее важный вниз</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
+        <ul class="rank-list demo-animate" data-category="antidetect">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Скорость работы и отзывчивость интерфейса</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Качество подмены отпечатков (фингерпринтов)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Количество профилей в тарифе</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -481,8 +508,8 @@
     <div class="survey-section" data-section="spy">
         <div class="section-num"><i class="fas fa-eye"></i> Категория 2 из 8</div>
         <div class="section-title">Spy-сервисы</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
         <ul class="rank-list" data-category="spy">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Объём базы креативов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Свежесть данных (обновляемость)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -502,8 +529,8 @@
     <div class="survey-section" data-section="trackers">
         <div class="section-num"><i class="fas fa-route"></i> Категория 3 из 8</div>
         <div class="section-title">Трекеры и клоакинг</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
         <ul class="rank-list" data-category="trackers">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Точность статистики (без расхождений с FB/TT)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Скорость обработки данных и редиректов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -523,8 +550,8 @@
     <div class="survey-section" data-section="proxy">
         <div class="section-num"><i class="fas fa-server"></i> Категория 4 из 8</div>
         <div class="section-title">Прокси</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
         <ul class="rank-list" data-category="proxy">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Скорость соединения</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Стабильность и аптайм</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -544,8 +571,8 @@
     <div class="survey-section" data-section="finance">
         <div class="section-num"><i class="fas fa-wallet"></i> Категория 5 из 8</div>
         <div class="section-title">Финансы и платежи</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
         <ul class="rank-list" data-category="finance">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Количество активных BIN-ов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Частота обновления BIN-ов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -565,8 +592,8 @@
     <div class="survey-section" data-section="accounts">
         <div class="section-num"><i class="fas fa-store"></i> Категория 6 из 8</div>
         <div class="section-title">Аккаунты и магазины</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
         <ul class="rank-list" data-category="accounts">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Качество фарма (живучесть аккаунтов)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Цена за аккаунт</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -586,8 +613,8 @@
     <div class="survey-section" data-section="creatives">
         <div class="section-num"><i class="fas fa-wand-magic-sparkles"></i> Категория 7 из 8</div>
         <div class="section-title">Креативы и уникализация</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
         <ul class="rank-list" data-category="creatives">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Качество генерации (реалистичность)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Скорость обработки</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -607,8 +634,8 @@
     <div class="survey-section" data-section="pwa">
         <div class="section-num"><i class="fas fa-mobile-screen"></i> Категория 8 из 8</div>
         <div class="section-title">PWA-конструкторы и пуши</div>
-        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
-        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <div class="section-desc"><strong>Перетащи критерии</strong> — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Зажми и перетащи</div>
         <ul class="rank-list" data-category="pwa">
             <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Конверсия инсталлов (качество PWA)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
             <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Количество готовых шаблонов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
@@ -656,14 +683,14 @@
     <!-- ═══ SUBMIT ═══ -->
     <div class="submit-section">
         <button class="submit-btn" id="submitBtn" onclick="submitSurvey()">
-            Отправить ответы <i class="fas fa-paper-plane"></i>
+            Отправить <i class="fas fa-paper-plane"></i>
         </button>
-        <div class="submit-note">Результаты скопируются в буфер обмена — вставьте в любой чат</div>
+        <div class="submit-note">Ответы отправятся анонимно в отдел маркетинга</div>
     </div>
 
 </div>
 
-<div class="toast" id="toast"><i class="fas fa-check-circle"></i> Ответы скопированы!</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span>Ответы отправлены!</span></div>
 
 <script>
 (function() {
@@ -781,6 +808,23 @@
 
     updateProgress();
 
+    // ═══ ONBOARDING ANIMATION ═══
+    const firstRankList = document.querySelector('.rank-list.demo-animate');
+    if (firstRankList) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    firstRankList.classList.add('demo-animate');
+                    setTimeout(() => {
+                        firstRankList.classList.remove('demo-animate');
+                    }, 2500);
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.3 });
+        observer.observe(firstRankList);
+    }
+
     // ═══ SUBMIT ═══
     window.submitSurvey = function() {
         let result = '📊 ОПРОС: КРИТЕРИИ ВЫБОРА СЕРВИСОВ\n';
@@ -788,12 +832,10 @@
 
         // Intro
         const exp = document.querySelector('input[name="experience"]:checked');
-        const fmt = document.querySelector('input[name="format"]:checked');
         const srcs = [...document.querySelectorAll('input[name="sources"]:checked')].map(c => c.value);
         
         result += '👤 О РЕСПОНДЕНТЕ\n';
         result += 'Опыт: ' + (exp ? exp.value : '—') + '\n';
-        result += 'Формат: ' + (fmt ? fmt.value : '—') + '\n';
         result += 'Трафик: ' + (srcs.length ? srcs.join(', ') : '—') + '\n\n';
 
         // Categories
@@ -836,22 +878,51 @@
             result += 'Комментарий: ' + fb.value.trim() + '\n';
         }
 
-        navigator.clipboard.writeText(result).then(() => {
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }).catch(() => {
-            const textarea = document.createElement('textarea');
-            textarea.value = result;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        });
+        // ── Send to Telegram (if configured) ──
+        // To enable: replace YOUR_BOT_TOKEN and YOUR_CHAT_ID
+        const TG_BOT_TOKEN = '';  // e.g. '7123456789:AAH...'
+        const TG_CHAT_ID   = '';  // e.g. '-1001234567890'
+
+        if (TG_BOT_TOKEN && TG_CHAT_ID) {
+            fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TG_CHAT_ID,
+                    text: result,
+                    parse_mode: ''
+                })
+            }).then(r => {
+                if (r.ok) showToast('Ответы отправлены!');
+                else showToast('Ответы скопированы в буфер');
+            }).catch(() => {
+                copyAndToast(result);
+            });
+        } else {
+            copyAndToast(result);
+        }
     };
+
+    function copyAndToast(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('Ответы скопированы!');
+        }).catch(() => {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('Ответы скопированы!');
+        });
+    }
+
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.querySelector('span').textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+    }
 })();
 </script>
 
