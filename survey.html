@@ -825,95 +825,70 @@
         observer.observe(firstRankList);
     }
 
+    // ═══ GOOGLE SHEETS URL ═══
+    // Вставь сюда URL из Google Apps Script (см. инструкцию)
+    const GOOGLE_SHEET_URL = '';
+
     // ═══ SUBMIT ═══
     window.submitSurvey = function() {
-        let result = '📊 ОПРОС: КРИТЕРИИ ВЫБОРА СЕРВИСОВ\n';
-        result += '═══════════════════════════════\n\n';
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
 
-        // Intro
+        const data = {};
+
+        data.timestamp = new Date().toLocaleString('ru-RU');
         const exp = document.querySelector('input[name="experience"]:checked');
-        const srcs = [...document.querySelectorAll('input[name="sources"]:checked')].map(c => c.value);
-        
-        result += '👤 О РЕСПОНДЕНТЕ\n';
-        result += 'Опыт: ' + (exp ? exp.value : '—') + '\n';
-        result += 'Трафик: ' + (srcs.length ? srcs.join(', ') : '—') + '\n\n';
-
-        // Categories
-        const catNames = {
-            antidetect: '🔒 Антидетект-браузеры',
-            spy: '👁 Spy-сервисы',
-            trackers: '📍 Трекеры и клоакинг',
-            proxy: '🌐 Прокси',
-            finance: '💳 Финансы и платежи',
-            accounts: '🏪 Аккаунты и магазины',
-            creatives: '🎨 Креативы и уникализация',
-            pwa: '📱 PWA-конструкторы'
-        };
+        data.experience = exp ? exp.value : '';
+        data.sources = [...document.querySelectorAll('input[name="sources"]:checked')].map(c => c.value).join(', ');
 
         document.querySelectorAll('.rank-list').forEach(list => {
             const cat = list.dataset.category;
-            result += catNames[cat] + '\n';
             list.querySelectorAll('.rank-item').forEach((item, i) => {
-                result += (i + 1) + '. ' + item.querySelector('.rank-text').textContent + '\n';
+                data[cat + '_' + (i + 1)] = item.querySelector('.rank-text').textContent;
             });
             const otherField = document.querySelector(`textarea[name="${cat}_other"]`);
             if (otherField && otherField.value.trim()) {
-                result += '💬 ' + otherField.value.trim() + '\n';
+                data[cat + '_other'] = otherField.value.trim();
             }
-            result += '\n';
         });
 
-        // General
-        result += '💡 ОБЩИЕ ВОПРОСЫ\n';
-        const disc = [...document.querySelectorAll('input[name="discovery"]:checked')].map(c => c.value);
-        result += 'Каналы поиска: ' + (disc.length ? disc.join(', ') : '—') + '\n';
-
+        data.discovery = [...document.querySelectorAll('input[name="discovery"]:checked')].map(c => c.value).join(', ');
         const dream = document.querySelector('textarea[name="dream_tool"]');
-        if (dream && dream.value.trim()) {
-            result += 'Инструмент мечты: ' + dream.value.trim() + '\n';
-        }
-
+        if (dream) data.dream_tool = dream.value.trim();
         const fb = document.querySelector('textarea[name="feedback"]');
-        if (fb && fb.value.trim()) {
-            result += 'Комментарий: ' + fb.value.trim() + '\n';
-        }
+        if (fb) data.feedback = fb.value.trim();
 
-        // ── Send to Telegram (if configured) ──
-        // To enable: replace YOUR_BOT_TOKEN and YOUR_CHAT_ID
-        const TG_BOT_TOKEN = '';  // e.g. '7123456789:AAH...'
-        const TG_CHAT_ID   = '';  // e.g. '-1001234567890'
-
-        if (TG_BOT_TOKEN && TG_CHAT_ID) {
-            fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+        if (GOOGLE_SHEET_URL) {
+            fetch(GOOGLE_SHEET_URL, {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: TG_CHAT_ID,
-                    text: result,
-                    parse_mode: ''
-                })
-            }).then(r => {
-                if (r.ok) showToast('Ответы отправлены!');
-                else showToast('Ответы скопированы в буфер');
+                body: JSON.stringify(data)
+            }).then(() => {
+                showToast('Спасибо! Ответы отправлены');
+                btn.innerHTML = '<i class="fas fa-check"></i> Отправлено';
             }).catch(() => {
-                copyAndToast(result);
+                fallbackCopy(data);
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить';
+                btn.disabled = false;
             });
         } else {
-            copyAndToast(result);
+            fallbackCopy(data);
+            btn.innerHTML = '<i class="fas fa-paper-plane"></i> Отправить';
+            btn.disabled = false;
         }
     };
 
-    function copyAndToast(text) {
+    function fallbackCopy(data) {
+        let text = '📊 ОТВЕТЫ НА ОПРОС\n\n';
+        for (const [k, v] of Object.entries(data)) {
+            if (v) text += k + ': ' + v + '\n';
+        }
         navigator.clipboard.writeText(text).then(() => {
-            showToast('Ответы скопированы!');
+            showToast('Ответы скопированы в буфер');
         }).catch(() => {
-            const ta = document.createElement('textarea');
-            ta.value = text;
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            showToast('Ответы скопированы!');
+            showToast('Ответы скопированы в буфер');
         });
     }
 
