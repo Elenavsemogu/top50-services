@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос: что важно при выборе сервисов | Secret Room</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0F0F12;
+            --surface: #18181D;
+            --surface-2: #1E1E24;
+            --surface-3: #26262D;
+            --border: rgba(255,255,255,0.06);
+            --border-focus: rgba(245,218,15,0.3);
+            --text: #F0F0F2;
+            --text-2: #A0A0AA;
+            --text-3: #6A6A74;
+            --yellow: #F5DA0F;
+            --green: #C8E712;
+            --blue: #5B5FF6;
+            --pink: #F6ADE5;
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ═══ HEADER ═══ */
+        .survey-header {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .survey-logo {
+            height: 28px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 32px;
+        }
+        .survey-header h1 {
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+        .survey-header h1 em {
+            font-style: normal;
+            color: var(--yellow);
+            font-weight: 600;
+        }
+        .survey-header p {
+            font-size: 15px;
+            color: var(--text-2);
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .survey-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--text-3);
+            margin-top: 20px;
+        }
+        .survey-time i { color: var(--yellow); }
+
+        /* ═══ PROGRESS ═══ */
+        .progress-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15,15,18,0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .progress-bar {
+            height: 3px;
+            background: var(--surface-3);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--yellow);
+            border-radius: 999px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+        .progress-text {
+            font-size: 11px;
+            color: var(--text-3);
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        /* ═══ SECTION: INTRO ═══ */
+        .survey-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--yellow);
+            margin-bottom: 12px;
+            padding: 4px 12px;
+            background: rgba(245,218,15,0.08);
+            border-radius: 999px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .section-desc {
+            font-size: 13px;
+            color: var(--text-3);
+            margin-bottom: 24px;
+        }
+
+        /* ═══ RANK LIST ═══ */
+        .rank-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+        .rank-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: grab;
+            user-select: none;
+            transition: all 0.15s ease;
+        }
+        .rank-item:active { cursor: grabbing; }
+        .rank-item.dragging {
+            opacity: 0.5;
+            transform: scale(0.98);
+        }
+        .rank-item.drag-over {
+            border-color: var(--yellow);
+            background: rgba(245,218,15,0.04);
+        }
+        .rank-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--surface-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-3);
+            flex-shrink: 0;
+            transition: all 0.15s ease;
+        }
+        .rank-item:nth-child(1) .rank-num {
+            background: rgba(245,218,15,0.15);
+            color: var(--yellow);
+        }
+        .rank-item:nth-child(2) .rank-num {
+            background: rgba(200,231,18,0.1);
+            color: var(--green);
+        }
+        .rank-item:nth-child(3) .rank-num {
+            background: rgba(91,95,246,0.1);
+            color: var(--blue);
+        }
+        .rank-text {
+            flex: 1;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .rank-grip {
+            color: var(--text-3);
+            font-size: 14px;
+        }
+        .rank-hint {
+            font-size: 11px;
+            color: var(--text-3);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        /* ═══ INPUT FIELDS ═══ */
+        .field-group {
+            margin-bottom: 20px;
+        }
+        .field-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .field-label .required {
+            color: #FF6B6B;
+        }
+        .text-input, .text-area {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+        .text-input:focus, .text-area:focus {
+            border-color: var(--border-focus);
+        }
+        .text-input::placeholder, .text-area::placeholder {
+            color: var(--text-3);
+        }
+        .text-area {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .radio-option:hover, .checkbox-option:hover {
+            border-color: rgba(255,255,255,0.1);
+            background: var(--surface-3);
+        }
+        .radio-option input, .checkbox-option input {
+            display: none;
+        }
+        .radio-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--text-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.15s ease;
+        }
+        .radio-dot::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--yellow);
+            transform: scale(0);
+            transition: transform 0.15s ease;
+        }
+        .radio-option input:checked ~ .radio-dot {
+            border-color: var(--yellow);
+        }
+        .radio-option input:checked ~ .radio-dot::after {
+            transform: scale(1);
+        }
+        .radio-option input:checked ~ .radio-label {
+            color: var(--text);
+        }
+        .check-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 6px;
+            border: 2px solid var(--text-3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.15s ease;
+        }
+        .check-box i {
+            font-size: 10px;
+            color: #000;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+        .checkbox-option input:checked ~ .check-box {
+            background: var(--yellow);
+            border-color: var(--yellow);
+        }
+        .checkbox-option input:checked ~ .check-box i {
+            opacity: 1;
+        }
+        .radio-label, .check-label {
+            font-size: 14px;
+            color: var(--text-2);
+            transition: color 0.15s ease;
+        }
+
+        /* ═══ SUBMIT ═══ */
+        .submit-section {
+            text-align: center;
+            padding: 40px 0 80px;
+        }
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: var(--yellow);
+            color: #000;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 800;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(245,218,15,0.2);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        .submit-note {
+            font-size: 12px;
+            color: var(--text-3);
+            margin-top: 12px;
+        }
+
+        /* ═══ TOAST ═══ */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            padding: 14px 28px;
+            background: var(--green);
+            color: #000;
+            font-weight: 700;
+            font-size: 14px;
+            border-radius: 999px;
+            z-index: 9999;
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ═══ RESPONSIVE ═══ */
+        @media (max-width: 600px) {
+            .survey-header h1 { font-size: 24px; }
+            .survey-section { padding: 24px 20px; }
+            .section-title { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="survey-header">
+        <img src="secretroomlogo.svg" alt="Secret Room" class="survey-logo">
+        <h1>Что <em>важно</em> при выборе сервисов?</h1>
+        <p>Помогите нам сделать рейтинг ТОП-50 максимально полезным. Расставьте критерии по важности — от самого важного к менее важному.</p>
+        <div class="survey-time"><i class="fas fa-clock"></i> ~5 минут</div>
+    </header>
+</div>
+
+<div class="progress-wrap">
+    <div class="container">
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-text" id="progressText">0 из 12 заполнено</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ═══ INTRO ═══ -->
+    <div class="survey-section" data-section="intro">
+        <div class="section-num">Для начала</div>
+        <div class="section-title">Немного о вас</div>
+        <div class="section-desc">Ответы анонимны — нужны для понимания контекста</div>
+
+        <div class="field-group">
+            <div class="field-label">Опыт в медиабаинге</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="experience" value="< 1 года"><span class="radio-dot"></span><span class="radio-label">Меньше 1 года</span></label>
+                <label class="radio-option"><input type="radio" name="experience" value="1-3 года"><span class="radio-dot"></span><span class="radio-label">1–3 года</span></label>
+                <label class="radio-option"><input type="radio" name="experience" value="3-5 лет"><span class="radio-dot"></span><span class="radio-label">3–5 лет</span></label>
+                <label class="radio-option"><input type="radio" name="experience" value="5+ лет"><span class="radio-dot"></span><span class="radio-label">5+ лет</span></label>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Формат работы</div>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="format" value="Соло"><span class="radio-dot"></span><span class="radio-label">Соло (сам на себя)</span></label>
+                <label class="radio-option"><input type="radio" name="format" value="Команда (байер)"><span class="radio-dot"></span><span class="radio-label">В команде как байер</span></label>
+                <label class="radio-option"><input type="radio" name="format" value="Тимлид / хед"><span class="radio-dot"></span><span class="radio-label">Тимлид / хед баинга</span></label>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Основные источники трафика</div>
+            <div class="checkbox-group">
+                <label class="checkbox-option"><input type="checkbox" name="sources" value="Facebook"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Facebook / Meta</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="sources" value="TikTok"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">TikTok</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="sources" value="Google"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Google Ads</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="sources" value="In-App / Unity"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">In-App / Unity</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="sources" value="Другое"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Другое</span></label>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 1: ANTIDETECT ═══ -->
+    <div class="survey-section" data-section="antidetect">
+        <div class="section-num"><i class="fas fa-mask"></i> Категория 1 из 8</div>
+        <div class="section-title">Антидетект-браузеры</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх, менее важный вниз</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="antidetect">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Скорость работы и отзывчивость интерфейса</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Качество подмены отпечатков (фингерпринтов)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Количество профилей в тарифе</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Командная работа (шеринг профилей)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Стоимость подписки</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Стабильность (не вылетает, не глючит)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Встроенная поддержка прокси</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="antidetect_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 2: SPY ═══ -->
+    <div class="survey-section" data-section="spy">
+        <div class="section-num"><i class="fas fa-eye"></i> Категория 2 из 8</div>
+        <div class="section-title">Spy-сервисы</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="spy">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Объём базы креативов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Свежесть данных (обновляемость)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Покрытие рекламных сетей (FB, TikTok, Google...)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Фильтры и продвинутый поиск</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Возможность скачивать/выгружать креативы</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Аналитика трендов и прогнозы</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Стоимость подписки</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="spy_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 3: TRACKERS ═══ -->
+    <div class="survey-section" data-section="trackers">
+        <div class="section-num"><i class="fas fa-route"></i> Категория 3 из 8</div>
+        <div class="section-title">Трекеры и клоакинг</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="trackers">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Точность статистики (без расхождений с FB/TT)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Скорость обработки данных и редиректов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Качество клоакинга</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Интеграции по API и постбеки</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Self-hosted (полный контроль данных)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Простота настройки</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Стоимость</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="trackers_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 4: PROXY ═══ -->
+    <div class="survey-section" data-section="proxy">
+        <div class="section-num"><i class="fas fa-server"></i> Категория 4 из 8</div>
+        <div class="section-title">Прокси</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="proxy">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Скорость соединения</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Стабильность и аптайм</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Количество доступных гео</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Тип (мобильные / резидентные / серверные)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Стоимость за ГБ или за IP</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Ротация IP</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Совместимость с антидетект-браузерами</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="proxy_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 5: FINANCE ═══ -->
+    <div class="survey-section" data-section="finance">
+        <div class="section-num"><i class="fas fa-wallet"></i> Категория 5 из 8</div>
+        <div class="section-title">Финансы и платежи</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="finance">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Количество активных BIN-ов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Частота обновления BIN-ов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Комиссия за пополнение</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Комиссия за оплату / транзакцию</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Минимальная сумма пополнения</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Поддержка крипто-пополнения</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Скорость выпуска виртуальных карт</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="finance_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 6: ACCOUNTS ═══ -->
+    <div class="survey-section" data-section="accounts">
+        <div class="section-num"><i class="fas fa-store"></i> Категория 6 из 8</div>
+        <div class="section-title">Аккаунты и магазины</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="accounts">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Качество фарма (живучесть аккаунтов)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Цена за аккаунт</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Доступные гео аккаунтов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Наличие БМ / рекламных кабинетов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Гарантия замены при быстром бане</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Скорость доставки после оплаты</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Объём (наличие в нужном количестве)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="accounts_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 7: CREATIVES ═══ -->
+    <div class="survey-section" data-section="creatives">
+        <div class="section-num"><i class="fas fa-wand-magic-sparkles"></i> Категория 7 из 8</div>
+        <div class="section-title">Креативы и уникализация</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="creatives">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Качество генерации (реалистичность)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Скорость обработки</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Уникальность результата (не банится FB)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Поддержка видеоформата</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Простота использования</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Стоимость</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Массовая обработка (пакетная уникализация)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="creatives_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ CATEGORY 8: PWA ═══ -->
+    <div class="survey-section" data-section="pwa">
+        <div class="section-num"><i class="fas fa-mobile-screen"></i> Категория 8 из 8</div>
+        <div class="section-title">PWA-конструкторы и пуши</div>
+        <div class="section-desc">Перетащите критерии — самый важный наверх</div>
+        <div class="rank-hint"><i class="fas fa-arrows-up-down"></i> Перетаскивайте для ранжировки</div>
+        <ul class="rank-list" data-category="pwa">
+            <li class="rank-item" draggable="true"><span class="rank-num">1</span><span class="rank-text">Конверсия инсталлов (качество PWA)</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">2</span><span class="rank-text">Количество готовых шаблонов</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">3</span><span class="rank-text">Гибкость кастомизации</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">4</span><span class="rank-text">Скорость загрузки приложения</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">5</span><span class="rank-text">Интеграция с трекером</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">6</span><span class="rank-text">Пуш-уведомления</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+            <li class="rank-item" draggable="true"><span class="rank-num">7</span><span class="rank-text">Стоимость</span><i class="fas fa-grip-vertical rank-grip"></i></li>
+        </ul>
+        <div class="field-group">
+            <div class="field-label">Что ещё важно? <span style="color:var(--text-3);font-weight:400">(необязательно)</span></div>
+            <textarea class="text-area" name="pwa_other" placeholder="Свой вариант..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ GENERAL ═══ -->
+    <div class="survey-section" data-section="general">
+        <div class="section-num"><i class="fas fa-lightbulb"></i> Последний блок</div>
+        <div class="section-title">Общие вопросы</div>
+        <div class="section-desc">Пара свободных вопросов — ответ в любой форме</div>
+
+        <div class="field-group">
+            <div class="field-label">Как обычно находите новые сервисы?</div>
+            <div class="checkbox-group">
+                <label class="checkbox-option"><input type="checkbox" name="discovery" value="Рекомендации коллег"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Рекомендации знакомых / коллег</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="discovery" value="Telegram-чаты"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Telegram-чаты и каналы</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="discovery" value="Google / YouTube"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Google / YouTube</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="discovery" value="ChatGPT / AI"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">ChatGPT / другие AI</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="discovery" value="Форумы / статьи"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Форумы, статьи, vc.ru</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="discovery" value="Команда выдаёт"><span class="check-box"><i class="fas fa-check"></i></span><span class="check-label">Выдаёт команда при онбординге</span></label>
+            </div>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Какой один инструмент изменил бы работу кардинально, если бы существовал?</div>
+            <textarea class="text-area" name="dream_tool" placeholder="Опишите инструмент мечты..."></textarea>
+        </div>
+
+        <div class="field-group">
+            <div class="field-label">Что-то ещё хочется сказать?</div>
+            <textarea class="text-area" name="feedback" placeholder="Любые мысли, пожелания, боли..."></textarea>
+        </div>
+    </div>
+
+    <!-- ═══ SUBMIT ═══ -->
+    <div class="submit-section">
+        <button class="submit-btn" id="submitBtn" onclick="submitSurvey()">
+            Отправить ответы <i class="fas fa-paper-plane"></i>
+        </button>
+        <div class="submit-note">Результаты скопируются в буфер обмена — вставьте в любой чат</div>
+    </div>
+
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> Ответы скопированы!</div>
+
+<script>
+(function() {
+    const sections = document.querySelectorAll('.survey-section');
+    const totalSections = sections.length;
+
+    // ═══ DRAG & DROP + TOUCH RANKING ═══
+    document.querySelectorAll('.rank-list').forEach(list => {
+        let dragItem = null;
+        let touchStartY = 0;
+        let touchClone = null;
+
+        // Desktop drag
+        list.addEventListener('dragstart', e => {
+            dragItem = e.target.closest('.rank-item');
+            if (!dragItem) return;
+            dragItem.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+        });
+
+        list.addEventListener('dragend', e => {
+            if (dragItem) dragItem.classList.remove('dragging');
+            list.querySelectorAll('.rank-item').forEach(item => item.classList.remove('drag-over'));
+            updateNumbers(list);
+            dragItem = null;
+            updateProgress();
+        });
+
+        list.addEventListener('dragover', e => {
+            e.preventDefault();
+            const target = e.target.closest('.rank-item');
+            if (!target || target === dragItem) return;
+
+            list.querySelectorAll('.rank-item').forEach(item => item.classList.remove('drag-over'));
+            target.classList.add('drag-over');
+
+            const rect = target.getBoundingClientRect();
+            const midY = rect.top + rect.height / 2;
+            if (e.clientY < midY) {
+                list.insertBefore(dragItem, target);
+            } else {
+                list.insertBefore(dragItem, target.nextSibling);
+            }
+        });
+
+        // Touch support
+        list.addEventListener('touchstart', e => {
+            const item = e.target.closest('.rank-item');
+            if (!item) return;
+            dragItem = item;
+            touchStartY = e.touches[0].clientY;
+            dragItem.classList.add('dragging');
+        }, { passive: true });
+
+        list.addEventListener('touchmove', e => {
+            if (!dragItem) return;
+            e.preventDefault();
+            const touchY = e.touches[0].clientY;
+            const items = [...list.querySelectorAll('.rank-item')];
+            
+            for (const item of items) {
+                if (item === dragItem) continue;
+                const rect = item.getBoundingClientRect();
+                const midY = rect.top + rect.height / 2;
+                if (touchY < midY) {
+                    list.insertBefore(dragItem, item);
+                    break;
+                } else if (item === items[items.length - 1]) {
+                    list.appendChild(dragItem);
+                }
+            }
+        }, { passive: false });
+
+        list.addEventListener('touchend', () => {
+            if (dragItem) dragItem.classList.remove('dragging');
+            dragItem = null;
+            updateNumbers(list);
+            updateProgress();
+        });
+    });
+
+    function updateNumbers(list) {
+        list.querySelectorAll('.rank-item').forEach((item, i) => {
+            item.querySelector('.rank-num').textContent = i + 1;
+        });
+    }
+
+    // ═══ PROGRESS ═══
+    function updateProgress() {
+        let filled = 0;
+
+        sections.forEach(section => {
+            const radios = section.querySelectorAll('input[type="radio"]:checked');
+            const checks = section.querySelectorAll('input[type="checkbox"]:checked');
+            const texts = section.querySelectorAll('textarea');
+            const rankList = section.querySelector('.rank-list');
+            let hasContent = false;
+
+            if (radios.length > 0 || checks.length > 0) hasContent = true;
+            texts.forEach(t => { if (t.value.trim()) hasContent = true; });
+            if (rankList) hasContent = true;
+
+            if (hasContent) filled++;
+        });
+
+        const pct = Math.round((filled / totalSections) * 100);
+        document.getElementById('progressFill').style.width = pct + '%';
+        document.getElementById('progressText').textContent = filled + ' из ' + totalSections + ' заполнено';
+    }
+
+    document.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('change', updateProgress);
+        el.addEventListener('input', updateProgress);
+    });
+
+    updateProgress();
+
+    // ═══ SUBMIT ═══
+    window.submitSurvey = function() {
+        let result = '📊 ОПРОС: КРИТЕРИИ ВЫБОРА СЕРВИСОВ\n';
+        result += '═══════════════════════════════\n\n';
+
+        // Intro
+        const exp = document.querySelector('input[name="experience"]:checked');
+        const fmt = document.querySelector('input[name="format"]:checked');
+        const srcs = [...document.querySelectorAll('input[name="sources"]:checked')].map(c => c.value);
+        
+        result += '👤 О РЕСПОНДЕНТЕ\n';
+        result += 'Опыт: ' + (exp ? exp.value : '—') + '\n';
+        result += 'Формат: ' + (fmt ? fmt.value : '—') + '\n';
+        result += 'Трафик: ' + (srcs.length ? srcs.join(', ') : '—') + '\n\n';
+
+        // Categories
+        const catNames = {
+            antidetect: '🔒 Антидетект-браузеры',
+            spy: '👁 Spy-сервисы',
+            trackers: '📍 Трекеры и клоакинг',
+            proxy: '🌐 Прокси',
+            finance: '💳 Финансы и платежи',
+            accounts: '🏪 Аккаунты и магазины',
+            creatives: '🎨 Креативы и уникализация',
+            pwa: '📱 PWA-конструкторы'
+        };
+
+        document.querySelectorAll('.rank-list').forEach(list => {
+            const cat = list.dataset.category;
+            result += catNames[cat] + '\n';
+            list.querySelectorAll('.rank-item').forEach((item, i) => {
+                result += (i + 1) + '. ' + item.querySelector('.rank-text').textContent + '\n';
+            });
+            const otherField = document.querySelector(`textarea[name="${cat}_other"]`);
+            if (otherField && otherField.value.trim()) {
+                result += '💬 ' + otherField.value.trim() + '\n';
+            }
+            result += '\n';
+        });
+
+        // General
+        result += '💡 ОБЩИЕ ВОПРОСЫ\n';
+        const disc = [...document.querySelectorAll('input[name="discovery"]:checked')].map(c => c.value);
+        result += 'Каналы поиска: ' + (disc.length ? disc.join(', ') : '—') + '\n';
+
+        const dream = document.querySelector('textarea[name="dream_tool"]');
+        if (dream && dream.value.trim()) {
+            result += 'Инструмент мечты: ' + dream.value.trim() + '\n';
+        }
+
+        const fb = document.querySelector('textarea[name="feedback"]');
+        if (fb && fb.value.trim()) {
+            result += 'Комментарий: ' + fb.value.trim() + '\n';
+        }
+
+        navigator.clipboard.writeText(result).then(() => {
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = result;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        });
+    };
+})();
+</script>
+
+</body>
+</html>
