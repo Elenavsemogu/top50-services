@@ -715,6 +715,7 @@
             if (dragItem) dragItem.classList.remove('dragging');
             list.querySelectorAll('.rank-item').forEach(item => item.classList.remove('drag-over'));
             updateNumbers(list);
+            touchedRanks.add(list.dataset.category);
             dragItem = null;
             updateProgress();
         });
@@ -766,6 +767,7 @@
 
         list.addEventListener('touchend', () => {
             if (dragItem) dragItem.classList.remove('dragging');
+            touchedRanks.add(list.dataset.category);
             dragItem = null;
             updateNumbers(list);
             updateProgress();
@@ -779,6 +781,8 @@
     }
 
     // ═══ PROGRESS ═══
+    const touchedRanks = new Set();
+
     function updateProgress() {
         let filled = 0;
 
@@ -791,7 +795,7 @@
 
             if (radios.length > 0 || checks.length > 0) hasContent = true;
             texts.forEach(t => { if (t.value.trim()) hasContent = true; });
-            if (rankList) hasContent = true;
+            if (rankList && touchedRanks.has(rankList.dataset.category)) hasContent = true;
 
             if (hasContent) filled++;
         });
