@@ -291,9 +291,9 @@
             border-left-color: var(--text-tertiary);
         }
         [data-theme="light"] .card-metric {
-            background: rgba(0,0,0,0.03);
-            border-color: rgba(0,0,0,0.04);
-            color: var(--text-secondary);
+            background: none;
+            border: none;
+            color: rgba(0,0,0,0.45);
         }
         [data-theme="light"] .card-trial {
             background: rgba(200,231,18,0.08);
@@ -1149,7 +1149,7 @@
 
         .card-metrics {
             display: flex;
-            gap: 6px;
+            gap: 8px 14px;
             flex-wrap: wrap;
         }
 
@@ -1157,13 +1157,13 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            padding: 3px 10px;
-            border-radius: var(--radius-full);
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border-subtle);
+            padding: 0;
+            border-radius: 0;
+            background: none;
+            border: none;
             font-size: 11px;
-            font-weight: 600;
-            color: var(--text-secondary);
+            font-weight: 500;
+            color: rgba(255,255,255,0.45);
         }
 
         .card-trial {
@@ -4073,8 +4073,8 @@
                 const metricsHtml = catParams.slice(0, 3).map(p => {
                     const val = sRatings[p.key] || 0;
                     const clr = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
-                    const bg = val >= 4 ? 'rgba(34,197,94,0.08)' : val >= 3 ? 'rgba(234,179,8,0.08)' : 'rgba(239,68,68,0.08)';
-                    return `<span class="card-metric" style="background:${bg};border:1px solid ${clr}22"><i class="fas ${p.icon}" style="font-size:9px;color:${clr}"></i> ${p.label} <b style="color:${clr}">${val}/5</b></span>`;
+                    const dots = Array.from({length:5}, (_,i) => `<span style="width:5px;height:5px;border-radius:50%;background:${i < val ? clr : 'rgba(255,255,255,0.1)'};display:inline-block"></span>`).join('');
+                    return `<span class="card-metric" style="background:none;border:none;padding:0;gap:4px;font-size:11px;color:rgba(255,255,255,0.5)"><span style="display:inline-flex;gap:2px">${dots}</span>${p.label}</span>`;
                 }).join('');
                 const trialHtml = s.trial ? `<span class="card-trial"><i class="fas fa-check-circle"></i> ${s.trial}</span>` : '';
                 html += `
@@ -4348,8 +4348,8 @@
                 const metricsHtml = catParams.slice(0, 3).map(p => {
                     const val = sRatings[p.key] || 0;
                     const clr = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
-                    const bg = val >= 4 ? 'rgba(34,197,94,0.08)' : val >= 3 ? 'rgba(234,179,8,0.08)' : 'rgba(239,68,68,0.08)';
-                    return `<span class="card-metric" style="background:${bg};border:1px solid ${clr}22"><i class="fas ${p.icon}" style="font-size:9px;color:${clr}"></i> ${p.label} <b style="color:${clr}">${val}/5</b></span>`;
+                    const dots = Array.from({length:5}, (_,i) => `<span style="width:5px;height:5px;border-radius:50%;background:${i < val ? clr : 'rgba(255,255,255,0.1)'};display:inline-block"></span>`).join('');
+                    return `<span class="card-metric" style="background:none;border:none;padding:0;gap:4px;font-size:11px;color:rgba(255,255,255,0.5)"><span style="display:inline-flex;gap:2px">${dots}</span>${p.label}</span>`;
                 }).join('');
                 const trialHtml = s.trial ? `<span class="card-trial"><i class="fas fa-check-circle"></i> ${s.trial}</span>` : '';
                 html += `<div class="service-card animate-card" data-color="${color}" onclick="openModal(${s.id})" style="animation-delay: ${idx * 0.05}s"><div class="card-top"><div class="card-logo" style="background: ${getCategoryColorVar(s.category)}"><img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" alt="${s.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="card-logo-fallback" style="display:none">${s.name.substring(0, 2).toUpperCase()}</div></div><div class="card-info"><div class="card-name">${s.name}</div><div class="card-category-tag" style="color: ${getCategoryColorVar(s.category)}">${getCategoryName(s.category)}</div></div></div><div class="card-advantage">${s.advantage || s.shortDesc}</div><div class="card-metrics">${metricsHtml}</div><div class="card-footer">${trialHtml}</div></div>`;
