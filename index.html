@@ -2110,6 +2110,174 @@
     ];
 
     // ────────────────────────────────
+    // SURVEY-DRIVEN CATEGORY PARAMS (ranked by importance from buyer survey)
+    // ────────────────────────────────
+    const CATEGORY_PARAMS = {
+        antidetect: [
+            {key:'speed', label:'Скорость работы', icon:'fa-gauge-high'},
+            {key:'fingerprint', label:'Качество фингерпринтов', icon:'fa-fingerprint'},
+            {key:'stability', label:'Стабильность', icon:'fa-shield-halved'},
+            {key:'teamwork', label:'Командная работа', icon:'fa-users'},
+            {key:'profiles', label:'Кол-во профилей', icon:'fa-layer-group'},
+            {key:'price', label:'Стоимость', icon:'fa-tag'},
+            {key:'proxy_support', label:'Поддержка прокси', icon:'fa-server'}
+        ],
+        spy: [
+            {key:'database', label:'Объём базы', icon:'fa-database'},
+            {key:'coverage', label:'Покрытие сетей', icon:'fa-globe'},
+            {key:'freshness', label:'Свежесть данных', icon:'fa-clock'},
+            {key:'download', label:'Скачивание креативов', icon:'fa-download'},
+            {key:'analytics', label:'Аналитика трендов', icon:'fa-chart-line'},
+            {key:'filters', label:'Фильтры и поиск', icon:'fa-filter'},
+            {key:'price', label:'Стоимость', icon:'fa-tag'}
+        ],
+        trackers: [
+            {key:'accuracy', label:'Точность статистики', icon:'fa-bullseye'},
+            {key:'speed', label:'Скорость обработки', icon:'fa-gauge-high'},
+            {key:'cloaking', label:'Качество клоакинга', icon:'fa-mask'},
+            {key:'api', label:'API и постбеки', icon:'fa-plug'},
+            {key:'selfhosted', label:'Self-hosted', icon:'fa-server'},
+            {key:'simplicity', label:'Простота настройки', icon:'fa-wand-magic'},
+            {key:'price', label:'Стоимость', icon:'fa-tag'}
+        ],
+        proxy: [
+            {key:'speed', label:'Скорость соединения', icon:'fa-gauge-high'},
+            {key:'stability', label:'Стабильность / аптайм', icon:'fa-shield-halved'},
+            {key:'price_gb', label:'Цена за ГБ / IP', icon:'fa-tag'},
+            {key:'geos', label:'Доступные гео', icon:'fa-earth-americas'},
+            {key:'type', label:'Типы прокси', icon:'fa-layer-group'},
+            {key:'rotation', label:'Ротация IP', icon:'fa-rotate'},
+            {key:'compatibility', label:'Совмест. с антидетект', icon:'fa-puzzle-piece'}
+        ],
+        finance: [
+            {key:'bins', label:'Активные BIN', icon:'fa-credit-card'},
+            {key:'bin_updates', label:'Обновление BIN', icon:'fa-rotate'},
+            {key:'commission_top', label:'Комиссия пополнения', icon:'fa-percent'},
+            {key:'commission_tx', label:'Комиссия транзакций', icon:'fa-money-bill-transfer'},
+            {key:'crypto', label:'Крипто-пополнение', icon:'fa-bitcoin-sign'},
+            {key:'min_amount', label:'Мин. сумма', icon:'fa-coins'},
+            {key:'card_speed', label:'Скорость выпуска карт', icon:'fa-bolt'}
+        ],
+        accounts: [
+            {key:'quality', label:'Живучесть аккаунтов', icon:'fa-heart-pulse'},
+            {key:'price_acc', label:'Цена за аккаунт', icon:'fa-tag'},
+            {key:'geos', label:'Доступные гео', icon:'fa-earth-americas'},
+            {key:'bm', label:'Наличие БМ', icon:'fa-briefcase'},
+            {key:'guarantee', label:'Гарантия замены', icon:'fa-shield-halved'},
+            {key:'volume', label:'Объём / наличие', icon:'fa-boxes-stacked'},
+            {key:'delivery', label:'Скорость доставки', icon:'fa-truck-fast'}
+        ],
+        unique: [
+            {key:'quality', label:'Качество генерации', icon:'fa-wand-magic-sparkles'},
+            {key:'speed', label:'Скорость обработки', icon:'fa-gauge-high'},
+            {key:'uniqueness', label:'Уникальность', icon:'fa-fingerprint'},
+            {key:'video', label:'Видеоформат', icon:'fa-video'},
+            {key:'batch', label:'Пакетная обработка', icon:'fa-layer-group'},
+            {key:'simplicity', label:'Простота', icon:'fa-hand-pointer'},
+            {key:'price', label:'Стоимость', icon:'fa-tag'}
+        ],
+        generators: [
+            {key:'quality', label:'Качество генерации', icon:'fa-wand-magic-sparkles'},
+            {key:'speed', label:'Скорость обработки', icon:'fa-gauge-high'},
+            {key:'uniqueness', label:'Уникальность', icon:'fa-fingerprint'},
+            {key:'video', label:'Видеоформат', icon:'fa-video'},
+            {key:'batch', label:'Пакетная обработка', icon:'fa-layer-group'},
+            {key:'simplicity', label:'Простота', icon:'fa-hand-pointer'},
+            {key:'price', label:'Стоимость', icon:'fa-tag'}
+        ],
+        pwa: [
+            {key:'conversion', label:'Конверсия инсталлов', icon:'fa-chart-line'},
+            {key:'templates', label:'Готовые шаблоны', icon:'fa-palette'},
+            {key:'loading', label:'Скорость загрузки', icon:'fa-gauge-high'},
+            {key:'customization', label:'Кастомизация', icon:'fa-sliders'},
+            {key:'tracker', label:'Интеграция с трекером', icon:'fa-plug'},
+            {key:'price', label:'Стоимость', icon:'fa-tag'},
+            {key:'push', label:'Пуш-уведомления', icon:'fa-bell'}
+        ],
+        vpn: [
+            {key:'speed', label:'Скорость', icon:'fa-gauge-high'},
+            {key:'privacy', label:'Приватность', icon:'fa-shield-halved'},
+            {key:'servers', label:'Серверы / гео', icon:'fa-earth-americas'},
+            {key:'price', label:'Стоимость', icon:'fa-tag'},
+            {key:'ease', label:'Простота', icon:'fa-hand-pointer'},
+            {key:'devices', label:'Устройства', icon:'fa-laptop'},
+            {key:'no_logs', label:'No-logs политика', icon:'fa-eye-slash'}
+        ]
+    };
+
+    const RATINGS_LABELS = ['—','Слабо','Ниже среднего','Средне','Хорошо','Отлично'];
+
+    const SERVICE_RATINGS = {
+        1:{speed:4,fingerprint:5,stability:4,teamwork:5,profiles:5,price:3,proxy_support:4},
+        2:{speed:5,fingerprint:4,stability:4,teamwork:4,profiles:4,price:4,proxy_support:4},
+        3:{speed:4,fingerprint:5,stability:5,teamwork:3,profiles:4,price:3,proxy_support:4},
+        4:{speed:4,fingerprint:4,stability:3,teamwork:4,profiles:5,price:5,proxy_support:3},
+        5:{speed:3,fingerprint:5,stability:5,teamwork:4,profiles:4,price:2,proxy_support:5},
+        6:{database:5,coverage:4,freshness:4,download:5,analytics:3,filters:5,price:2},
+        7:{database:4,coverage:5,freshness:5,download:4,analytics:4,filters:4,price:4},
+        8:{database:3,coverage:3,freshness:4,download:4,analytics:3,filters:3,price:5},
+        9:{database:4,coverage:4,freshness:4,download:4,analytics:4,filters:4,price:3},
+        10:{database:5,coverage:2,freshness:5,download:3,analytics:2,filters:3,price:5},
+        11:{accuracy:5,speed:5,cloaking:5,api:5,selfhosted:5,simplicity:3,price:3},
+        12:{accuracy:5,speed:5,cloaking:4,api:4,selfhosted:5,simplicity:3,price:3},
+        13:{accuracy:3,speed:4,cloaking:5,api:3,selfhosted:2,simplicity:4,price:4},
+        14:{accuracy:3,speed:4,cloaking:5,api:3,selfhosted:2,simplicity:4,price:4},
+        15:{speed:4,stability:4,price_gb:4,geos:4,type:4,rotation:4,compatibility:5},
+        16:{speed:5,stability:5,price_gb:2,geos:5,type:5,rotation:5,compatibility:5},
+        17:{speed:4,stability:4,price_gb:3,geos:5,type:4,rotation:4,compatibility:4},
+        18:{speed:4,stability:4,price_gb:3,geos:4,type:4,rotation:5,compatibility:4},
+        19:{speed:3,stability:4,price_gb:5,geos:3,type:3,rotation:3,compatibility:4},
+        20:{bins:4,bin_updates:4,commission_top:4,commission_tx:4,crypto:3,min_amount:4,card_speed:4},
+        21:{bins:5,bin_updates:5,commission_top:3,commission_tx:3,crypto:4,min_amount:3,card_speed:5},
+        22:{bins:3,bin_updates:3,commission_top:4,commission_tx:4,crypto:3,min_amount:4,card_speed:3},
+        23:{bins:1,bin_updates:1,commission_top:5,commission_tx:5,crypto:5,min_amount:5,card_speed:4},
+        24:{bins:1,bin_updates:1,commission_top:4,commission_tx:4,crypto:5,min_amount:4,card_speed:3},
+        25:{bins:1,bin_updates:1,commission_top:5,commission_tx:5,crypto:5,min_amount:5,card_speed:4},
+        26:{speed:3,privacy:3,servers:3,price:5,ease:5,devices:3,no_logs:3},
+        27:{speed:4,privacy:3,servers:4,price:4,ease:5,devices:4,no_logs:3},
+        28:{speed:3,privacy:3,servers:3,price:5,ease:4,devices:3,no_logs:3},
+        29:{speed:3,privacy:3,servers:3,price:5,ease:4,devices:3,no_logs:3},
+        30:{speed:3,privacy:3,servers:3,price:5,ease:5,devices:3,no_logs:3},
+        31:{speed:4,privacy:3,servers:4,price:5,ease:5,devices:4,no_logs:3},
+        32:{speed:3,privacy:4,servers:3,price:5,ease:4,devices:3,no_logs:4},
+        33:{speed:3,privacy:3,servers:3,price:5,ease:5,devices:3,no_logs:3},
+        34:{speed:3,privacy:3,servers:3,price:5,ease:4,devices:3,no_logs:3},
+        35:{speed:3,privacy:3,servers:3,price:5,ease:4,devices:3,no_logs:3},
+        36:{quality:4,speed:4,uniqueness:4,video:1,batch:3,simplicity:4,price:4},
+        37:{quality:4,speed:4,uniqueness:4,video:1,batch:3,simplicity:4,price:4},
+        38:{quality:3,speed:3,uniqueness:3,video:1,batch:2,simplicity:3,price:5},
+        39:{quality:4,speed:5,uniqueness:3,video:1,batch:4,simplicity:5,price:5},
+        40:{quality:2,speed:5,uniqueness:2,video:1,batch:3,simplicity:5,price:5},
+        41:{quality:3,speed:4,uniqueness:3,video:1,batch:3,simplicity:4,price:5},
+        42:{quality:5,price_acc:4,geos:4,bm:4,guarantee:4,volume:4,delivery:4},
+        43:{quality:4,price_acc:3,geos:5,bm:4,guarantee:3,volume:5,delivery:5},
+        44:{quality:4,price_acc:4,geos:3,bm:5,guarantee:4,volume:3,delivery:4},
+        45:{quality:3,price_acc:5,geos:3,bm:2,guarantee:3,volume:4,delivery:5},
+        46:{quality:3,price_acc:5,geos:3,bm:2,guarantee:2,volume:4,delivery:5},
+        47:{quality:4,speed:5,uniqueness:4,video:4,batch:5,simplicity:4,price:3},
+        48:{quality:4,speed:4,uniqueness:4,video:3,batch:4,simplicity:4,price:4},
+        49:{conversion:5,templates:4,loading:4,customization:4,tracker:5,price:3,push:5},
+        50:{conversion:3,templates:3,loading:4,customization:3,tracker:4,price:4,push:5}
+    };
+
+    function getRatingBar(val) {
+        const pct = (val / 5) * 100;
+        const color = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
+        return `<div style="display:flex;align-items:center;gap:6px;width:100%">
+            <div style="flex:1;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden">
+                <div style="width:${pct}%;height:100%;background:${color};border-radius:3px"></div>
+            </div>
+            <span style="font-size:11px;font-weight:700;color:${color};min-width:14px">${val}</span>
+        </div>`;
+    }
+
+    function getRatingBadge(val) {
+        const color = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
+        const bg = val >= 4 ? 'rgba(34,197,94,0.12)' : val >= 3 ? 'rgba(234,179,8,0.12)' : 'rgba(239,68,68,0.12)';
+        return `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;color:${color};background:${bg}">${'●'.repeat(val)}${'○'.repeat(5-val)}</span>`;
+    }
+
+    // ────────────────────────────────
     // SERVICES DATA (50 services)
     // ────────────────────────────────
     const SERVICES = [
@@ -3815,11 +3983,18 @@
             return;
         }
 
-        // Group by category
+        // Group by category and sort by rating + reliability within each group
         const grouped = {};
         filteredServices.forEach(s => {
             if (!grouped[s.category]) grouped[s.category] = [];
             grouped[s.category].push(s);
+        });
+        Object.keys(grouped).forEach(cat => {
+            grouped[cat].sort((a, b) => {
+                const scoreA = (a.rating || 0) * 2 + (a.reliability || 0);
+                const scoreB = (b.rating || 0) * 2 + (b.reliability || 0);
+                return scoreB - scoreA;
+            });
         });
 
         let html = '';
@@ -3844,9 +4019,14 @@
 
             services.forEach((s, idx) => {
                 const color = getCategoryColor(s.category);
-                const metricsHtml = (s.keyMetrics || []).map(m =>
-                    `<span class="card-metric"><i class="fas fa-circle" style="font-size:4px;opacity:0.3"></i> ${m.value} ${m.label.toLowerCase()}</span>`
-                ).join('');
+                const catParams = CATEGORY_PARAMS[s.category] || [];
+                const sRatings = SERVICE_RATINGS[s.id] || {};
+                const metricsHtml = catParams.slice(0, 3).map(p => {
+                    const val = sRatings[p.key] || 0;
+                    const clr = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
+                    const bg = val >= 4 ? 'rgba(34,197,94,0.08)' : val >= 3 ? 'rgba(234,179,8,0.08)' : 'rgba(239,68,68,0.08)';
+                    return `<span class="card-metric" style="background:${bg};border:1px solid ${clr}22"><i class="fas ${p.icon}" style="font-size:9px;color:${clr}"></i> ${p.label} <b style="color:${clr}">${val}/5</b></span>`;
+                }).join('');
                 const trialHtml = s.trial ? `<span class="card-trial"><i class="fas fa-check-circle"></i> ${s.trial}</span>` : '';
                 html += `
                     <div class="service-card animate-card" data-color="${color}" 
@@ -3883,8 +4063,8 @@
         const rivals = service.competitors.map(id => SERVICES.find(sv => sv.id === id)).filter(Boolean);
         if (rivals.length === 0) return '';
         const all = [service, ...rivals];
-        const metrics = (service.keyMetrics || []).map(m => m.label);
-        if (metrics.length === 0) return '';
+        const params = CATEGORY_PARAMS[service.category];
+        if (!params) return '';
 
         const headerCells = all.map((sv, i) => {
             const cls = i === 0 ? ' class="compare-current"' : '';
@@ -3892,14 +4072,18 @@
         }).join('');
 
         let rows = '';
-        metrics.forEach(metric => {
+        params.forEach((param, idx) => {
+            const isTop3 = idx < 3;
+            const paramLabel = isTop3
+                ? `<i class="fas ${param.icon}" style="color:#F5DA0F;margin-right:4px"></i><strong>${param.label}</strong>`
+                : `<i class="fas ${param.icon}" style="opacity:0.4;margin-right:4px"></i>${param.label}`;
             const cells = all.map((sv, i) => {
-                const m = (sv.keyMetrics || []).find(km => km.label === metric);
-                const val = m ? m.value : '—';
+                const ratings = SERVICE_RATINGS[sv.id] || {};
+                const val = ratings[param.key] || 0;
                 const cls = i === 0 ? ' class="compare-current-cell"' : '';
-                return `<td${cls}>${val}</td>`;
+                return `<td${cls}>${getRatingBar(val)}</td>`;
             }).join('');
-            rows += `<tr><td class="compare-param">${metric}</td>${cells}</tr>`;
+            rows += `<tr${isTop3 ? ' style="background:rgba(245,218,15,0.04)"' : ''}><td class="compare-param">${paramLabel}</td>${cells}</tr>`;
         });
 
         const trialRow = all.map((sv, i) => {
@@ -3912,6 +4096,7 @@
         return `
             <div class="modal-section modal-compare-section">
                 <h3 class="modal-section-title"><i class="fas fa-scale-balanced" style="color:${getCategoryColorVar(service.category)}"></i> Сравнение в категории</h3>
+                <p style="font-size:12px;color:rgba(255,255,255,0.4);margin:-8px 0 12px;padding-left:2px"><i class="fas fa-chart-bar" style="margin-right:4px"></i>Параметры ранжированы по важности для медиабайеров (★ = топ-3 по результатам опроса)</p>
                 <div class="compare-table-wrap">
                     <table class="compare-table">
                         <thead><tr><th class="compare-param-head"></th>${headerCells}</tr></thead>
@@ -3970,15 +4155,36 @@
             </div>` : ''}
 
             <div class="modal-quick-info">
-                ${(s.keyMetrics || []).map(m => `
-                <div class="quick-info-item">
-                    <span class="qi-value">${m.value}</span>
-                    <span class="qi-label">${m.label}</span>
-                </div>`).join('')}
+                ${(() => {
+                    const cp = CATEGORY_PARAMS[s.category] || [];
+                    const sr = SERVICE_RATINGS[s.id] || {};
+                    return cp.slice(0, 3).map(p => {
+                        const v = sr[p.key] || 0;
+                        const c = v >= 4 ? '#22C55E' : v >= 3 ? '#EAB308' : '#EF4444';
+                        return `<div class="quick-info-item">
+                            <span class="qi-value" style="color:${c}">${v}/5</span>
+                            <span class="qi-label"><i class="fas ${p.icon}" style="margin-right:4px"></i>${p.label}</span>
+                        </div>`;
+                    }).join('');
+                })()}
                 <div class="quick-info-item">
                     <span class="qi-value">${s.platforms.length}</span>
                     <span class="qi-label">Платформ</span>
                 </div>
+            </div>
+
+            <div style="padding:0 28px 12px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
+                ${(() => {
+                    const cp = CATEGORY_PARAMS[s.category] || [];
+                    const sr = SERVICE_RATINGS[s.id] || {};
+                    return cp.map((p, i) => {
+                        const v = sr[p.key] || 0;
+                        const c = v >= 4 ? '#22C55E' : v >= 3 ? '#EAB308' : '#EF4444';
+                        const bg = v >= 4 ? 'rgba(34,197,94,0.1)' : v >= 3 ? 'rgba(234,179,8,0.1)' : 'rgba(239,68,68,0.1)';
+                        const topMark = i < 3 ? '<i class="fas fa-star" style="font-size:8px;color:#F5DA0F;margin-right:2px"></i>' : '';
+                        return `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;font-size:12px;background:${bg};color:${c};border:1px solid ${c}22">${topMark}<i class="fas ${p.icon}" style="font-size:10px"></i> ${p.label} <b>${v}/5</b></span>`;
+                    }).join('');
+                })()}
             </div>
 
             <div class="modal-body">
@@ -4126,9 +4332,14 @@
             html += `<section class="category-section" id="cat-${catId}"><div class="category-header"><div class="category-icon" style="background: ${cat.colorVar}"><i class="${cat.icon}" style="color: #000"></i></div><h2 class="category-title">${cat.name}</h2><span class="category-count">${services.length} ${services.length === 1 ? 'сервис' : services.length < 5 ? 'сервиса' : 'сервисов'}</span></div><div class="services-grid">`;
             services.forEach((s, idx) => {
                 const color = getCategoryColor(s.category);
-                const metricsHtml = (s.keyMetrics || []).map(m =>
-                    `<span class="card-metric"><i class="fas fa-circle" style="font-size:4px;opacity:0.3"></i> ${m.value} ${m.label.toLowerCase()}</span>`
-                ).join('');
+                const catParams = CATEGORY_PARAMS[s.category] || [];
+                const sRatings = SERVICE_RATINGS[s.id] || {};
+                const metricsHtml = catParams.slice(0, 3).map(p => {
+                    const val = sRatings[p.key] || 0;
+                    const clr = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
+                    const bg = val >= 4 ? 'rgba(34,197,94,0.08)' : val >= 3 ? 'rgba(234,179,8,0.08)' : 'rgba(239,68,68,0.08)';
+                    return `<span class="card-metric" style="background:${bg};border:1px solid ${clr}22"><i class="fas ${p.icon}" style="font-size:9px;color:${clr}"></i> ${p.label} <b style="color:${clr}">${val}/5</b></span>`;
+                }).join('');
                 const trialHtml = s.trial ? `<span class="card-trial"><i class="fas fa-check-circle"></i> ${s.trial}</span>` : '';
                 html += `<div class="service-card animate-card" data-color="${color}" onclick="openModal(${s.id})" style="animation-delay: ${idx * 0.05}s"><div class="card-top"><div class="card-logo" style="background: ${getCategoryColorVar(s.category)}"><img src="https://www.google.com/s2/favicons?domain=${s.domain}&sz=128" alt="${s.name}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"><div class="card-logo-fallback" style="display:none">${s.name.substring(0, 2).toUpperCase()}</div></div><div class="card-info"><div class="card-name">${s.name}</div><div class="card-category-tag" style="color: ${getCategoryColorVar(s.category)}">${getCategoryName(s.category)}</div></div></div><div class="card-advantage">${s.advantage || s.shortDesc}</div><div class="card-metrics">${metricsHtml}</div><div class="card-footer">${trialHtml}</div></div>`;
             });
