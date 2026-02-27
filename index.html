@@ -2260,22 +2260,71 @@
         50:{conversion:3,templates:3,loading:4,customization:3,tracker:4,price:4,push:5}
     };
 
-    function getRatingBar(val) {
-        const pct = (val / 5) * 100;
-        const color = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
-        return `<div style="display:flex;align-items:center;gap:6px;width:100%">
-            <div style="flex:1;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden">
-                <div style="width:${pct}%;height:100%;background:${color};border-radius:3px"></div>
-            </div>
-            <span style="font-size:11px;font-weight:700;color:${color};min-width:14px">${val}</span>
-        </div>`;
-    }
+    const COMPARE_PARAMS = {
+        antidetect: ['Мин. тариф','Бесплатный план','Платформы','Автоматизация','Фингерпринты'],
+        spy: ['Объём базы','Рекл. источники','Мин. тариф','Скачивание креативов','Свежесть данных'],
+        trackers: ['Тип хостинга','Скорость редиректа','Фильтров','Клоакинг','Мин. тариф'],
+        proxy: ['Пул IP','Типы прокси','Кол-во гео','Мин. цена','Ротация IP'],
+        finance: ['Мин. депозит','Кол-во BIN','Комиссия','Крипто','Скорость выпуска'],
+        accounts: ['Тип аккаунтов','Кол-во гео','Наличие БМ','Гарантия замены','Мин. цена'],
+        generators: ['Тип документов','Форматы','Пакетная обработка','Язык','Мин. цена'],
+        unique: ['Тип контента','Форматы','Скорость','Бот-платформа','Мин. цена'],
+        pwa: ['Шаблоны','Трекер-интеграция','Пуш-уведомления','Кастомизация','Мин. цена'],
+        vpn: ['Серверов','Цена','Логирование','Скорость','Платформы']
+    };
 
-    function getRatingBadge(val) {
-        const color = val >= 4 ? '#22C55E' : val >= 3 ? '#EAB308' : '#EF4444';
-        const bg = val >= 4 ? 'rgba(34,197,94,0.12)' : val >= 3 ? 'rgba(234,179,8,0.12)' : 'rgba(239,68,68,0.12)';
-        return `<span style="display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;color:${color};background:${bg}">${'●'.repeat(val)}${'○'.repeat(5-val)}</span>`;
-    }
+    const COMPARE_DATA = {
+        1:{v:['$5.4/мес','5 профилей','Win, Mac','RPA + Local API','Реальные устройства']},
+        2:{v:['$89/мес','10 профилей','Win, Mac, Linux','API + Cookie-робот','Качественные']},
+        3:{v:['€29/мес','—','Win, Mac','API','Реальные устройства']},
+        4:{v:['$24/мес','3 профиля','5 платформ','API','Хорошие']},
+        5:{v:['€99/мес','—','Win, Mac, Linux','API + Selenium','Эталонные']},
+        6:{v:['150M+','FB + Instagram','$149/мес','Да','Реальное время']},
+        7:{v:['Большая','FB + TikTok + Google','$69/мес','Да','Ежедневно']},
+        8:{v:['Средняя','FB + VK + MyTarget','$20/мес','Частично','Ежедневно']},
+        9:{v:['Большая','30+ push-сетей','$69.99/мес','Да','Ежедневно']},
+        10:{v:['Огромная','Meta (FB + IG)','Бесплатно','Нет','Реальное время']},
+        11:{v:['Self-hosted','<5 мс','30+','Встроен','$25/мес']},
+        12:{v:['Self-hosted','<5 мс','20+','Нет (доп.)','$69/мес']},
+        13:{v:['Облако (TG-бот)','~10 сек','Базовые','Встроен','По запросу']},
+        14:{v:['Облако','Быстрый','10+','Встроен','$60/мес']},
+        15:{v:['Свой пул','IPv6','15+ стран','$0.5/IP','Ручная']},
+        16:{v:['72M+','4 типа','195+ стран','От $8.40/ГБ','Авто']},
+        17:{v:['40M+','Резидент + DC','195+ стран','$8.50/ГБ','Авто']},
+        18:{v:['Большой','Резидент + Мобайл','195+ стран','$99/мес','Авто']},
+        19:{v:['Свой пул','IPv4 + IPv6','30+ стран','$1.50/мес','Нет']},
+        20:{v:['—','—','0–3%','Да','Мгновенно']},
+        21:{v:['$50','50+','от 2%','Да','Мгновенно']},
+        22:{v:['$5','—','$0.25/перевод','Нет','1–2 дня']},
+        23:{v:['—','—','Сетевая комиссия','Да (DeFi)','—']},
+        24:{v:['—','—','0%','Да','—']},
+        25:{v:['—','—','Сетевая комиссия','Да (DeFi)','—']},
+        26:{v:['500+','Бесплатно','Неизвестно','Средняя','Chrome']},
+        27:{v:['1600+','Freemium','No-logs','Высокая','Win, Mac, iOS, Android']},
+        28:{v:['300+','Бесплатно','Неизвестно','Средняя','Chrome']},
+        29:{v:['500+','Бесплатно','Неизвестно','Средняя','Chrome']},
+        30:{v:['300+','Бесплатно','Неизвестно','Средняя','Chrome']},
+        31:{v:['1000+','Freemium','No-logs','Высокая','Chrome, Android']},
+        32:{v:['500+','Бесплатно','No-logs','Средняя','Win, Chrome']},
+        33:{v:['300+','Бесплатно','Неизвестно','Средняя','Chrome']},
+        34:{v:['500+','Бесплатно','Неизвестно','Средняя','Chrome, Android']},
+        35:{v:['500+','Бесплатно','Неизвестно','Средняя','Chrome']},
+        36:{v:['ID + документы','JPG, PNG','Нет','Русский','Бесплатно']},
+        37:{v:['ID + документы','JPG, PNG','Нет','Русский','Бесплатно']},
+        38:{v:['ID + утилити','JPG, PNG','Нет','Русский','Бесплатно']},
+        39:{v:['ID + селфи','JPG','Нет','English','$5–15']},
+        40:{v:['Случайные данные','Текст','Да','English','Бесплатно']},
+        41:{v:['Случайные данные','Текст','Да','English','Бесплатно']},
+        42:{v:['FB, Google, TikTok','20+ стран','Да','Да (24ч)','от $1.5']},
+        43:{v:['FB, Google, Twitter','50+ стран','Да','Частично','от $0.5']},
+        44:{v:['Facebook','10+ стран','Да (фокус)','Да (48ч)','от $3']},
+        45:{v:['Чекер аккаунтов','FB','Нет','Нет','Бесплатно']},
+        46:{v:['Строки / конвертер','FB','Нет','Нет','Бесплатно']},
+        47:{v:['Видео + фото','MP4, JPG','Быстрая','Telegram','По запросу']},
+        48:{v:['Видео + фото','MP4, JPG','Средняя','Telegram','По запросу']},
+        49:{v:['50+','Keitaro, Binom +','Да','Полная','$29/мес']},
+        50:{v:['30+','Keitaro, Binom','Да','Средняя','$10/мес']}
+    };
 
     // ────────────────────────────────
     // SERVICES DATA (50 services)
@@ -4063,8 +4112,8 @@
         const rivals = service.competitors.map(id => SERVICES.find(sv => sv.id === id)).filter(Boolean);
         if (rivals.length === 0) return '';
         const all = [service, ...rivals];
-        const params = CATEGORY_PARAMS[service.category];
-        if (!params) return '';
+        const paramLabels = COMPARE_PARAMS[service.category];
+        if (!paramLabels) return '';
 
         const headerCells = all.map((sv, i) => {
             const cls = i === 0 ? ' class="compare-current"' : '';
@@ -4072,31 +4121,25 @@
         }).join('');
 
         let rows = '';
-        params.forEach((param, idx) => {
-            const isTop3 = idx < 3;
-            const paramLabel = isTop3
-                ? `<i class="fas ${param.icon}" style="color:#F5DA0F;margin-right:4px"></i><strong>${param.label}</strong>`
-                : `<i class="fas ${param.icon}" style="opacity:0.4;margin-right:4px"></i>${param.label}`;
+        paramLabels.forEach((label, idx) => {
             const cells = all.map((sv, i) => {
-                const ratings = SERVICE_RATINGS[sv.id] || {};
-                const val = ratings[param.key] || 0;
+                const d = COMPARE_DATA[sv.id];
+                const val = d ? (d.v[idx] || '—') : '—';
                 const cls = i === 0 ? ' class="compare-current-cell"' : '';
-                return `<td${cls}>${getRatingBar(val)}</td>`;
+                return `<td${cls}>${val}</td>`;
             }).join('');
-            rows += `<tr${isTop3 ? ' style="background:rgba(245,218,15,0.04)"' : ''}><td class="compare-param">${paramLabel}</td>${cells}</tr>`;
+            rows += `<tr><td class="compare-param">${label}</td>${cells}</tr>`;
         });
 
         const trialRow = all.map((sv, i) => {
             const cls = i === 0 ? ' class="compare-current-cell"' : '';
-            const val = sv.trial || '—';
-            return `<td${cls}>${val}</td>`;
+            return `<td${cls}>${sv.trial || '—'}</td>`;
         }).join('');
         rows += `<tr><td class="compare-param">Триал</td>${trialRow}</tr>`;
 
         return `
             <div class="modal-section modal-compare-section">
                 <h3 class="modal-section-title"><i class="fas fa-scale-balanced" style="color:${getCategoryColorVar(service.category)}"></i> Сравнение в категории</h3>
-                <p style="font-size:12px;color:rgba(255,255,255,0.4);margin:-8px 0 12px;padding-left:2px"><i class="fas fa-chart-bar" style="margin-right:4px"></i>Параметры ранжированы по важности для медиабайеров (★ = топ-3 по результатам опроса)</p>
                 <div class="compare-table-wrap">
                     <table class="compare-table">
                         <thead><tr><th class="compare-param-head"></th>${headerCells}</tr></thead>
@@ -4155,36 +4198,15 @@
             </div>` : ''}
 
             <div class="modal-quick-info">
-                ${(() => {
-                    const cp = CATEGORY_PARAMS[s.category] || [];
-                    const sr = SERVICE_RATINGS[s.id] || {};
-                    return cp.slice(0, 3).map(p => {
-                        const v = sr[p.key] || 0;
-                        const c = v >= 4 ? '#22C55E' : v >= 3 ? '#EAB308' : '#EF4444';
-                        return `<div class="quick-info-item">
-                            <span class="qi-value" style="color:${c}">${v}/5</span>
-                            <span class="qi-label"><i class="fas ${p.icon}" style="margin-right:4px"></i>${p.label}</span>
-                        </div>`;
-                    }).join('');
-                })()}
+                ${(s.keyMetrics || []).map(m => `
+                <div class="quick-info-item">
+                    <span class="qi-value">${m.value}</span>
+                    <span class="qi-label">${m.label}</span>
+                </div>`).join('')}
                 <div class="quick-info-item">
                     <span class="qi-value">${s.platforms.length}</span>
                     <span class="qi-label">Платформ</span>
                 </div>
-            </div>
-
-            <div style="padding:0 28px 12px;display:flex;flex-wrap:wrap;gap:6px;justify-content:center">
-                ${(() => {
-                    const cp = CATEGORY_PARAMS[s.category] || [];
-                    const sr = SERVICE_RATINGS[s.id] || {};
-                    return cp.map((p, i) => {
-                        const v = sr[p.key] || 0;
-                        const c = v >= 4 ? '#22C55E' : v >= 3 ? '#EAB308' : '#EF4444';
-                        const bg = v >= 4 ? 'rgba(34,197,94,0.1)' : v >= 3 ? 'rgba(234,179,8,0.1)' : 'rgba(239,68,68,0.1)';
-                        const topMark = i < 3 ? '<i class="fas fa-star" style="font-size:8px;color:#F5DA0F;margin-right:2px"></i>' : '';
-                        return `<span style="display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;font-size:12px;background:${bg};color:${c};border:1px solid ${c}22">${topMark}<i class="fas ${p.icon}" style="font-size:10px"></i> ${p.label} <b>${v}/5</b></span>`;
-                    }).join('');
-                })()}
             </div>
 
             <div class="modal-body">
@@ -4201,17 +4223,9 @@
 
                 ${buildComparisonTable(s)}
 
-
                 <div class="modal-section">
                     <h3 class="modal-section-title"><i class="fas fa-info-circle" style="color:${colorVar}"></i> О сервисе</h3>
-                    <p class="modal-description">${s.fullDesc}</p>
-                </div>
-
-                <div class="modal-section">
-                    <h3 class="modal-section-title"><i class="fas fa-lightbulb" style="color:${colorVar}"></i> Когда пригодится</h3>
-                    <ul class="modal-use-cases">
-                        ${s.useCases.map(u => `<li><i class="fas fa-bolt"></i> ${u}</li>`).join('')}
-                    </ul>
+                    <p class="modal-description">${s.shortDesc}</p>
                 </div>
 
                 <div class="modal-section">
@@ -4219,22 +4233,19 @@
                     <div class="modal-pros-cons">
                         <div>
                             <ul class="pros-list">
-                                ${s.pros.map(p => `<li><i class="fas fa-check-circle"></i> ${p}</li>`).join('')}
+                                ${s.pros.slice(0, 3).map(p => `<li><i class="fas fa-check-circle"></i> ${p}</li>`).join('')}
                             </ul>
                         </div>
                         <div>
                             <ul class="cons-list">
-                                ${s.cons.map(c => `<li><i class="fas fa-times-circle"></i> ${c}</li>`).join('')}
+                                ${s.cons.slice(0, 2).map(c => `<li><i class="fas fa-times-circle"></i> ${c}</li>`).join('')}
                             </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="modal-section">
-                    <h3 class="modal-section-title"><i class="fas fa-tag" style="color:${colorVar}"></i> Полная информация о стоимости</h3>
-                    <div class="modal-pricing">
-                        <p>${s.pricing}</p>
-                    </div>
+                <div class="modal-section" style="padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">
+                    <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><i class="fas fa-tag" style="color:${colorVar};margin-right:6px"></i>${s.pricing.split('.').slice(0, 2).join('. ')}.</p>
                 </div>
             </div>
         `;
