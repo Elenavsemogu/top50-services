@@ -4354,6 +4354,261 @@
     // ────────────────────────────────
     renderCategoryNav();
     renderServices();
+
+    // ════════════════════════════════════
+    // AUTH SYSTEM (Telegram + Google Apps Script)
+    // ════════════════════════════════════
+
+    const AUTH_CONFIG = {
+        SKIP_AUTH: true,
+        BOT_USERNAME: 'YOUR_BOT_USERNAME',
+        BOT_DEEP_LINK: 'https://t.me/YOUR_BOT?start=top50',
+        CHANNEL_ID: '@secreetroommedia',
+        SCRIPT_URL: 'YOUR_GOOGLE_APPS_SCRIPT_URL',
+        SESSION_KEY: 'sr_top50_session',
+        STORAGE_KEY: 'sr_top50_user'
+    };
+
+    function authAllow() {
+        document.body.classList.remove('auth-locked');
+        const overlay = document.getElementById('authOverlay');
+        if (overlay) overlay.style.display = 'none';
+    }
+
+    function authBlock() {
+        document.body.classList.add('auth-locked');
+        const overlay = document.getElementById('authOverlay');
+        if (overlay) overlay.style.display = 'flex';
+    }
+
+    function skipAuth() {
+        authAllow();
+    }
+
+    function checkTop50Auth() {
+        if (AUTH_CONFIG.SKIP_AUTH) { authAllow(); return; }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlToken = urlParams.get('auth');
+
+        if (urlToken) {
+            window.history.replaceState({}, document.title, window.location.pathname);
+            validateToken(urlToken);
+            return;
+        }
+
+        const session = localStorage.getItem(AUTH_CONFIG.SESSION_KEY);
+        if (session) {
+            validateSession(session);
+            return;
+        }
+
+        authBlock();
+    }
+
+    function validateToken(token) {
+        fetch(AUTH_CONFIG.SCRIPT_URL + '?action=validate&token=' + encodeURIComponent(token))
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    localStorage.setItem(AUTH_CONFIG.SESSION_KEY, data.session || token);
+                    if (data.user) localStorage.setItem(AUTH_CONFIG.STORAGE_KEY, JSON.stringify(data.user));
+                    authAllow();
+                } else {
+                    authBlock();
+                }
+            })
+            .catch(() => authBlock());
+    }
+
+    function validateSession(session) {
+        fetch(AUTH_CONFIG.SCRIPT_URL + '?action=check&session=' + encodeURIComponent(session))
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    authAllow();
+                } else {
+                    localStorage.removeItem(AUTH_CONFIG.SESSION_KEY);
+                    authBlock();
+                }
+            })
+            .catch(() => authBlock());
+    }
+
+    function submitLeadForm(e) {
+        e.preventDefault();
+        const name = document.getElementById('authName').value.trim();
+        const tg = document.getElementById('authTelegram').value.trim();
+        const consent = document.getElementById('authConsent').checked;
+        const errEl = document.getElementById('authError');
+
+        if (errEl) errEl.style.display = 'none';
+        const showErr = (msg) => { if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; } };
+
+        if (!name) { showErr('Введите ваше имя'); return; }
+        if (!tg) { showErr('Введите Telegram'); return; }
+        if (!consent) { showErr('Необходимо согласие на обработку данных'); return; }
+
+        const normalizedTg = tg.startsWith('@') ? tg : '@' + tg;
+        const btn = document.getElementById('authSubmitBtn');
+        if (btn) { btn.disabled = true; btn.textContent = 'Проверяем...'; }
+
+        const payload = {
+            action: 'register',
+            name: name,
+            telegram: normalizedTg,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            source: 'top50-services'
+        };
+
+        fetch(AUTH_CONFIG.SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: JSON.stringify(payload)
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.setItem(AUTH_CONFIG.SESSION_KEY, data.session || 'local_' + Date.now());
+                localStorage.setItem(AUTH_CONFIG.STORAGE_KEY, JSON.stringify({ name, telegram: normalizedTg }));
+                authAllow();
+            } else {
+                showErr(data.message || 'Ошибка, попробуйте позже');
+                if (btn) { btn.disabled = false; btn.textContent = 'Получить доступ'; }
+            }
+        })
+        .catch(() => {
+            localStorage.setItem(AUTH_CONFIG.SESSION_KEY, 'local_' + Date.now());
+            localStorage.setItem(AUTH_CONFIG.STORAGE_KEY, JSON.stringify({ name, telegram: normalizedTg }));
+            authAllow();
+        });
+    }
+
+    checkTop50Auth();
     </script>
+
+<!-- ═══ AUTH OVERLAY ═══ -->
+<div id="authOverlay" style="
+    display:none;
+    position:fixed;inset:0;z-index:99999;
+    background:rgba(28,28,33,0.96);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    align-items:center;justify-content:center;
+    padding:24px;
+">
+    <div style="
+        max-width:420px;width:100%;
+        background:linear-gradient(145deg,#28282E,#1C1C22);
+        border-radius:28px;
+        border:2px solid rgba(245,218,15,0.3);
+        box-shadow:0 24px 80px rgba(0,0,0,0.6),0 0 60px rgba(245,218,15,0.08);
+        padding:40px 32px;
+        text-align:center;
+    ">
+        <!-- Logo -->
+        <div style="
+            width:72px;height:72px;margin:0 auto 20px;
+            background:linear-gradient(135deg,#F5DA0F,#C8E712);
+            border-radius:20px;
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 8px 32px rgba(245,218,15,0.25);
+        ">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0D0D0D" stroke-width="2.5" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+
+        <h2 style="color:#FBF2E8;font-size:22px;font-weight:800;margin:0 0 8px;">Топ-50 сервисов</h2>
+        <p style="color:rgba(255,255,255,0.5);font-size:13px;margin:0 0 28px;line-height:1.5;">
+            Получи доступ к полной базе инструментов для медиабайеров
+        </p>
+
+        <!-- Telegram Bot CTA -->
+        <a id="authTelegramBtn" href="https://t.me/YOUR_BOT?start=top50" target="_blank" style="
+            display:flex;align-items:center;justify-content:center;gap:10px;
+            width:100%;padding:14px 20px;margin-bottom:16px;
+            background:linear-gradient(135deg,#2E39F7,#5B6EF7);
+            border-radius:14px;border:none;
+            color:#fff;font-size:15px;font-weight:700;
+            text-decoration:none;
+            box-shadow:0 4px 20px rgba(46,57,247,0.35);
+            transition:all 0.2s;
+        ">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            Войти через Telegram
+        </a>
+
+        <!-- Divider -->
+        <div style="display:flex;align-items:center;gap:12px;margin:20px 0;">
+            <div style="flex:1;height:1px;background:rgba(255,255,255,0.1)"></div>
+            <span style="color:rgba(255,255,255,0.3);font-size:12px;">или оставьте контакт</span>
+            <div style="flex:1;height:1px;background:rgba(255,255,255,0.1)"></div>
+        </div>
+
+        <!-- Lead Form -->
+        <form id="authLeadForm" onsubmit="submitLeadForm(event)" style="text-align:left;">
+            <input id="authName" type="text" placeholder="Ваше имя" style="
+                width:100%;padding:12px 16px;margin-bottom:10px;
+                background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+                border-radius:12px;color:#FBF2E8;font-size:14px;
+                outline:none;box-sizing:border-box;
+            " />
+            <input id="authTelegram" type="text" placeholder="@telegram" style="
+                width:100%;padding:12px 16px;margin-bottom:12px;
+                background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+                border-radius:12px;color:#FBF2E8;font-size:14px;
+                outline:none;box-sizing:border-box;
+            " />
+            <label style="display:flex;align-items:flex-start;gap:8px;margin-bottom:16px;cursor:pointer;">
+                <input id="authConsent" type="checkbox" style="margin-top:3px;accent-color:#F5DA0F;" />
+                <span style="color:rgba(255,255,255,0.45);font-size:11px;line-height:1.4;">
+                    Даю согласие на обработку персональных данных и получение рассылки
+                </span>
+            </label>
+            <div id="authError" style="display:none;color:#EF4444;font-size:12px;margin-bottom:10px;padding:8px 12px;background:rgba(239,68,68,0.1);border-radius:8px;"></div>
+            <button id="authSubmitBtn" type="submit" style="
+                width:100%;padding:13px 20px;
+                background:linear-gradient(135deg,#F5DA0F,#C8E712);
+                border-radius:14px;border:none;
+                color:#0D0D0D;font-size:14px;font-weight:700;
+                cursor:pointer;
+                box-shadow:0 4px 20px rgba(245,218,15,0.2);
+                transition:all 0.2s;
+            ">Получить доступ</button>
+        </form>
+
+        <!-- Skip button (temporary) -->
+        <button onclick="skipAuth()" style="
+            margin-top:16px;
+            background:none;border:none;
+            color:rgba(255,255,255,0.25);font-size:12px;
+            cursor:pointer;text-decoration:underline;
+            transition:color 0.2s;
+        " onmouseover="this.style.color='rgba(255,255,255,0.5)'" onmouseout="this.style.color='rgba(255,255,255,0.25)'">
+            Пропустить →
+        </button>
+
+        <!-- Info -->
+        <div style="margin-top:20px;display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.35);font-size:11px;">
+                <span style="color:#C8E712;">✓</span> Полная база из 50+ сервисов
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.35);font-size:11px;">
+                <span style="color:#C8E712;">✓</span> Сравнение по ключевым параметрам
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.35);font-size:11px;">
+                <span style="color:#C8E712;">✓</span> Промокоды и специальные предложения
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body.auth-locked { overflow: hidden; }
+    body.auth-locked > *:not(#authOverlay) { filter: blur(6px); pointer-events: none; user-select: none; }
+    #authOverlay input:focus { border-color: rgba(245,218,15,0.4) !important; background: rgba(255,255,255,0.09) !important; }
+    #authOverlay button[type="submit"]:hover { box-shadow: 0 6px 28px rgba(245,218,15,0.35); transform: translateY(-1px); }
+    #authOverlay a:hover { opacity: 0.9; transform: translateY(-1px); }
+</style>
 </body>
 </html>
